@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/Complrx_Num.dir/main.cpp.o CMakeFiles/Complrx_Num.dir/complex_num.cpp.o  -o Complrx_Num 
