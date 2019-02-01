@@ -4,11 +4,17 @@
 
 using namespace complex;
 
-CartCompNum::CartCompNum() = default;
+CartCompNum::CartCompNum(){};
 
-//CartCompNum::CartCompNum(double value) : re_(value), im_(0) {}
+CartCompNum::CartCompNum(double value) {
+  re_ = value;
+  im_ = 0;
+}
 
-CartCompNum::CartCompNum(double re, double im = 0) : re_(re), im_(im) {}
+CartCompNum::CartCompNum(double re, double im) {
+  re_ = re;
+  im_ = im;
+}
 
 CartCompNum::CartCompNum(const CartCompNum &prev) = default;
 
@@ -27,10 +33,10 @@ void CartCompNum::SetIm(double value) {
   im_ = value;
 }
 
-CartCompNum CartCompNum::operator=(const CartCompNum &value) {
+CartCompNum& CartCompNum::operator=(const CartCompNum &value) {
   re_ = value.re_;
   im_ = value.im_;
-  return CartCompNum(re_, im_);
+  return *this;
 }
 
 CartCompNum CartCompNum::operator+() {
@@ -65,7 +71,7 @@ CartCompNum CartCompNum::operator-(const double &value) {
 }
 
 CartCompNum CartCompNum::operator-(const CartCompNum &value) {
-  return CartCompNum(re_ + value.re_, im_ + value.im_);
+  return CartCompNum(re_ - value.re_, im_ - value.im_);
 }
 
 CartCompNum CartCompNum::operator-=(const CartCompNum &value) {
@@ -103,7 +109,7 @@ CartCompNum CartCompNum::operator/(const CartCompNum &value) {
   CartCompNum buffer;
   double mult = value.re_ * value.re_ + value.im_ * value.im_;
   buffer.re_ = (re_ * value.re_ + im_ * value.im_) / mult;
-  buffer.im_ = (re_ * value.re_ - re_ * value.im_) / mult;
+  buffer.im_ = (im_ * value.re_ - re_ * value.im_) / mult;
   return buffer;
 }
 
@@ -113,19 +119,20 @@ CartCompNum CartCompNum::operator/=(const CartCompNum &value) {
   return *this;
 }
 
-double CartCompNum::abs() {
+double CartCompNum::abs() const{
   return (sqrt(re_ * re_ + im_ * im_));
 }
 
-double CartCompNum::arg() {
+double CartCompNum::arg() const{
   return atan2(im_ , re_);
 }
 
 CartCompNum complex::bpow(const CartCompNum& value, int n){
   CartCompNum count(1, 0);
+  CartCompNum x(1.0);
   CartCompNum buff_val = value;
   int buff_degree_ = n;
-  if (!n) return 1;
+  if (!n) return CartCompNum(1);
   while (n) {
     if (n % 2 == 0) {
       n /= 2;
@@ -140,7 +147,7 @@ CartCompNum complex::bpow(const CartCompNum& value, int n){
     return count;
   }
   else {
-    return CartCompNum(1) / count;
+    return x / count;
   }
 }
 
@@ -159,8 +166,8 @@ bool complex::operator==(const CartCompNum &left,
       std::abs(left.im_ - right.im_) < 0.00001);
 }
 //Polar Complex Numbers
-PolarCompNum::PolarCompNum() = default;
-PolarCompNum::PolarCompNum(double value) : r_(value) {}
+PolarCompNum::PolarCompNum() : r_(0), f_(0) {};
+PolarCompNum::PolarCompNum(double value) : r_(value), f_(0) {}
 PolarCompNum::PolarCompNum(double r, double f = 0) : r_(std::abs(r)), f_(f) {}
 PolarCompNum::PolarCompNum(const PolarCompNum &value) : r_(value.r_), f_(value.f_) {};
 
@@ -197,8 +204,8 @@ PolarCompNum PolarCompNum::operator+(const PolarCompNum &value){
 
 PolarCompNum PolarCompNum::operator+=(const PolarCompNum &value){
   CartCompNum buff = PolarToCart(*this) + PolarToCart(value);
-  r_ += CartToPolar(buff).r_;
-  f_ += CartToPolar(buff).f_;
+  r_ = CartToPolar(buff).r_;
+  f_ = CartToPolar(buff).f_;
   return *this;
 }
 
@@ -207,14 +214,14 @@ PolarCompNum PolarCompNum::operator-(){
 }
 
 PolarCompNum PolarCompNum::operator-(const PolarCompNum &value){
-  CartCompNum buffer = PolarToCart(value) - PolarToCart(*this);
+  CartCompNum buffer = PolarToCart(*this) - PolarToCart(value);
   return CartToPolar(buffer);
 }
 
 PolarCompNum PolarCompNum::operator-=(const PolarCompNum &value){
   CartCompNum buff = PolarToCart(*this) - PolarToCart(value);
-  r_ += CartToPolar(buff).r_;
-  f_ += CartToPolar(buff).f_;
+  r_ = CartToPolar(buff).r_;
+  f_ = CartToPolar(buff).f_;
   return *this;
 }
 
@@ -260,7 +267,7 @@ CartCompNum complex::PolarToCart(const PolarCompNum &value) {
   return CartCompNum(value.r_ * cos(value.f_), value.r_ * sin(value.f_));
 }
 
-PolarCompNum complex::CartToPolar(CartCompNum &value) {
+PolarCompNum complex::CartToPolar(const CartCompNum &value) {
   return PolarCompNum(value.abs(), value.arg());
 }
 

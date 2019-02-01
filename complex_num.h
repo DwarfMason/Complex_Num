@@ -7,7 +7,7 @@ class CartCompNum {
 
  public:
   CartCompNum();
-  //explicit CartCompNum(double);
+  explicit CartCompNum(double);
   CartCompNum(double, double);
   CartCompNum(const CartCompNum &);
 
@@ -17,7 +17,7 @@ class CartCompNum {
   void SetRe(double);
   void SetIm(double);
 
-  CartCompNum operator=(const CartCompNum &);
+  CartCompNum& operator=(const CartCompNum &);
 
   CartCompNum operator+();
   CartCompNum operator+(const CartCompNum &);
@@ -43,8 +43,8 @@ class CartCompNum {
   CartCompNum operator/(const double &);
   CartCompNum operator/=(const CartCompNum &);
 
-  double abs();
-  double arg();
+  double abs() const;
+  double arg() const;
 
   friend std::ostream &operator<<(std::ostream &, CartCompNum &);
   friend std::istream &operator>>(std::istream &, CartCompNum &);
@@ -90,6 +90,6 @@ class PolarCompNum {
 
 };
 CartCompNum PolarToCart(const PolarCompNum &);
-PolarCompNum CartToPolar(CartCompNum &);
+PolarCompNum CartToPolar(const CartCompNum &);
 CartCompNum bpow(const CartCompNum &value, int n);
 }
