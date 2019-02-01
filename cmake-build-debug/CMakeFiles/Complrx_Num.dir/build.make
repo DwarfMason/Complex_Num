@@ -34,19 +34,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake
+CMAKE_COMMAND = /opt/clion/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
+RM = /opt/clion/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/hakintos/CLionProjects/Complex_Num
+CMAKE_SOURCE_DIR = /home/dwarf/Complex_Num
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/hakintos/CLionProjects/Complex_Num/cmake-build-debug
+CMAKE_BINARY_DIR = /home/dwarf/Complex_Num/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/Complrx_Num.dir/depend.make
@@ -59,29 +59,29 @@ include CMakeFiles/Complrx_Num.dir/flags.make
 
 CMakeFiles/Complrx_Num.dir/main.cpp.o: CMakeFiles/Complrx_Num.dir/flags.make
 CMakeFiles/Complrx_Num.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/hakintos/CLionProjects/Complex_Num/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Complrx_Num.dir/main.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Complrx_Num.dir/main.cpp.o -c /Users/hakintos/CLionProjects/Complex_Num/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dwarf/Complex_Num/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Complrx_Num.dir/main.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Complrx_Num.dir/main.cpp.o -c /home/dwarf/Complex_Num/main.cpp
 
 CMakeFiles/Complrx_Num.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Complrx_Num.dir/main.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/hakintos/CLionProjects/Complex_Num/main.cpp > CMakeFiles/Complrx_Num.dir/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dwarf/Complex_Num/main.cpp > CMakeFiles/Complrx_Num.dir/main.cpp.i
 
 CMakeFiles/Complrx_Num.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Complrx_Num.dir/main.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/hakintos/CLionProjects/Complex_Num/main.cpp -o CMakeFiles/Complrx_Num.dir/main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dwarf/Complex_Num/main.cpp -o CMakeFiles/Complrx_Num.dir/main.cpp.s
 
 CMakeFiles/Complrx_Num.dir/complex_num.cpp.o: CMakeFiles/Complrx_Num.dir/flags.make
 CMakeFiles/Complrx_Num.dir/complex_num.cpp.o: ../complex_num.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/hakintos/CLionProjects/Complex_Num/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Complrx_Num.dir/complex_num.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Complrx_Num.dir/complex_num.cpp.o -c /Users/hakintos/CLionProjects/Complex_Num/complex_num.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dwarf/Complex_Num/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Complrx_Num.dir/complex_num.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Complrx_Num.dir/complex_num.cpp.o -c /home/dwarf/Complex_Num/complex_num.cpp
 
 CMakeFiles/Complrx_Num.dir/complex_num.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Complrx_Num.dir/complex_num.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/hakintos/CLionProjects/Complex_Num/complex_num.cpp > CMakeFiles/Complrx_Num.dir/complex_num.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dwarf/Complex_Num/complex_num.cpp > CMakeFiles/Complrx_Num.dir/complex_num.cpp.i
 
 CMakeFiles/Complrx_Num.dir/complex_num.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Complrx_Num.dir/complex_num.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/hakintos/CLionProjects/Complex_Num/complex_num.cpp -o CMakeFiles/Complrx_Num.dir/complex_num.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dwarf/Complex_Num/complex_num.cpp -o CMakeFiles/Complrx_Num.dir/complex_num.cpp.s
 
 # Object files for target Complrx_Num
 Complrx_Num_OBJECTS = \
@@ -95,7 +95,7 @@ Complrx_Num: CMakeFiles/Complrx_Num.dir/main.cpp.o
 Complrx_Num: CMakeFiles/Complrx_Num.dir/complex_num.cpp.o
 Complrx_Num: CMakeFiles/Complrx_Num.dir/build.make
 Complrx_Num: CMakeFiles/Complrx_Num.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/hakintos/CLionProjects/Complex_Num/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable Complrx_Num"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/dwarf/Complex_Num/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable Complrx_Num"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Complrx_Num.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -108,6 +108,6 @@ CMakeFiles/Complrx_Num.dir/clean:
 .PHONY : CMakeFiles/Complrx_Num.dir/clean
 
 CMakeFiles/Complrx_Num.dir/depend:
-	cd /Users/hakintos/CLionProjects/Complex_Num/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/hakintos/CLionProjects/Complex_Num /Users/hakintos/CLionProjects/Complex_Num /Users/hakintos/CLionProjects/Complex_Num/cmake-build-debug /Users/hakintos/CLionProjects/Complex_Num/cmake-build-debug /Users/hakintos/CLionProjects/Complex_Num/cmake-build-debug/CMakeFiles/Complrx_Num.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/dwarf/Complex_Num/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/dwarf/Complex_Num /home/dwarf/Complex_Num /home/dwarf/Complex_Num/cmake-build-debug /home/dwarf/Complex_Num/cmake-build-debug /home/dwarf/Complex_Num/cmake-build-debug/CMakeFiles/Complrx_Num.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/Complrx_Num.dir/depend
 

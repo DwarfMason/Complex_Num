@@ -76,10 +76,16 @@ class PolarCompNum {
   PolarCompNum operator-=(const PolarCompNum &);
 
   PolarCompNum operator*(const PolarCompNum &);
+  PolarCompNum operator*(double);
+  PolarCompNum operator*=(double);
+  PolarCompNum operator*=(const PolarCompNum &);
   double arg() const;
   double abs() const;
 
   PolarCompNum operator/(const PolarCompNum &);
+  PolarCompNum operator/(double);
+  PolarCompNum operator/=(double);
+  PolarCompNum operator/=(const PolarCompNum &);
 
   friend std::ostream &operator<<(std::ostream &, PolarCompNum &);
   friend std::istream &operator>>(std::istream &, PolarCompNum &);
