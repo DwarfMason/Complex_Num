@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2019-02-01 18:12:07</td>
+            <td class="headerValue">2019-02-01 21:23:38</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">8</td>
@@ -276,7 +276,7 @@
 <span class="lineNum">     214 </span>            :     static _LIBCPP_CONSTEXPR_AFTER_CXX14
 <a name="215"><span class="lineNum">     215 </span>            :     int compare(const char_type* __s1, const char_type* __s2, size_t __n) _NOEXCEPT;</a>
 <span class="lineNum">     216 </span>            :     static inline size_t _LIBCPP_CONSTEXPR_AFTER_CXX14
-<span class="lineNum">     217 </span><span class="lineCov">        144 :     length(const char_type* __s)  _NOEXCEPT {return __builtin_strlen(__s);}</span>
+<span class="lineNum">     217 </span><span class="lineCov">        145 :     length(const char_type* __s)  _NOEXCEPT {return __builtin_strlen(__s);}</span>
 <span class="lineNum">     218 </span>            :     static _LIBCPP_CONSTEXPR_AFTER_CXX14
 <span class="lineNum">     219 </span>            :     const char_type* find(const char_type* __s, size_t __n, const char_type&amp; __a) _NOEXCEPT;
 <span class="lineNum">     220 </span>            :     static inline char_type* move(char_type* __s1, const char_type* __s2, size_t __n) _NOEXCEPT
@@ -305,10 +305,10 @@
 <span class="lineNum">     243 </span>            : int
 <span class="lineNum">     244 </span>            : char_traits&lt;char&gt;::compare(const char_type* __s1, const char_type* __s2, size_t __n) _NOEXCEPT
 <span class="lineNum">     245 </span>            : {
-<span class="lineNum">     246 </span><span class="lineCov">         85 :     if (__n == 0)</span>
+<span class="lineNum">     246 </span><span class="lineCov">         91 :     if (__n == 0)</span>
 <span class="lineNum">     247 </span><span class="lineNoCov">          0 :         return 0;</span>
 <span class="lineNum">     248 </span>            : #if __has_feature(cxx_constexpr_string_builtins)
-<span class="lineNum">     249 </span><span class="lineCov">         85 :     return __builtin_memcmp(__s1, __s2, __n);</span>
+<span class="lineNum">     249 </span><span class="lineCov">         91 :     return __builtin_memcmp(__s1, __s2, __n);</span>
 <span class="lineNum">     250 </span>            : #elif _LIBCPP_STD_VER &lt;= 14
 <span class="lineNum">     251 </span>            :     return memcmp(__s1, __s2, __n);
 <span class="lineNum">     252 </span>            : #else
@@ -321,7 +321,7 @@
 <span class="lineNum">     259 </span>            :     }
 <span class="lineNum">     260 </span>            :     return 0;
 <span class="lineNum">     261 </span>            : #endif
-<span class="lineNum">     262 </span><span class="lineCov">         85 : }</span>
+<span class="lineNum">     262 </span><span class="lineCov">         91 : }</span>
 <span class="lineNum">     263 </span>            : 
 <a name="264"><span class="lineNum">     264 </span>            : inline _LIBCPP_CONSTEXPR_AFTER_CXX14</a>
 <span class="lineNum">     265 </span>            : const char*

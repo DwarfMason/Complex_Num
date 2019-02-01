@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2019-02-01 18:12:07</td>
+            <td class="headerValue">2019-02-01 21:23:38</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2070</td>
@@ -1047,7 +1047,7 @@
 <span class="lineNum">     985 </span>            :     _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">     986 </span>            :     static pointer pointer_to(typename conditional&lt;is_void&lt;element_type&gt;::value,
 <span class="lineNum">     987 </span>            :                                       __nat, element_type&gt;::type&amp; __r) _NOEXCEPT
-<span class="lineNum">     988 </span><span class="lineCov">        396 :         {return _VSTD::addressof(__r);}</span>
+<span class="lineNum">     988 </span><span class="lineCov">        416 :         {return _VSTD::addressof(__r);}</span>
 <span class="lineNum">     989 </span>            : };
 <span class="lineNum">     990 </span>            : 
 <span class="lineNum">     991 </span>            : template &lt;class _From, class _To&gt;
@@ -1165,7 +1165,7 @@
 <span class="lineNum">    1103 </span>            : _Tp*
 <span class="lineNum">    1104 </span>            : __to_raw_pointer(_Tp* __p) _NOEXCEPT
 <span class="lineNum">    1105 </span>            : {
-<span class="lineNum">    1106 </span><span class="lineCov">       9915 :     return __p;</span>
+<span class="lineNum">    1106 </span><span class="lineCov">       9999 :     return __p;</span>
 <span class="lineNum">    1107 </span>            : }
 <span class="lineNum">    1108 </span>            : 
 <span class="lineNum">    1109 </span>            : #if _LIBCPP_STD_VER &lt;= 17
@@ -1606,7 +1606,7 @@
 <a name="1544"><span class="lineNum">    1544 </span>            : </a>
 <span class="lineNum">    1545 </span>            :     _LIBCPP_NODISCARD_AFTER_CXX17 _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">    1546 </span>            :     static pointer allocate(allocator_type&amp; __a, size_type __n)
-<span class="lineNum">    1547 </span><span class="lineCov">        933 :         {return __a.allocate(__n);}</span>
+<span class="lineNum">    1547 </span><span class="lineCov">        936 :         {return __a.allocate(__n);}</span>
 <span class="lineNum">    1548 </span>            :     _LIBCPP_NODISCARD_AFTER_CXX17 _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">    1549 </span>            :     static pointer allocate(allocator_type&amp; __a, size_type __n, const_void_pointer __hint)
 <span class="lineNum">    1550 </span>            :         {return __allocate(__a, __n, __hint,
@@ -1614,14 +1614,14 @@
 <a name="1552"><span class="lineNum">    1552 </span>            : </a>
 <span class="lineNum">    1553 </span>            :     _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">    1554 </span>            :     static void deallocate(allocator_type&amp; __a, pointer __p, size_type __n) _NOEXCEPT
-<span class="lineNum">    1555 </span><span class="lineCov">        933 :         {__a.deallocate(__p, __n);}</span>
+<span class="lineNum">    1555 </span><span class="lineCov">        936 :         {__a.deallocate(__p, __n);}</span>
 <span class="lineNum">    1556 </span>            : 
 <span class="lineNum">    1557 </span>            : #ifndef _LIBCPP_HAS_NO_VARIADICS
 <a name="1558"><span class="lineNum">    1558 </span>            :     template &lt;class _Tp, class... _Args&gt;</a>
 <span class="lineNum">    1559 </span>            :         _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">    1560 </span>            :         static void construct(allocator_type&amp; __a, _Tp* __p, _Args&amp;&amp;... __args)
-<span class="lineNum">    1561 </span><span class="lineCov">       5464 :             {__construct(__has_construct&lt;allocator_type, _Tp*, _Args...&gt;(),</span>
-<span class="lineNum">    1562 </span><span class="lineCov">       5464 :                          __a, __p, _VSTD::forward&lt;_Args&gt;(__args)...);}</span>
+<span class="lineNum">    1561 </span><span class="lineCov">       5506 :             {__construct(__has_construct&lt;allocator_type, _Tp*, _Args...&gt;(),</span>
+<span class="lineNum">    1562 </span><span class="lineCov">       5506 :                          __a, __p, _VSTD::forward&lt;_Args&gt;(__args)...);}</span>
 <span class="lineNum">    1563 </span>            : #else  // _LIBCPP_HAS_NO_VARIADICS
 <span class="lineNum">    1564 </span>            :     template &lt;class _Tp&gt;
 <span class="lineNum">    1565 </span>            :         _LIBCPP_INLINE_VISIBILITY
@@ -1654,18 +1654,18 @@
 <a name="1592"><span class="lineNum">    1592 </span>            :     template &lt;class _Tp&gt;</a>
 <span class="lineNum">    1593 </span>            :         _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">    1594 </span>            :         static void destroy(allocator_type&amp; __a, _Tp* __p)
-<span class="lineNum">    1595 </span><span class="lineCov">       2732 :             {__destroy(__has_destroy&lt;allocator_type, _Tp*&gt;(), __a, __p);}</span>
+<span class="lineNum">    1595 </span><span class="lineCov">       2753 :             {__destroy(__has_destroy&lt;allocator_type, _Tp*&gt;(), __a, __p);}</span>
 <a name="1596"><span class="lineNum">    1596 </span>            : </a>
 <span class="lineNum">    1597 </span>            :     _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">    1598 </span>            :     static size_type max_size(const allocator_type&amp; __a) _NOEXCEPT
-<span class="lineNum">    1599 </span><span class="lineCov">        914 :         {return __max_size(__has_max_size&lt;const allocator_type&gt;(), __a);}</span>
+<span class="lineNum">    1599 </span><span class="lineCov">        916 :         {return __max_size(__has_max_size&lt;const allocator_type&gt;(), __a);}</span>
 <span class="lineNum">    1600 </span>            : 
 <a name="1601"><span class="lineNum">    1601 </span>            :     _LIBCPP_INLINE_VISIBILITY</a>
 <span class="lineNum">    1602 </span>            :     static allocator_type
 <span class="lineNum">    1603 </span>            :         select_on_container_copy_construction(const allocator_type&amp; __a)
-<span class="lineNum">    1604 </span><span class="lineCov">       1054 :             {return __select_on_container_copy_construction(</span>
-<span class="lineNum">    1605 </span><span class="lineCov">       1054 :                 __has_select_on_container_copy_construction&lt;const allocator_type&gt;(),</span>
-<span class="lineNum">    1606 </span><span class="lineCov">       1054 :                 __a);}</span>
+<span class="lineNum">    1604 </span><span class="lineCov">       1065 :             {return __select_on_container_copy_construction(</span>
+<span class="lineNum">    1605 </span><span class="lineCov">       1065 :                 __has_select_on_container_copy_construction&lt;const allocator_type&gt;(),</span>
+<span class="lineNum">    1606 </span><span class="lineCov">       1065 :                 __a);}</span>
 <span class="lineNum">    1607 </span>            : 
 <span class="lineNum">    1608 </span>            :     template &lt;class _Ptr&gt;
 <span class="lineNum">    1609 </span>            :         _LIBCPP_INLINE_VISIBILITY
@@ -1703,8 +1703,8 @@
 <span class="lineNum">    1641 </span>            :         void
 <span class="lineNum">    1642 </span>            :         __construct_range_forward(allocator_type&amp; __a, _Iter __begin1, _Iter __end1, _Ptr&amp; __begin2)
 <span class="lineNum">    1643 </span>            :         {
-<span class="lineNum">    1644 </span><span class="lineCov">       6086 :             for (; __begin1 != __end1; ++__begin1, (void) ++__begin2)</span>
-<span class="lineNum">    1645 </span><span class="lineCov">       2228 :                 construct(__a, _VSTD::__to_raw_pointer(__begin2), *__begin1);</span>
+<span class="lineNum">    1644 </span><span class="lineCov">       6088 :             for (; __begin1 != __end1; ++__begin1, (void) ++__begin2)</span>
+<span class="lineNum">    1645 </span><span class="lineCov">       2229 :                 construct(__a, _VSTD::__to_raw_pointer(__begin2), *__begin1);</span>
 <span class="lineNum">    1646 </span><span class="lineCov">        815 :         }</span>
 <span class="lineNum">    1647 </span>            : 
 <span class="lineNum">    1648 </span>            :     template &lt;class _Tp&gt;
@@ -1734,12 +1734,12 @@
 <span class="lineNum">    1672 </span>            :         void
 <span class="lineNum">    1673 </span>            :         __construct_backward(allocator_type&amp; __a, _Ptr __begin1, _Ptr __end1, _Ptr&amp; __end2)
 <span class="lineNum">    1674 </span>            :         {
-<span class="lineNum">    1675 </span><span class="lineCov">        912 :             while (__end1 != __begin1)</span>
+<span class="lineNum">    1675 </span><span class="lineCov">        948 :             while (__end1 != __begin1)</span>
 <span class="lineNum">    1676 </span>            :             {
-<span class="lineNum">    1677 </span><span class="lineCov">        360 :                 construct(__a, _VSTD::__to_raw_pointer(__end2-1), _VSTD::move_if_noexcept(*--__end1));</span>
-<span class="lineNum">    1678 </span><span class="lineCov">        360 :                 --__end2;</span>
+<span class="lineNum">    1677 </span><span class="lineCov">        376 :                 construct(__a, _VSTD::__to_raw_pointer(__end2-1), _VSTD::move_if_noexcept(*--__end1));</span>
+<span class="lineNum">    1678 </span><span class="lineCov">        376 :                 --__end2;</span>
 <span class="lineNum">    1679 </span>            :             }
-<span class="lineNum">    1680 </span><span class="lineCov">         96 :         }</span>
+<span class="lineNum">    1680 </span><span class="lineCov">         98 :         }</span>
 <span class="lineNum">    1681 </span>            : 
 <span class="lineNum">    1682 </span>            :     template &lt;class _Tp&gt;
 <span class="lineNum">    1683 </span>            :         _LIBCPP_INLINE_VISIBILITY
@@ -1774,7 +1774,7 @@
 <a name="1712"><span class="lineNum">    1712 </span>            :     template &lt;class _Tp, class... _Args&gt;</a>
 <span class="lineNum">    1713 </span>            :         _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">    1714 </span>            :         static void __construct(true_type, allocator_type&amp; __a, _Tp* __p, _Args&amp;&amp;... __args)
-<span class="lineNum">    1715 </span><span class="lineCov">       2732 :             {__a.construct(__p, _VSTD::forward&lt;_Args&gt;(__args)...);}</span>
+<span class="lineNum">    1715 </span><span class="lineCov">       2753 :             {__a.construct(__p, _VSTD::forward&lt;_Args&gt;(__args)...);}</span>
 <span class="lineNum">    1716 </span>            :     template &lt;class _Tp, class... _Args&gt;
 <span class="lineNum">    1717 </span>            :         _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">    1718 </span>            :         static void __construct(false_type, allocator_type&amp;, _Tp* __p, _Args&amp;&amp;... __args)
@@ -1786,17 +1786,17 @@
 <a name="1724"><span class="lineNum">    1724 </span>            :     template &lt;class _Tp&gt;</a>
 <span class="lineNum">    1725 </span>            :         _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">    1726 </span>            :         static void __destroy(true_type, allocator_type&amp; __a, _Tp* __p)
-<span class="lineNum">    1727 </span><span class="lineCov">       2711 :             {__a.destroy(__p);}</span>
+<span class="lineNum">    1727 </span><span class="lineCov">       2731 :             {__a.destroy(__p);}</span>
 <a name="1728"><span class="lineNum">    1728 </span>            :     template &lt;class _Tp&gt;</a>
 <span class="lineNum">    1729 </span>            :         _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">    1730 </span>            :         static void __destroy(false_type, allocator_type&amp;, _Tp* __p)
 <span class="lineNum">    1731 </span>            :             {
-<span class="lineNum">    1732 </span><span class="lineCov">         20 :                 __p-&gt;~_Tp();</span>
-<span class="lineNum">    1733 </span><span class="lineCov">         21 :             }</span>
+<span class="lineNum">    1732 </span><span class="lineCov">         21 :                 __p-&gt;~_Tp();</span>
+<span class="lineNum">    1733 </span><span class="lineCov">         22 :             }</span>
 <a name="1734"><span class="lineNum">    1734 </span>            : </a>
 <span class="lineNum">    1735 </span>            :     _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">    1736 </span>            :     static size_type __max_size(true_type, const allocator_type&amp; __a) _NOEXCEPT
-<span class="lineNum">    1737 </span><span class="lineCov">        914 :             {return __a.max_size();}</span>
+<span class="lineNum">    1737 </span><span class="lineCov">        916 :             {return __a.max_size();}</span>
 <span class="lineNum">    1738 </span>            :     _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">    1739 </span>            :     static size_type __max_size(false_type, const allocator_type&amp;) _NOEXCEPT
 <span class="lineNum">    1740 </span>            :             {return numeric_limits&lt;size_type&gt;::max() / sizeof(value_type);}
@@ -1808,7 +1808,7 @@
 <a name="1746"><span class="lineNum">    1746 </span>            :     _LIBCPP_INLINE_VISIBILITY</a>
 <span class="lineNum">    1747 </span>            :     static allocator_type
 <span class="lineNum">    1748 </span>            :         __select_on_container_copy_construction(false_type, const allocator_type&amp; __a)
-<span class="lineNum">    1749 </span><span class="lineCov">       1054 :             {return __a;}</span>
+<span class="lineNum">    1749 </span><span class="lineCov">       1065 :             {return __a;}</span>
 <span class="lineNum">    1750 </span>            : };
 <span class="lineNum">    1751 </span>            : 
 <span class="lineNum">    1752 </span>            : template &lt;class _Traits, class _Tp&gt;
@@ -1840,8 +1840,8 @@
 <span class="lineNum">    1778 </span>            : 
 <a name="1779"><span class="lineNum">    1779 </span>            :     template &lt;class _Up&gt; struct rebind {typedef allocator&lt;_Up&gt; other;};</a>
 <a name="1780"><span class="lineNum">    1780 </span>            : </a>
-<span class="lineNum">    1781 </span><span class="lineCov">        641 :     _LIBCPP_INLINE_VISIBILITY allocator() _NOEXCEPT {}</span>
-<span class="lineNum">    1782 </span><span class="lineCov">        312 :     template &lt;class _Up&gt; _LIBCPP_INLINE_VISIBILITY allocator(const allocator&lt;_Up&gt;&amp;) _NOEXCEPT {}</span>
+<span class="lineNum">    1781 </span><span class="lineCov">        663 :     _LIBCPP_INLINE_VISIBILITY allocator() _NOEXCEPT {}</span>
+<span class="lineNum">    1782 </span><span class="lineCov">        322 :     template &lt;class _Up&gt; _LIBCPP_INLINE_VISIBILITY allocator(const allocator&lt;_Up&gt;&amp;) _NOEXCEPT {}</span>
 <span class="lineNum">    1783 </span>            :     _LIBCPP_INLINE_VISIBILITY pointer address(reference __x) const _NOEXCEPT
 <span class="lineNum">    1784 </span>            :         {return _VSTD::addressof(__x);}
 <span class="lineNum">    1785 </span>            :     _LIBCPP_INLINE_VISIBILITY const_pointer address(const_reference __x) const _NOEXCEPT
@@ -1849,23 +1849,23 @@
 <span class="lineNum">    1787 </span>            :     _LIBCPP_NODISCARD_AFTER_CXX17 _LIBCPP_INLINE_VISIBILITY 
 <span class="lineNum">    1788 </span>            :     pointer allocate(size_type __n, allocator&lt;void&gt;::const_pointer = 0)
 <span class="lineNum">    1789 </span>            :         {
-<span class="lineNum">    1790 </span><span class="lineCov">       1003 :         if (__n &gt; max_size())</span>
+<span class="lineNum">    1790 </span><span class="lineCov">       1008 :         if (__n &gt; max_size())</span>
 <span class="lineNum">    1791 </span><span class="lineNoCov">          0 :             __throw_length_error(&quot;allocator&lt;T&gt;::allocate(size_t n)&quot;</span>
 <span class="lineNum">    1792 </span>            :                                  &quot; 'n' exceeds maximum supported size&quot;);
-<a name="1793"><span class="lineNum">    1793 </span><span class="lineCov">       1003 :         return static_cast&lt;pointer&gt;(_VSTD::__allocate(__n * sizeof(_Tp)));</span></a>
+<a name="1793"><span class="lineNum">    1793 </span><span class="lineCov">       1008 :         return static_cast&lt;pointer&gt;(_VSTD::__allocate(__n * sizeof(_Tp)));</span></a>
 <span class="lineNum">    1794 </span>            :         }
 <a name="1795"><span class="lineNum">    1795 </span>            :     _LIBCPP_INLINE_VISIBILITY void deallocate(pointer __p, size_type) _NOEXCEPT</a>
-<span class="lineNum">    1796 </span><span class="lineCov">       2038 :         {_VSTD::__libcpp_deallocate((void*)__p);}</span>
+<span class="lineNum">    1796 </span><span class="lineCov">       2050 :         {_VSTD::__libcpp_deallocate((void*)__p);}</span>
 <span class="lineNum">    1797 </span>            :     _LIBCPP_INLINE_VISIBILITY size_type max_size() const _NOEXCEPT
-<span class="lineNum">    1798 </span><span class="lineCov">       1917 :         {return size_type(~0) / sizeof(_Tp);}</span>
+<span class="lineNum">    1798 </span><span class="lineCov">       1924 :         {return size_type(~0) / sizeof(_Tp);}</span>
 <span class="lineNum">    1799 </span>            : #if !defined(_LIBCPP_HAS_NO_RVALUE_REFERENCES) &amp;&amp; !defined(_LIBCPP_HAS_NO_VARIADICS)
 <span class="lineNum">    1800 </span>            :     template &lt;class _Up, class... _Args&gt;
 <a name="1801"><span class="lineNum">    1801 </span>            :         _LIBCPP_INLINE_VISIBILITY</a>
 <span class="lineNum">    1802 </span>            :         void
 <span class="lineNum">    1803 </span>            :         construct(_Up* __p, _Args&amp;&amp;... __args)
 <span class="lineNum">    1804 </span>            :         {
-<span class="lineNum">    1805 </span><span class="lineCov">       2732 :             ::new((void*)__p) _Up(_VSTD::forward&lt;_Args&gt;(__args)...);</span>
-<span class="lineNum">    1806 </span><span class="lineCov">       2732 :         }</span>
+<span class="lineNum">    1805 </span><span class="lineCov">       2753 :             ::new((void*)__p) _Up(_VSTD::forward&lt;_Args&gt;(__args)...);</span>
+<span class="lineNum">    1806 </span><span class="lineCov">       2753 :         }</span>
 <span class="lineNum">    1807 </span>            : #else  // !defined(_LIBCPP_HAS_NO_RVALUE_REFERENCES) &amp;&amp; !defined(_LIBCPP_HAS_NO_VARIADICS)
 <span class="lineNum">    1808 </span>            :         _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">    1809 </span>            :         void
@@ -1919,7 +1919,7 @@
 <span class="lineNum">    1857 </span>            :             ::new((void*)__p) _Tp(__a0, __a1);
 <a name="1858"><span class="lineNum">    1858 </span>            :         }</a>
 <span class="lineNum">    1859 </span>            : #endif  // !defined(_LIBCPP_HAS_NO_RVALUE_REFERENCES) &amp;&amp; !defined(_LIBCPP_HAS_NO_VARIADICS)
-<span class="lineNum">    1860 </span><span class="lineCov">       2711 :     _LIBCPP_INLINE_VISIBILITY void destroy(pointer __p) {__p-&gt;~_Tp();}</span>
+<span class="lineNum">    1860 </span><span class="lineCov">       2731 :     _LIBCPP_INLINE_VISIBILITY void destroy(pointer __p) {__p-&gt;~_Tp();}</span>
 <span class="lineNum">    1861 </span>            : };
 <span class="lineNum">    1862 </span>            : 
 <span class="lineNum">    1863 </span>            : template &lt;class _Tp&gt;
@@ -2148,7 +2148,7 @@
 <span class="lineNum">    2086 </span>            :   typedef const _Tp&amp; const_reference;
 <a name="2087"><span class="lineNum">    2087 </span>            : </a>
 <span class="lineNum">    2088 </span>            : #ifndef _LIBCPP_CXX03_LANG
-<span class="lineNum">    2089 </span><span class="lineCov">        312 :   _LIBCPP_INLINE_VISIBILITY constexpr __compressed_pair_elem() : __value_() {}</span>
+<span class="lineNum">    2089 </span><span class="lineCov">        321 :   _LIBCPP_INLINE_VISIBILITY constexpr __compressed_pair_elem() : __value_() {}</span>
 <span class="lineNum">    2090 </span>            : 
 <span class="lineNum">    2091 </span>            :   template &lt;class _Up, class = typename enable_if&lt;
 <span class="lineNum">    2092 </span>            :       !is_same&lt;__compressed_pair_elem, typename decay&lt;_Up&gt;::type&gt;::value
@@ -2156,22 +2156,22 @@
 <a name="2094"><span class="lineNum">    2094 </span>            :   _LIBCPP_INLINE_VISIBILITY</a>
 <span class="lineNum">    2095 </span>            :   constexpr explicit
 <span class="lineNum">    2096 </span>            :   __compressed_pair_elem(_Up&amp;&amp; __u)
-<span class="lineNum">    2097 </span><span class="lineCov">       2038 :       : __value_(_VSTD::forward&lt;_Up&gt;(__u)){};</span>
+<span class="lineNum">    2097 </span><span class="lineCov">       2103 :       : __value_(_VSTD::forward&lt;_Up&gt;(__u)){};</span>
 <span class="lineNum">    2098 </span>            : 
 <a name="2099"><span class="lineNum">    2099 </span>            :   template &lt;class... _Args, size_t... _Indexes&gt;</a>
 <span class="lineNum">    2100 </span>            :   _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR_AFTER_CXX14
 <span class="lineNum">    2101 </span>            :   __compressed_pair_elem(piecewise_construct_t, tuple&lt;_Args...&gt; __args,
 <span class="lineNum">    2102 </span>            :                          __tuple_indices&lt;_Indexes...&gt;)
-<span class="lineNum">    2103 </span><span class="lineCov">         66 :       : __value_(_VSTD::forward&lt;_Args&gt;(_VSTD::get&lt;_Indexes&gt;(__args))...) {}</span>
+<span class="lineNum">    2103 </span><span class="lineCov">         68 :       : __value_(_VSTD::forward&lt;_Args&gt;(_VSTD::get&lt;_Indexes&gt;(__args))...) {}</span>
 <span class="lineNum">    2104 </span>            : #else
 <span class="lineNum">    2105 </span>            :   _LIBCPP_INLINE_VISIBILITY __compressed_pair_elem() : __value_() {}
 <span class="lineNum">    2106 </span>            :   _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">    2107 </span>            :   __compressed_pair_elem(_ParamT __p) : __value_(std::forward&lt;_ParamT&gt;(__p)) {}
 <a name="2108"><span class="lineNum">    2108 </span>            : #endif</a>
 <span class="lineNum">    2109 </span>            : 
-<a name="2110"><span class="lineNum">    2110 </span><span class="lineCov">       4618 :   _LIBCPP_INLINE_VISIBILITY reference __get() _NOEXCEPT { return __value_; }</span></a>
+<a name="2110"><span class="lineNum">    2110 </span><span class="lineCov">       4836 :   _LIBCPP_INLINE_VISIBILITY reference __get() _NOEXCEPT { return __value_; }</span></a>
 <span class="lineNum">    2111 </span>            :   _LIBCPP_INLINE_VISIBILITY
-<span class="lineNum">    2112 </span><span class="lineCov">       4419 :   const_reference __get() const _NOEXCEPT { return __value_; }</span>
+<span class="lineNum">    2112 </span><span class="lineCov">       4528 :   const_reference __get() const _NOEXCEPT { return __value_; }</span>
 <span class="lineNum">    2113 </span>            : 
 <span class="lineNum">    2114 </span>            : private:
 <span class="lineNum">    2115 </span>            :   _Tp __value_;
@@ -2185,7 +2185,7 @@
 <span class="lineNum">    2123 </span>            :   typedef _Tp __value_type;
 <a name="2124"><span class="lineNum">    2124 </span>            : </a>
 <span class="lineNum">    2125 </span>            : #ifndef _LIBCPP_CXX03_LANG
-<span class="lineNum">    2126 </span><span class="lineCov">        469 :   _LIBCPP_INLINE_VISIBILITY constexpr __compressed_pair_elem() = default;</span>
+<span class="lineNum">    2126 </span><span class="lineCov">        485 :   _LIBCPP_INLINE_VISIBILITY constexpr __compressed_pair_elem() = default;</span>
 <span class="lineNum">    2127 </span>            : 
 <span class="lineNum">    2128 </span>            :   template &lt;class _Up, class = typename enable_if&lt;
 <span class="lineNum">    2129 </span>            :         !is_same&lt;__compressed_pair_elem, typename decay&lt;_Up&gt;::type&gt;::value
@@ -2193,13 +2193,13 @@
 <a name="2131"><span class="lineNum">    2131 </span>            :   _LIBCPP_INLINE_VISIBILITY</a>
 <span class="lineNum">    2132 </span>            :   constexpr explicit
 <span class="lineNum">    2133 </span>            :   __compressed_pair_elem(_Up&amp;&amp; __u)
-<span class="lineNum">    2134 </span><span class="lineCov">       1486 :       : __value_type(_VSTD::forward&lt;_Up&gt;(__u)){};</span>
+<span class="lineNum">    2134 </span><span class="lineCov">       1533 :       : __value_type(_VSTD::forward&lt;_Up&gt;(__u)){};</span>
 <span class="lineNum">    2135 </span>            : 
 <a name="2136"><span class="lineNum">    2136 </span>            :   template &lt;class... _Args, size_t... _Indexes&gt;</a>
 <span class="lineNum">    2137 </span>            :   _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR_AFTER_CXX14
 <span class="lineNum">    2138 </span>            :   __compressed_pair_elem(piecewise_construct_t, tuple&lt;_Args...&gt; __args,
 <span class="lineNum">    2139 </span>            :                          __tuple_indices&lt;_Indexes...&gt;)
-<span class="lineNum">    2140 </span><span class="lineCov">         66 :       : __value_type(_VSTD::forward&lt;_Args&gt;(_VSTD::get&lt;_Indexes&gt;(__args))...) {}</span>
+<span class="lineNum">    2140 </span><span class="lineCov">         68 :       : __value_type(_VSTD::forward&lt;_Args&gt;(_VSTD::get&lt;_Indexes&gt;(__args))...) {}</span>
 <span class="lineNum">    2141 </span>            : #else
 <span class="lineNum">    2142 </span>            :   _LIBCPP_INLINE_VISIBILITY __compressed_pair_elem() : __value_type() {}
 <span class="lineNum">    2143 </span>            :   _LIBCPP_INLINE_VISIBILITY
@@ -2207,9 +2207,9 @@
 <span class="lineNum">    2145 </span>            :       : __value_type(std::forward&lt;_ParamT&gt;(__p)) {}
 <a name="2146"><span class="lineNum">    2146 </span>            : #endif</a>
 <span class="lineNum">    2147 </span>            : 
-<a name="2148"><span class="lineNum">    2148 </span><span class="lineCov">       5830 :   _LIBCPP_INLINE_VISIBILITY reference __get() _NOEXCEPT { return *this; }</span></a>
+<a name="2148"><span class="lineNum">    2148 </span><span class="lineCov">       5892 :   _LIBCPP_INLINE_VISIBILITY reference __get() _NOEXCEPT { return *this; }</span></a>
 <span class="lineNum">    2149 </span>            :   _LIBCPP_INLINE_VISIBILITY
-<span class="lineNum">    2150 </span><span class="lineCov">       1977 :   const_reference __get() const _NOEXCEPT { return *this; }</span>
+<span class="lineNum">    2150 </span><span class="lineCov">       1990 :   const_reference __get() const _NOEXCEPT { return *this; }</span>
 <span class="lineNum">    2151 </span>            : };
 <span class="lineNum">    2152 </span>            : 
 <span class="lineNum">    2153 </span>            : // Tag used to construct the second element of the compressed pair.
@@ -2239,14 +2239,14 @@
 <span class="lineNum">    2177 </span>            :       &gt;::type
 <a name="2178"><span class="lineNum">    2178 </span>            :   &gt;</a>
 <span class="lineNum">    2179 </span>            :   _LIBCPP_INLINE_VISIBILITY
-<span class="lineNum">    2180 </span><span class="lineCov">        612 :   constexpr __compressed_pair() {}</span>
+<span class="lineNum">    2180 </span><span class="lineCov">        630 :   constexpr __compressed_pair() {}</span>
 <span class="lineNum">    2181 </span>            : 
 <span class="lineNum">    2182 </span>            :   template &lt;class _Tp, typename enable_if&lt;!is_same&lt;typename decay&lt;_Tp&gt;::type,
 <span class="lineNum">    2183 </span>            :                                                    __compressed_pair&gt;::value,
 <a name="2184"><span class="lineNum">    2184 </span>            :                                           bool&gt;::type = true&gt;</a>
 <span class="lineNum">    2185 </span>            :   _LIBCPP_INLINE_VISIBILITY constexpr explicit
 <span class="lineNum">    2186 </span>            :   __compressed_pair(_Tp&amp;&amp; __t)
-<span class="lineNum">    2187 </span><span class="lineCov">        372 :       : _Base1(std::forward&lt;_Tp&gt;(__t)), _Base2() {}</span>
+<span class="lineNum">    2187 </span><span class="lineCov">        388 :       : _Base1(std::forward&lt;_Tp&gt;(__t)), _Base2() {}</span>
 <span class="lineNum">    2188 </span>            : 
 <a name="2189"><span class="lineNum">    2189 </span>            :   template &lt;class _Tp&gt;</a>
 <span class="lineNum">    2190 </span>            :   _LIBCPP_INLINE_VISIBILITY constexpr
@@ -2256,16 +2256,16 @@
 <a name="2194"><span class="lineNum">    2194 </span>            :   template &lt;class _U1, class _U2&gt;</a>
 <span class="lineNum">    2195 </span>            :   _LIBCPP_INLINE_VISIBILITY constexpr
 <span class="lineNum">    2196 </span>            :   __compressed_pair(_U1&amp;&amp; __t1, _U2&amp;&amp; __t2)
-<span class="lineNum">    2197 </span><span class="lineCov">       3336 :       : _Base1(std::forward&lt;_U1&gt;(__t1)), _Base2(std::forward&lt;_U2&gt;(__t2)) {}</span>
+<span class="lineNum">    2197 </span><span class="lineCov">       3440 :       : _Base1(std::forward&lt;_U1&gt;(__t1)), _Base2(std::forward&lt;_U2&gt;(__t2)) {}</span>
 <span class="lineNum">    2198 </span>            : 
 <a name="2199"><span class="lineNum">    2199 </span>            :   template &lt;class... _Args1, class... _Args2&gt;</a>
 <span class="lineNum">    2200 </span>            :   _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR_AFTER_CXX14
 <span class="lineNum">    2201 </span>            :   __compressed_pair(piecewise_construct_t __pc, tuple&lt;_Args1...&gt; __first_args,
 <span class="lineNum">    2202 </span>            :                     tuple&lt;_Args2...&gt; __second_args)
-<span class="lineNum">    2203 </span><span class="lineCov">         66 :       : _Base1(__pc, _VSTD::move(__first_args),</span>
+<span class="lineNum">    2203 </span><span class="lineCov">         68 :       : _Base1(__pc, _VSTD::move(__first_args),</span>
 <span class="lineNum">    2204 </span>            :                typename __make_tuple_indices&lt;sizeof...(_Args1)&gt;::type()),
-<span class="lineNum">    2205 </span><span class="lineCov">         66 :         _Base2(__pc, _VSTD::move(__second_args),</span>
-<span class="lineNum">    2206 </span><span class="lineCov">        264 :                typename __make_tuple_indices&lt;sizeof...(_Args2)&gt;::type()) {}</span>
+<span class="lineNum">    2205 </span><span class="lineCov">         68 :         _Base2(__pc, _VSTD::move(__second_args),</span>
+<span class="lineNum">    2206 </span><span class="lineCov">        272 :                typename __make_tuple_indices&lt;sizeof...(_Args2)&gt;::type()) {}</span>
 <span class="lineNum">    2207 </span>            : 
 <span class="lineNum">    2208 </span>            : #else
 <span class="lineNum">    2209 </span>            :   _LIBCPP_INLINE_VISIBILITY
@@ -2285,22 +2285,22 @@
 <a name="2223"><span class="lineNum">    2223 </span>            : </a>
 <span class="lineNum">    2224 </span>            :   _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">    2225 </span>            :   typename _Base1::reference first() _NOEXCEPT {
-<span class="lineNum">    2226 </span><span class="lineCov">       4092 :     return static_cast&lt;_Base1&amp;&gt;(*this).__get();</span>
+<span class="lineNum">    2226 </span><span class="lineCov">       4290 :     return static_cast&lt;_Base1&amp;&gt;(*this).__get();</span>
 <span class="lineNum">    2227 </span>            :   }
 <a name="2228"><span class="lineNum">    2228 </span>            : </a>
 <span class="lineNum">    2229 </span>            :   _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">    2230 </span>            :   typename _Base1::const_reference first() const _NOEXCEPT {
-<span class="lineNum">    2231 </span><span class="lineCov">       4419 :     return static_cast&lt;_Base1 const&amp;&gt;(*this).__get();</span>
+<span class="lineNum">    2231 </span><span class="lineCov">       4528 :     return static_cast&lt;_Base1 const&amp;&gt;(*this).__get();</span>
 <span class="lineNum">    2232 </span>            :   }
 <a name="2233"><span class="lineNum">    2233 </span>            : </a>
 <span class="lineNum">    2234 </span>            :   _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">    2235 </span>            :   typename _Base2::reference second() _NOEXCEPT {
-<span class="lineNum">    2236 </span><span class="lineCov">       6356 :     return static_cast&lt;_Base2&amp;&gt;(*this).__get();</span>
+<span class="lineNum">    2236 </span><span class="lineCov">       6438 :     return static_cast&lt;_Base2&amp;&gt;(*this).__get();</span>
 <span class="lineNum">    2237 </span>            :   }
 <a name="2238"><span class="lineNum">    2238 </span>            : </a>
 <span class="lineNum">    2239 </span>            :   _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">    2240 </span>            :   typename _Base2::const_reference second() const _NOEXCEPT {
-<span class="lineNum">    2241 </span><span class="lineCov">       1977 :     return static_cast&lt;_Base2 const&amp;&gt;(*this).__get();</span>
+<span class="lineNum">    2241 </span><span class="lineCov">       1990 :     return static_cast&lt;_Base2 const&amp;&gt;(*this).__get();</span>
 <span class="lineNum">    2242 </span>            :   }
 <span class="lineNum">    2243 </span>            : 
 <span class="lineNum">    2244 </span>            :   _LIBCPP_INLINE_VISIBILITY
@@ -2344,8 +2344,8 @@
 <span class="lineNum">    2282 </span>            :                   &quot;default_delete can not delete incomplete type&quot;);
 <span class="lineNum">    2283 </span>            :     static_assert(!is_void&lt;_Tp&gt;::value,
 <span class="lineNum">    2284 </span>            :                   &quot;default_delete can not delete incomplete type&quot;);
-<span class="lineNum">    2285 </span><span class="lineCov">         38 :     delete __ptr;</span>
-<span class="lineNum">    2286 </span><span class="lineCov">         19 :   }</span>
+<span class="lineNum">    2285 </span><span class="lineCov">         40 :     delete __ptr;</span>
+<span class="lineNum">    2286 </span><span class="lineCov">         20 :   }</span>
 <span class="lineNum">    2287 </span>            : };
 <span class="lineNum">    2288 </span>            : 
 <span class="lineNum">    2289 </span>            : template &lt;class _Tp&gt;
@@ -2476,7 +2476,7 @@
 <span class="lineNum">    2414 </span>            :   template &lt;bool _Dummy = true,
 <a name="2415"><span class="lineNum">    2415 </span>            :             class = _EnableIfDeleterDefaultConstructible&lt;_Dummy&gt;&gt;</a>
 <span class="lineNum">    2416 </span>            :   _LIBCPP_INLINE_VISIBILITY
-<span class="lineNum">    2417 </span><span class="lineCov">         57 :   explicit unique_ptr(pointer __p) noexcept : __ptr_(__p) {}</span>
+<span class="lineNum">    2417 </span><span class="lineCov">         60 :   explicit unique_ptr(pointer __p) noexcept : __ptr_(__p) {}</span>
 <span class="lineNum">    2418 </span>            : 
 <span class="lineNum">    2419 </span>            :   template &lt;bool _Dummy = true,
 <span class="lineNum">    2420 </span>            :             class = _EnableIfDeleterConstructible&lt;_LValRefType&lt;_Dummy&gt;&gt;&gt;
@@ -2488,10 +2488,10 @@
 <a name="2426"><span class="lineNum">    2426 </span>            :             class = _EnableIfDeleterConstructible&lt;_GoodRValRefType&lt;_Dummy&gt;&gt;&gt;</a>
 <span class="lineNum">    2427 </span>            :   _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">    2428 </span>            :   unique_ptr(pointer __p, _GoodRValRefType&lt;_Dummy&gt; __d) noexcept
-<span class="lineNum">    2429 </span><span class="lineCov">        182 :       : __ptr_(__p, _VSTD::move(__d)) {</span>
+<span class="lineNum">    2429 </span><span class="lineCov">        188 :       : __ptr_(__p, _VSTD::move(__d)) {</span>
 <span class="lineNum">    2430 </span>            :     static_assert(!is_reference&lt;deleter_type&gt;::value,
 <span class="lineNum">    2431 </span>            :                   &quot;rvalue deleter bound to reference&quot;);
-<span class="lineNum">    2432 </span><span class="lineCov">        182 :   }</span>
+<span class="lineNum">    2432 </span><span class="lineCov">        188 :   }</span>
 <span class="lineNum">    2433 </span>            : 
 <span class="lineNum">    2434 </span>            :   template &lt;bool _Dummy = true,
 <span class="lineNum">    2435 </span>            :             class = _EnableIfDeleterConstructible&lt;_BadRValRefType&lt;_Dummy&gt;&gt;&gt;
@@ -2611,7 +2611,7 @@
 <span class="lineNum">    2549 </span>            : #endif
 <a name="2550"><span class="lineNum">    2550 </span>            : </a>
 <span class="lineNum">    2551 </span>            :   _LIBCPP_INLINE_VISIBILITY
-<span class="lineNum">    2552 </span><span class="lineCov">        224 :   ~unique_ptr() { reset(); }</span>
+<span class="lineNum">    2552 </span><span class="lineCov">        232 :   ~unique_ptr() { reset(); }</span>
 <span class="lineNum">    2553 </span>            : 
 <span class="lineNum">    2554 </span>            :   _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">    2555 </span>            :   unique_ptr&amp; operator=(nullptr_t) _NOEXCEPT {
@@ -2626,15 +2626,15 @@
 <a name="2564"><span class="lineNum">    2564 </span>            :   }</a>
 <span class="lineNum">    2565 </span>            :   _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">    2566 </span>            :   pointer operator-&gt;() const _NOEXCEPT {
-<span class="lineNum">    2567 </span><span class="lineCov">        203 :     return __ptr_.first();</span>
+<span class="lineNum">    2567 </span><span class="lineCov">        233 :     return __ptr_.first();</span>
 <a name="2568"><span class="lineNum">    2568 </span>            :   }</a>
 <span class="lineNum">    2569 </span>            :   _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">    2570 </span>            :   pointer get() const _NOEXCEPT {
-<span class="lineNum">    2571 </span><span class="lineCov">        161 :     return __ptr_.first();</span>
+<span class="lineNum">    2571 </span><span class="lineCov">        166 :     return __ptr_.first();</span>
 <a name="2572"><span class="lineNum">    2572 </span>            :   }</a>
 <span class="lineNum">    2573 </span>            :   _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">    2574 </span>            :   deleter_type&amp; get_deleter() _NOEXCEPT {
-<span class="lineNum">    2575 </span><span class="lineCov">         23 :     return __ptr_.second();</span>
+<span class="lineNum">    2575 </span><span class="lineCov">         24 :     return __ptr_.second();</span>
 <span class="lineNum">    2576 </span>            :   }
 <span class="lineNum">    2577 </span>            :   _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">    2578 </span>            :   const deleter_type&amp; get_deleter() const _NOEXCEPT {
@@ -2647,18 +2647,18 @@
 <a name="2585"><span class="lineNum">    2585 </span>            : </a>
 <span class="lineNum">    2586 </span>            :   _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">    2587 </span>            :   pointer release() _NOEXCEPT {
-<span class="lineNum">    2588 </span><span class="lineCov">        109 :     pointer __t = __ptr_.first();</span>
-<span class="lineNum">    2589 </span><span class="lineCov">        109 :     __ptr_.first() = pointer();</span>
-<span class="lineNum">    2590 </span><span class="lineCov">        109 :     return __t;</span>
+<span class="lineNum">    2588 </span><span class="lineCov">        113 :     pointer __t = __ptr_.first();</span>
+<span class="lineNum">    2589 </span><span class="lineCov">        113 :     __ptr_.first() = pointer();</span>
+<span class="lineNum">    2590 </span><span class="lineCov">        113 :     return __t;</span>
 <span class="lineNum">    2591 </span>            :   }
 <a name="2592"><span class="lineNum">    2592 </span>            : </a>
 <span class="lineNum">    2593 </span>            :   _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">    2594 </span>            :   void reset(pointer __p = pointer()) _NOEXCEPT {
-<span class="lineNum">    2595 </span><span class="lineCov">        112 :     pointer __tmp = __ptr_.first();</span>
-<span class="lineNum">    2596 </span><span class="lineCov">        112 :     __ptr_.first() = __p;</span>
-<span class="lineNum">    2597 </span><span class="lineCov">        112 :     if (__tmp)</span>
+<span class="lineNum">    2595 </span><span class="lineCov">        116 :     pointer __tmp = __ptr_.first();</span>
+<span class="lineNum">    2596 </span><span class="lineCov">        116 :     __ptr_.first() = __p;</span>
+<span class="lineNum">    2597 </span><span class="lineCov">        116 :     if (__tmp)</span>
 <span class="lineNum">    2598 </span><span class="lineCov">          3 :       __ptr_.second()(__tmp);</span>
-<span class="lineNum">    2599 </span><span class="lineCov">        112 :   }</span>
+<span class="lineNum">    2599 </span><span class="lineCov">        116 :   }</span>
 <span class="lineNum">    2600 </span>            : 
 <span class="lineNum">    2601 </span>            :   _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">    2602 </span>            :   void swap(unique_ptr&amp; __u) _NOEXCEPT {
@@ -3225,7 +3225,7 @@
 <span class="lineNum">    3163 </span>            : public:
 <span class="lineNum">    3164 </span>            :     _LIBCPP_INLINE_VISIBILITY __allocator_destructor(_Alloc&amp; __a, size_type __s)
 <span class="lineNum">    3165 </span>            :              _NOEXCEPT
-<a name="3166"><span class="lineNum">    3166 </span><span class="lineCov">        140 :         : __alloc_(__a), __s_(__s) {}</span></a>
+<a name="3166"><span class="lineNum">    3166 </span><span class="lineCov">        144 :         : __alloc_(__a), __s_(__s) {}</span></a>
 <span class="lineNum">    3167 </span>            :     _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">    3168 </span>            :     void operator()(pointer __p) _NOEXCEPT
 <span class="lineNum">    3169 </span><span class="lineNoCov">          0 :         {__alloc_traits::deallocate(__alloc_, __p, __s_);}</span>
@@ -3484,7 +3484,7 @@
 <span class="lineNum">    3422 </span>            : __libcpp_atomic_refcount_increment(_Tp&amp; __t) _NOEXCEPT
 <span class="lineNum">    3423 </span>            : {
 <span class="lineNum">    3424 </span>            : #if defined(_LIBCPP_HAS_BUILTIN_ATOMIC_SUPPORT) &amp;&amp; !defined(_LIBCPP_HAS_NO_THREADS)
-<span class="lineNum">    3425 </span><span class="lineCov">        977 :     return __atomic_add_fetch(&amp;__t, 1, __ATOMIC_RELAXED);</span>
+<span class="lineNum">    3425 </span><span class="lineCov">        982 :     return __atomic_add_fetch(&amp;__t, 1, __ATOMIC_RELAXED);</span>
 <span class="lineNum">    3426 </span>            : #else
 <span class="lineNum">    3427 </span>            :     return __t += 1;
 <span class="lineNum">    3428 </span>            : #endif
@@ -3495,7 +3495,7 @@
 <span class="lineNum">    3433 </span>            : __libcpp_atomic_refcount_decrement(_Tp&amp; __t) _NOEXCEPT
 <span class="lineNum">    3434 </span>            : {
 <span class="lineNum">    3435 </span>            : #if defined(_LIBCPP_HAS_BUILTIN_ATOMIC_SUPPORT) &amp;&amp; !defined(_LIBCPP_HAS_NO_THREADS)
-<span class="lineNum">    3436 </span><span class="lineCov">       1063 :     return __atomic_add_fetch(&amp;__t, -1, __ATOMIC_ACQ_REL);</span>
+<span class="lineNum">    3436 </span><span class="lineCov">       1071 :     return __atomic_add_fetch(&amp;__t, -1, __ATOMIC_ACQ_REL);</span>
 <span class="lineNum">    3437 </span>            : #else
 <span class="lineNum">    3438 </span>            :     return __t -= 1;
 <span class="lineNum">    3439 </span>            : #endif
@@ -3535,7 +3535,7 @@
 <a name="3473"><span class="lineNum">    3473 </span>            : public:</a>
 <span class="lineNum">    3474 </span>            :     _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">    3475 </span>            :     explicit __shared_count(long __refs = 0) _NOEXCEPT
-<span class="lineNum">    3476 </span><span class="lineCov">         86 :         : __shared_owners_(__refs) {}</span>
+<span class="lineNum">    3476 </span><span class="lineCov">         89 :         : __shared_owners_(__refs) {}</span>
 <span class="lineNum">    3477 </span>            : 
 <span class="lineNum">    3478 </span>            : #if defined(_LIBCPP_BUILDING_MEMORY) &amp;&amp; \
 <span class="lineNum">    3479 </span>            :     defined(_LIBCPP_DEPRECATED_ABI_LEGACY_LIBRARY_DEFINITIONS_FOR_INLINE_FUNCTIONS)
@@ -3544,16 +3544,16 @@
 <a name="3482"><span class="lineNum">    3482 </span>            : #else</a>
 <span class="lineNum">    3483 </span>            :     _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">    3484 </span>            :     void __add_shared() _NOEXCEPT {
-<span class="lineNum">    3485 </span><span class="lineCov">        977 :       __libcpp_atomic_refcount_increment(__shared_owners_);</span>
-<a name="3486"><span class="lineNum">    3486 </span><span class="lineCov">        977 :     }</span></a>
+<span class="lineNum">    3485 </span><span class="lineCov">        982 :       __libcpp_atomic_refcount_increment(__shared_owners_);</span>
+<a name="3486"><span class="lineNum">    3486 </span><span class="lineCov">        982 :     }</span></a>
 <span class="lineNum">    3487 </span>            :     _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">    3488 </span>            :     bool __release_shared() _NOEXCEPT {
-<span class="lineNum">    3489 </span><span class="lineCov">       1063 :       if (__libcpp_atomic_refcount_decrement(__shared_owners_) == -1) {</span>
-<span class="lineNum">    3490 </span><span class="lineCov">         86 :         __on_zero_shared();</span>
-<span class="lineNum">    3491 </span><span class="lineCov">         86 :         return true;</span>
+<span class="lineNum">    3489 </span><span class="lineCov">       1071 :       if (__libcpp_atomic_refcount_decrement(__shared_owners_) == -1) {</span>
+<span class="lineNum">    3490 </span><span class="lineCov">         89 :         __on_zero_shared();</span>
+<span class="lineNum">    3491 </span><span class="lineCov">         89 :         return true;</span>
 <span class="lineNum">    3492 </span>            :       }
-<span class="lineNum">    3493 </span><span class="lineCov">        977 :       return false;</span>
-<span class="lineNum">    3494 </span><span class="lineCov">       1063 :     }</span>
+<span class="lineNum">    3493 </span><span class="lineCov">        982 :       return false;</span>
+<span class="lineNum">    3494 </span><span class="lineCov">       1071 :     }</span>
 <span class="lineNum">    3495 </span>            : #endif
 <span class="lineNum">    3496 </span>            :     _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">    3497 </span>            :     long use_count() const _NOEXCEPT {
@@ -3569,8 +3569,8 @@
 <a name="3507"><span class="lineNum">    3507 </span>            : public:</a>
 <span class="lineNum">    3508 </span>            :     _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">    3509 </span>            :     explicit __shared_weak_count(long __refs = 0) _NOEXCEPT
-<span class="lineNum">    3510 </span><span class="lineCov">         86 :         : __shared_count(__refs),</span>
-<span class="lineNum">    3511 </span><span class="lineCov">        172 :           __shared_weak_owners_(__refs) {}</span>
+<span class="lineNum">    3510 </span><span class="lineCov">         89 :         : __shared_count(__refs),</span>
+<span class="lineNum">    3511 </span><span class="lineCov">        178 :           __shared_weak_owners_(__refs) {}</span>
 <span class="lineNum">    3512 </span>            : protected:
 <span class="lineNum">    3513 </span>            :     virtual ~__shared_weak_count();
 <span class="lineNum">    3514 </span>            : 
@@ -3583,17 +3583,17 @@
 <a name="3521"><span class="lineNum">    3521 </span>            : #else</a>
 <span class="lineNum">    3522 </span>            :     _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">    3523 </span>            :     void __add_shared() _NOEXCEPT {
-<span class="lineNum">    3524 </span><span class="lineCov">        977 :       __shared_count::__add_shared();</span>
-<span class="lineNum">    3525 </span><span class="lineCov">        977 :     }</span>
+<span class="lineNum">    3524 </span><span class="lineCov">        982 :       __shared_count::__add_shared();</span>
+<span class="lineNum">    3525 </span><span class="lineCov">        982 :     }</span>
 <span class="lineNum">    3526 </span>            :     _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">    3527 </span>            :     void __add_weak() _NOEXCEPT {
 <span class="lineNum">    3528 </span>            :       __libcpp_atomic_refcount_increment(__shared_weak_owners_);
 <a name="3529"><span class="lineNum">    3529 </span>            :     }</a>
 <span class="lineNum">    3530 </span>            :     _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">    3531 </span>            :     void __release_shared() _NOEXCEPT {
-<span class="lineNum">    3532 </span><span class="lineCov">       1063 :       if (__shared_count::__release_shared())</span>
-<span class="lineNum">    3533 </span><span class="lineCov">         86 :         __release_weak();</span>
-<span class="lineNum">    3534 </span><span class="lineCov">       1063 :     }</span>
+<span class="lineNum">    3532 </span><span class="lineCov">       1071 :       if (__shared_count::__release_shared())</span>
+<span class="lineNum">    3533 </span><span class="lineCov">         89 :         __release_weak();</span>
+<span class="lineNum">    3534 </span><span class="lineCov">       1071 :     }</span>
 <span class="lineNum">    3535 </span>            : #endif
 <span class="lineNum">    3536 </span>            :     void __release_weak() _NOEXCEPT;
 <span class="lineNum">    3537 </span>            :     _LIBCPP_INLINE_VISIBILITY
@@ -3618,8 +3618,8 @@
 <span class="lineNum">    3556 </span>            :     __compressed_pair&lt;__compressed_pair&lt;_Tp, _Dp&gt;, _Alloc&gt; __data_;
 <a name="3557"><span class="lineNum">    3557 </span>            : public:</a>
 <span class="lineNum">    3558 </span>            :     _LIBCPP_INLINE_VISIBILITY
-<span class="lineNum">    3559 </span><span class="lineCov">         16 :     __shared_ptr_pointer(_Tp __p, _Dp __d, _Alloc __a)</span>
-<span class="lineNum">    3560 </span><span class="lineCov">         80 :         :  __data_(__compressed_pair&lt;_Tp, _Dp&gt;(__p, _VSTD::move(__d)), _VSTD::move(__a)) {}</span>
+<span class="lineNum">    3559 </span><span class="lineCov">         17 :     __shared_ptr_pointer(_Tp __p, _Dp __d, _Alloc __a)</span>
+<span class="lineNum">    3560 </span><span class="lineCov">         85 :         :  __data_(__compressed_pair&lt;_Tp, _Dp&gt;(__p, _VSTD::move(__d)), _VSTD::move(__a)) {}</span>
 <span class="lineNum">    3561 </span>            : 
 <span class="lineNum">    3562 </span>            : #ifndef _LIBCPP_NO_RTTI
 <span class="lineNum">    3563 </span>            :     virtual const void* __get_deleter(const type_info&amp;) const _NOEXCEPT;
@@ -3645,9 +3645,9 @@
 <span class="lineNum">    3583 </span>            : void
 <span class="lineNum">    3584 </span>            : __shared_ptr_pointer&lt;_Tp, _Dp, _Alloc&gt;::__on_zero_shared() _NOEXCEPT
 <span class="lineNum">    3585 </span>            : {
-<span class="lineNum">    3586 </span><span class="lineCov">         16 :     __data_.first().second()(__data_.first().first());</span>
-<span class="lineNum">    3587 </span><span class="lineCov">         16 :     __data_.first().second().~_Dp();</span>
-<span class="lineNum">    3588 </span><span class="lineCov">         16 : }</span>
+<span class="lineNum">    3586 </span><span class="lineCov">         17 :     __data_.first().second()(__data_.first().first());</span>
+<span class="lineNum">    3587 </span><span class="lineCov">         17 :     __data_.first().second().~_Dp();</span>
+<span class="lineNum">    3588 </span><span class="lineCov">         17 : }</span>
 <span class="lineNum">    3589 </span>            : 
 <a name="3590"><span class="lineNum">    3590 </span>            : template &lt;class _Tp, class _Dp, class _Alloc&gt;</a>
 <span class="lineNum">    3591 </span>            : void
@@ -3657,10 +3657,10 @@
 <span class="lineNum">    3595 </span>            :     typedef allocator_traits&lt;_Al&gt; _ATraits;
 <span class="lineNum">    3596 </span>            :     typedef pointer_traits&lt;typename _ATraits::pointer&gt; _PTraits;
 <span class="lineNum">    3597 </span>            : 
-<span class="lineNum">    3598 </span><span class="lineCov">         16 :     _Al __a(__data_.second());</span>
-<span class="lineNum">    3599 </span><span class="lineCov">         16 :     __data_.second().~_Alloc();</span>
-<span class="lineNum">    3600 </span><span class="lineCov">         16 :     __a.deallocate(_PTraits::pointer_to(*this), 1);</span>
-<span class="lineNum">    3601 </span><span class="lineCov">         16 : }</span>
+<span class="lineNum">    3598 </span><span class="lineCov">         17 :     _Al __a(__data_.second());</span>
+<span class="lineNum">    3599 </span><span class="lineCov">         17 :     __data_.second().~_Alloc();</span>
+<span class="lineNum">    3600 </span><span class="lineCov">         17 :     __a.deallocate(_PTraits::pointer_to(*this), 1);</span>
+<span class="lineNum">    3601 </span><span class="lineCov">         17 : }</span>
 <a name="3602"><span class="lineNum">    3602 </span>            : </a>
 <span class="lineNum">    3603 </span>            : template &lt;class _Tp, class _Alloc&gt;
 <span class="lineNum">    3604 </span><span class="lineNoCov">          0 : class __shared_ptr_emplace</span>
@@ -3676,9 +3676,9 @@
 <span class="lineNum">    3614 </span>            : 
 <a name="3615"><span class="lineNum">    3615 </span>            :     template &lt;class ..._Args&gt;</a>
 <span class="lineNum">    3616 </span>            :         _LIBCPP_INLINE_VISIBILITY
-<span class="lineNum">    3617 </span><span class="lineCov">         66 :         __shared_ptr_emplace(_Alloc __a, _Args&amp;&amp; ...__args)</span>
-<span class="lineNum">    3618 </span><span class="lineCov">        132 :             :  __data_(piecewise_construct, _VSTD::forward_as_tuple(__a),</span>
-<span class="lineNum">    3619 </span><span class="lineCov">        330 :                    _VSTD::forward_as_tuple(_VSTD::forward&lt;_Args&gt;(__args)...)) {}</span>
+<span class="lineNum">    3617 </span><span class="lineCov">         68 :         __shared_ptr_emplace(_Alloc __a, _Args&amp;&amp; ...__args)</span>
+<span class="lineNum">    3618 </span><span class="lineCov">        136 :             :  __data_(piecewise_construct, _VSTD::forward_as_tuple(__a),</span>
+<span class="lineNum">    3619 </span><span class="lineCov">        340 :                    _VSTD::forward_as_tuple(_VSTD::forward&lt;_Args&gt;(__args)...)) {}</span>
 <span class="lineNum">    3620 </span>            : 
 <span class="lineNum">    3621 </span>            : #else  // _LIBCPP_HAS_NO_VARIADICS
 <span class="lineNum">    3622 </span>            : 
@@ -3708,15 +3708,15 @@
 <span class="lineNum">    3646 </span>            :     virtual void __on_zero_shared_weak() _NOEXCEPT;
 <a name="3647"><span class="lineNum">    3647 </span>            : public:</a>
 <span class="lineNum">    3648 </span>            :     _LIBCPP_INLINE_VISIBILITY
-<span class="lineNum">    3649 </span><span class="lineCov">         70 :     _Tp* get() _NOEXCEPT {return &amp;__data_.second();}</span>
+<span class="lineNum">    3649 </span><span class="lineCov">         72 :     _Tp* get() _NOEXCEPT {return &amp;__data_.second();}</span>
 <span class="lineNum">    3650 </span>            : };
 <span class="lineNum">    3651 </span>            : 
 <a name="3652"><span class="lineNum">    3652 </span>            : template &lt;class _Tp, class _Alloc&gt;</a>
 <span class="lineNum">    3653 </span>            : void
 <span class="lineNum">    3654 </span>            : __shared_ptr_emplace&lt;_Tp, _Alloc&gt;::__on_zero_shared() _NOEXCEPT
 <span class="lineNum">    3655 </span>            : {
-<span class="lineNum">    3656 </span><span class="lineCov">         70 :     __data_.second().~_Tp();</span>
-<span class="lineNum">    3657 </span><span class="lineCov">         70 : }</span>
+<span class="lineNum">    3656 </span><span class="lineCov">         72 :     __data_.second().~_Tp();</span>
+<span class="lineNum">    3657 </span><span class="lineCov">         72 : }</span>
 <span class="lineNum">    3658 </span>            : 
 <a name="3659"><span class="lineNum">    3659 </span>            : template &lt;class _Tp, class _Alloc&gt;</a>
 <span class="lineNum">    3660 </span>            : void
@@ -3725,10 +3725,10 @@
 <span class="lineNum">    3663 </span>            :     typedef typename __allocator_traits_rebind&lt;_Alloc, __shared_ptr_emplace&gt;::type _Al;
 <span class="lineNum">    3664 </span>            :     typedef allocator_traits&lt;_Al&gt; _ATraits;
 <span class="lineNum">    3665 </span>            :     typedef pointer_traits&lt;typename _ATraits::pointer&gt; _PTraits;
-<span class="lineNum">    3666 </span><span class="lineCov">         70 :     _Al __a(__data_.first());</span>
-<span class="lineNum">    3667 </span><span class="lineCov">         70 :     __data_.first().~_Alloc();</span>
-<span class="lineNum">    3668 </span><span class="lineCov">         70 :     __a.deallocate(_PTraits::pointer_to(*this), 1);</span>
-<span class="lineNum">    3669 </span><span class="lineCov">         70 : }</span>
+<span class="lineNum">    3666 </span><span class="lineCov">         72 :     _Al __a(__data_.first());</span>
+<span class="lineNum">    3667 </span><span class="lineCov">         72 :     __data_.first().~_Alloc();</span>
+<span class="lineNum">    3668 </span><span class="lineCov">         72 :     __a.deallocate(_PTraits::pointer_to(*this), 1);</span>
+<span class="lineNum">    3669 </span><span class="lineCov">         72 : }</span>
 <span class="lineNum">    3670 </span>            : 
 <span class="lineNum">    3671 </span>            : struct __shared_ptr_dummy_rebind_allocator_type;
 <span class="lineNum">    3672 </span>            : template &lt;&gt;
@@ -3934,18 +3934,18 @@
 <span class="lineNum">    3872 </span>            :         reset(_Yp* __p, _Dp __d, _Alloc __a);
 <a name="3873"><span class="lineNum">    3873 </span>            : </a>
 <span class="lineNum">    3874 </span>            :     _LIBCPP_INLINE_VISIBILITY
-<a name="3875"><span class="lineNum">    3875 </span><span class="lineCov">         36 :     element_type* get() const _NOEXCEPT {return __ptr_;}</span></a>
+<a name="3875"><span class="lineNum">    3875 </span><span class="lineCov">         38 :     element_type* get() const _NOEXCEPT {return __ptr_;}</span></a>
 <span class="lineNum">    3876 </span>            :     _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">    3877 </span>            :     typename add_lvalue_reference&lt;element_type&gt;::type operator*() const _NOEXCEPT
-<a name="3878"><span class="lineNum">    3878 </span><span class="lineCov">         69 :         {return *__ptr_;}</span></a>
+<a name="3878"><span class="lineNum">    3878 </span><span class="lineCov">         73 :         {return *__ptr_;}</span></a>
 <span class="lineNum">    3879 </span>            :     _LIBCPP_INLINE_VISIBILITY
-<span class="lineNum">    3880 </span><span class="lineCov">        150 :     element_type* operator-&gt;() const _NOEXCEPT {return __ptr_;}</span>
+<span class="lineNum">    3880 </span><span class="lineCov">        158 :     element_type* operator-&gt;() const _NOEXCEPT {return __ptr_;}</span>
 <span class="lineNum">    3881 </span>            :     _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">    3882 </span>            :     long use_count() const _NOEXCEPT {return __cntrl_ ? __cntrl_-&gt;use_count() : 0;}
 <span class="lineNum">    3883 </span>            :     _LIBCPP_INLINE_VISIBILITY
 <a name="3884"><span class="lineNum">    3884 </span>            :     bool unique() const _NOEXCEPT {return use_count() == 1;}</a>
 <span class="lineNum">    3885 </span>            :     _LIBCPP_INLINE_VISIBILITY
-<span class="lineNum">    3886 </span><span class="lineCov">         20 :     _LIBCPP_EXPLICIT operator bool() const _NOEXCEPT {return get() != 0;}</span>
+<span class="lineNum">    3886 </span><span class="lineCov">         21 :     _LIBCPP_EXPLICIT operator bool() const _NOEXCEPT {return get() != 0;}</span>
 <span class="lineNum">    3887 </span>            :     template &lt;class _Up&gt;
 <span class="lineNum">    3888 </span>            :         _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">    3889 </span>            :         bool owner_before(shared_ptr&lt;_Up&gt; const&amp; __p) const _NOEXCEPT
@@ -4041,7 +4041,7 @@
 <span class="lineNum">    3979 </span>            :             }
 <a name="3980"><span class="lineNum">    3980 </span>            :         }</a>
 <span class="lineNum">    3981 </span>            : 
-<span class="lineNum">    3982 </span><span class="lineCov">         86 :     _LIBCPP_INLINE_VISIBILITY void __enable_weak_this(...) _NOEXCEPT {}</span>
+<span class="lineNum">    3982 </span><span class="lineCov">         89 :     _LIBCPP_INLINE_VISIBILITY void __enable_weak_this(...) _NOEXCEPT {}</span>
 <span class="lineNum">    3983 </span>            : 
 <span class="lineNum">    3984 </span>            :     template &lt;class _Up&gt; friend class _LIBCPP_TEMPLATE_VIS shared_ptr;
 <span class="lineNum">    3985 </span>            :     template &lt;class _Up&gt; friend class _LIBCPP_TEMPLATE_VIS weak_ptr;
@@ -4052,33 +4052,33 @@
 <a name="3990"><span class="lineNum">    3990 </span>            : inline</a>
 <span class="lineNum">    3991 </span>            : _LIBCPP_CONSTEXPR
 <span class="lineNum">    3992 </span>            : shared_ptr&lt;_Tp&gt;::shared_ptr() _NOEXCEPT
-<span class="lineNum">    3993 </span><span class="lineCov">         93 :     : __ptr_(0),</span>
-<span class="lineNum">    3994 </span><span class="lineCov">         93 :       __cntrl_(0)</span>
-<span class="lineNum">    3995 </span><span class="lineCov">         93 : {</span>
-<span class="lineNum">    3996 </span><span class="lineCov">        186 : }</span>
+<span class="lineNum">    3993 </span><span class="lineCov">         96 :     : __ptr_(0),</span>
+<span class="lineNum">    3994 </span><span class="lineCov">         96 :       __cntrl_(0)</span>
+<span class="lineNum">    3995 </span><span class="lineCov">         96 : {</span>
+<span class="lineNum">    3996 </span><span class="lineCov">        192 : }</span>
 <span class="lineNum">    3997 </span>            : 
 <span class="lineNum">    3998 </span>            : template&lt;class _Tp&gt;
 <a name="3999"><span class="lineNum">    3999 </span>            : inline</a>
 <span class="lineNum">    4000 </span>            : _LIBCPP_CONSTEXPR
 <span class="lineNum">    4001 </span>            : shared_ptr&lt;_Tp&gt;::shared_ptr(nullptr_t) _NOEXCEPT
-<span class="lineNum">    4002 </span><span class="lineCov">         16 :     : __ptr_(0),</span>
-<span class="lineNum">    4003 </span><span class="lineCov">         16 :       __cntrl_(0)</span>
-<span class="lineNum">    4004 </span><span class="lineCov">         16 : {</span>
-<span class="lineNum">    4005 </span><span class="lineCov">         32 : }</span>
+<span class="lineNum">    4002 </span><span class="lineCov">         17 :     : __ptr_(0),</span>
+<span class="lineNum">    4003 </span><span class="lineCov">         17 :       __cntrl_(0)</span>
+<span class="lineNum">    4004 </span><span class="lineCov">         17 : {</span>
+<span class="lineNum">    4005 </span><span class="lineCov">         34 : }</span>
 <span class="lineNum">    4006 </span>            : 
 <a name="4007"><span class="lineNum">    4007 </span>            : template&lt;class _Tp&gt;</a>
 <span class="lineNum">    4008 </span>            : template&lt;class _Yp&gt;
 <span class="lineNum">    4009 </span>            : shared_ptr&lt;_Tp&gt;::shared_ptr(_Yp* __p,
 <span class="lineNum">    4010 </span>            :                             typename enable_if&lt;is_convertible&lt;_Yp*, element_type*&gt;::value, __nat&gt;::type)
-<span class="lineNum">    4011 </span><span class="lineCov">         16 :     : __ptr_(__p)</span>
-<span class="lineNum">    4012 </span><span class="lineCov">         16 : {</span>
-<span class="lineNum">    4013 </span><span class="lineCov">         16 :     unique_ptr&lt;_Yp&gt; __hold(__p);</span>
+<span class="lineNum">    4011 </span><span class="lineCov">         17 :     : __ptr_(__p)</span>
+<span class="lineNum">    4012 </span><span class="lineCov">         17 : {</span>
+<span class="lineNum">    4013 </span><span class="lineCov">         17 :     unique_ptr&lt;_Yp&gt; __hold(__p);</span>
 <span class="lineNum">    4014 </span>            :     typedef typename __shared_ptr_default_allocator&lt;_Yp&gt;::type _AllocT;
 <span class="lineNum">    4015 </span>            :     typedef __shared_ptr_pointer&lt;_Yp*, default_delete&lt;_Yp&gt;, _AllocT &gt; _CntrlBlk;
-<span class="lineNum">    4016 </span><span class="lineCov">         48 :     __cntrl_ = new _CntrlBlk(__p, default_delete&lt;_Yp&gt;(), _AllocT());</span>
-<span class="lineNum">    4017 </span><span class="lineCov">         16 :     __hold.release();</span>
-<span class="lineNum">    4018 </span><span class="lineCov">         16 :     __enable_weak_this(__p, __p);</span>
-<span class="lineNum">    4019 </span><span class="lineCov">         32 : }</span>
+<span class="lineNum">    4016 </span><span class="lineCov">         51 :     __cntrl_ = new _CntrlBlk(__p, default_delete&lt;_Yp&gt;(), _AllocT());</span>
+<span class="lineNum">    4017 </span><span class="lineCov">         17 :     __hold.release();</span>
+<span class="lineNum">    4018 </span><span class="lineCov">         17 :     __enable_weak_this(__p, __p);</span>
+<span class="lineNum">    4019 </span><span class="lineCov">         34 : }</span>
 <span class="lineNum">    4020 </span>            : 
 <span class="lineNum">    4021 </span>            : template&lt;class _Tp&gt;
 <span class="lineNum">    4022 </span>            : template&lt;class _Yp, class _Dp&gt;
@@ -4196,12 +4196,12 @@
 <a name="4134"><span class="lineNum">    4134 </span>            : template&lt;class _Tp&gt;</a>
 <span class="lineNum">    4135 </span>            : inline
 <span class="lineNum">    4136 </span>            : shared_ptr&lt;_Tp&gt;::shared_ptr(const shared_ptr&amp; __r) _NOEXCEPT
-<span class="lineNum">    4137 </span><span class="lineCov">        960 :     : __ptr_(__r.__ptr_),</span>
-<span class="lineNum">    4138 </span><span class="lineCov">        960 :       __cntrl_(__r.__cntrl_)</span>
-<span class="lineNum">    4139 </span><span class="lineCov">        960 : {</span>
-<span class="lineNum">    4140 </span><span class="lineCov">        960 :     if (__cntrl_)</span>
-<span class="lineNum">    4141 </span><span class="lineCov">        959 :         __cntrl_-&gt;__add_shared();</span>
-<span class="lineNum">    4142 </span><span class="lineCov">       1920 : }</span>
+<span class="lineNum">    4137 </span><span class="lineCov">        964 :     : __ptr_(__r.__ptr_),</span>
+<span class="lineNum">    4138 </span><span class="lineCov">        964 :       __cntrl_(__r.__cntrl_)</span>
+<span class="lineNum">    4139 </span><span class="lineCov">        964 : {</span>
+<span class="lineNum">    4140 </span><span class="lineCov">        964 :     if (__cntrl_)</span>
+<span class="lineNum">    4141 </span><span class="lineCov">        963 :         __cntrl_-&gt;__add_shared();</span>
+<span class="lineNum">    4142 </span><span class="lineCov">       1928 : }</span>
 <span class="lineNum">    4143 </span>            : 
 <span class="lineNum">    4144 </span>            : template&lt;class _Tp&gt;
 <a name="4145"><span class="lineNum">    4145 </span>            : template&lt;class _Yp&gt;</a>
@@ -4209,24 +4209,24 @@
 <span class="lineNum">    4147 </span>            : shared_ptr&lt;_Tp&gt;::shared_ptr(const shared_ptr&lt;_Yp&gt;&amp; __r,
 <span class="lineNum">    4148 </span>            :                             typename enable_if&lt;is_convertible&lt;_Yp*, element_type*&gt;::value, __nat&gt;::type)
 <span class="lineNum">    4149 </span>            :          _NOEXCEPT
-<span class="lineNum">    4150 </span><span class="lineCov">         18 :     : __ptr_(__r.__ptr_),</span>
-<span class="lineNum">    4151 </span><span class="lineCov">         18 :       __cntrl_(__r.__cntrl_)</span>
-<span class="lineNum">    4152 </span><span class="lineCov">         18 : {</span>
-<span class="lineNum">    4153 </span><span class="lineCov">         18 :     if (__cntrl_)</span>
-<span class="lineNum">    4154 </span><span class="lineCov">         18 :         __cntrl_-&gt;__add_shared();</span>
-<span class="lineNum">    4155 </span><span class="lineCov">         36 : }</span>
+<span class="lineNum">    4150 </span><span class="lineCov">         19 :     : __ptr_(__r.__ptr_),</span>
+<span class="lineNum">    4151 </span><span class="lineCov">         19 :       __cntrl_(__r.__cntrl_)</span>
+<span class="lineNum">    4152 </span><span class="lineCov">         19 : {</span>
+<span class="lineNum">    4153 </span><span class="lineCov">         19 :     if (__cntrl_)</span>
+<span class="lineNum">    4154 </span><span class="lineCov">         19 :         __cntrl_-&gt;__add_shared();</span>
+<span class="lineNum">    4155 </span><span class="lineCov">         38 : }</span>
 <span class="lineNum">    4156 </span>            : 
 <span class="lineNum">    4157 </span>            : #ifndef _LIBCPP_HAS_NO_RVALUE_REFERENCES
 <span class="lineNum">    4158 </span>            : 
 <a name="4159"><span class="lineNum">    4159 </span>            : template&lt;class _Tp&gt;</a>
 <span class="lineNum">    4160 </span>            : inline
 <span class="lineNum">    4161 </span>            : shared_ptr&lt;_Tp&gt;::shared_ptr(shared_ptr&amp;&amp; __r) _NOEXCEPT
-<span class="lineNum">    4162 </span><span class="lineCov">        359 :     : __ptr_(__r.__ptr_),</span>
-<span class="lineNum">    4163 </span><span class="lineCov">        359 :       __cntrl_(__r.__cntrl_)</span>
-<span class="lineNum">    4164 </span><span class="lineCov">        359 : {</span>
-<span class="lineNum">    4165 </span><span class="lineCov">        359 :     __r.__ptr_ = 0;</span>
-<span class="lineNum">    4166 </span><span class="lineCov">        359 :     __r.__cntrl_ = 0;</span>
-<span class="lineNum">    4167 </span><span class="lineCov">        718 : }</span>
+<span class="lineNum">    4162 </span><span class="lineCov">        376 :     : __ptr_(__r.__ptr_),</span>
+<span class="lineNum">    4163 </span><span class="lineCov">        376 :       __cntrl_(__r.__cntrl_)</span>
+<span class="lineNum">    4164 </span><span class="lineCov">        376 : {</span>
+<span class="lineNum">    4165 </span><span class="lineCov">        376 :     __r.__ptr_ = 0;</span>
+<span class="lineNum">    4166 </span><span class="lineCov">        376 :     __r.__cntrl_ = 0;</span>
+<span class="lineNum">    4167 </span><span class="lineCov">        752 : }</span>
 <span class="lineNum">    4168 </span>            : 
 <span class="lineNum">    4169 </span>            : template&lt;class _Tp&gt;
 <a name="4170"><span class="lineNum">    4170 </span>            : template&lt;class _Yp&gt;</a>
@@ -4234,12 +4234,12 @@
 <span class="lineNum">    4172 </span>            : shared_ptr&lt;_Tp&gt;::shared_ptr(shared_ptr&lt;_Yp&gt;&amp;&amp; __r,
 <span class="lineNum">    4173 </span>            :                             typename enable_if&lt;is_convertible&lt;_Yp*, element_type*&gt;::value, __nat&gt;::type)
 <span class="lineNum">    4174 </span>            :          _NOEXCEPT
-<span class="lineNum">    4175 </span><span class="lineCov">         50 :     : __ptr_(__r.__ptr_),</span>
-<span class="lineNum">    4176 </span><span class="lineCov">         50 :       __cntrl_(__r.__cntrl_)</span>
-<span class="lineNum">    4177 </span><span class="lineCov">         50 : {</span>
-<span class="lineNum">    4178 </span><span class="lineCov">         50 :     __r.__ptr_ = 0;</span>
-<span class="lineNum">    4179 </span><span class="lineCov">         50 :     __r.__cntrl_ = 0;</span>
-<span class="lineNum">    4180 </span><span class="lineCov">        100 : }</span>
+<span class="lineNum">    4175 </span><span class="lineCov">         51 :     : __ptr_(__r.__ptr_),</span>
+<span class="lineNum">    4176 </span><span class="lineCov">         51 :       __cntrl_(__r.__cntrl_)</span>
+<span class="lineNum">    4177 </span><span class="lineCov">         51 : {</span>
+<span class="lineNum">    4178 </span><span class="lineCov">         51 :     __r.__ptr_ = 0;</span>
+<span class="lineNum">    4179 </span><span class="lineCov">         51 :     __r.__cntrl_ = 0;</span>
+<span class="lineNum">    4180 </span><span class="lineCov">        102 : }</span>
 <span class="lineNum">    4181 </span>            : 
 <span class="lineNum">    4182 </span>            : #endif  // _LIBCPP_HAS_NO_RVALUE_REFERENCES
 <span class="lineNum">    4183 </span>            : 
@@ -4334,15 +4334,15 @@
 <span class="lineNum">    4272 </span>            :     typedef __shared_ptr_emplace&lt;_Tp, allocator&lt;_Tp&gt; &gt; _CntrlBlk;
 <span class="lineNum">    4273 </span>            :     typedef allocator&lt;_CntrlBlk&gt; _A2;
 <span class="lineNum">    4274 </span>            :     typedef __allocator_destructor&lt;_A2&gt; _D2;
-<span class="lineNum">    4275 </span><span class="lineCov">         74 :     _A2 __a2;</span>
-<span class="lineNum">    4276 </span><span class="lineCov">         70 :     unique_ptr&lt;_CntrlBlk, _D2&gt; __hold2(__a2.allocate(1), _D2(__a2, 1));</span>
-<span class="lineNum">    4277 </span><span class="lineCov">         70 :     ::new(__hold2.get()) _CntrlBlk(__a2, _VSTD::forward&lt;_Args&gt;(__args)...);</span>
-<span class="lineNum">    4278 </span><span class="lineCov">         70 :     shared_ptr&lt;_Tp&gt; __r;</span>
-<span class="lineNum">    4279 </span><span class="lineCov">         70 :     __r.__ptr_ = __hold2.get()-&gt;get();</span>
-<span class="lineNum">    4280 </span><span class="lineCov">         70 :     __r.__cntrl_ = __hold2.release();</span>
-<span class="lineNum">    4281 </span><span class="lineCov">         70 :     __r.__enable_weak_this(__r.__ptr_, __r.__ptr_);</span>
-<span class="lineNum">    4282 </span><span class="lineCov">         70 :     return __r;</span>
-<span class="lineNum">    4283 </span><span class="lineCov">        140 : }</span>
+<span class="lineNum">    4275 </span><span class="lineCov">         76 :     _A2 __a2;</span>
+<span class="lineNum">    4276 </span><span class="lineCov">         72 :     unique_ptr&lt;_CntrlBlk, _D2&gt; __hold2(__a2.allocate(1), _D2(__a2, 1));</span>
+<span class="lineNum">    4277 </span><span class="lineCov">         72 :     ::new(__hold2.get()) _CntrlBlk(__a2, _VSTD::forward&lt;_Args&gt;(__args)...);</span>
+<span class="lineNum">    4278 </span><span class="lineCov">         72 :     shared_ptr&lt;_Tp&gt; __r;</span>
+<span class="lineNum">    4279 </span><span class="lineCov">         72 :     __r.__ptr_ = __hold2.get()-&gt;get();</span>
+<span class="lineNum">    4280 </span><span class="lineCov">         72 :     __r.__cntrl_ = __hold2.release();</span>
+<span class="lineNum">    4281 </span><span class="lineCov">         72 :     __r.__enable_weak_this(__r.__ptr_, __r.__ptr_);</span>
+<span class="lineNum">    4282 </span><span class="lineCov">         72 :     return __r;</span>
+<span class="lineNum">    4283 </span><span class="lineCov">        144 : }</span>
 <span class="lineNum">    4284 </span>            : 
 <span class="lineNum">    4285 </span>            : template&lt;class _Tp&gt;
 <span class="lineNum">    4286 </span>            : template&lt;class _Alloc, class ..._Args&gt;
@@ -4525,10 +4525,10 @@
 <a name="4463"><span class="lineNum">    4463 </span>            : </a>
 <span class="lineNum">    4464 </span>            : template&lt;class _Tp&gt;
 <span class="lineNum">    4465 </span>            : shared_ptr&lt;_Tp&gt;::~shared_ptr()
-<span class="lineNum">    4466 </span><span class="lineCov">       1512 : {</span>
-<span class="lineNum">    4467 </span><span class="lineCov">       1512 :     if (__cntrl_)</span>
-<span class="lineNum">    4468 </span><span class="lineCov">       1063 :         __cntrl_-&gt;__release_shared();</span>
-<span class="lineNum">    4469 </span><span class="lineCov">       3024 : }</span>
+<span class="lineNum">    4466 </span><span class="lineCov">       1540 : {</span>
+<span class="lineNum">    4467 </span><span class="lineCov">       1540 :     if (__cntrl_)</span>
+<span class="lineNum">    4468 </span><span class="lineCov">       1071 :         __cntrl_-&gt;__release_shared();</span>
+<span class="lineNum">    4469 </span><span class="lineCov">       3080 : }</span>
 <span class="lineNum">    4470 </span>            : 
 <span class="lineNum">    4471 </span>            : template&lt;class _Tp&gt;
 <a name="4472"><span class="lineNum">    4472 </span>            : inline</a>
@@ -4560,8 +4560,8 @@
 <span class="lineNum">    4498 </span>            : shared_ptr&lt;_Tp&gt;&amp;
 <span class="lineNum">    4499 </span>            : shared_ptr&lt;_Tp&gt;::operator=(shared_ptr&amp;&amp; __r) _NOEXCEPT
 <span class="lineNum">    4500 </span>            : {
-<span class="lineNum">    4501 </span><span class="lineCov">         19 :     shared_ptr(_VSTD::move(__r)).swap(*this);</span>
-<span class="lineNum">    4502 </span><span class="lineCov">         19 :     return *this;</span>
+<span class="lineNum">    4501 </span><span class="lineCov">         20 :     shared_ptr(_VSTD::move(__r)).swap(*this);</span>
+<span class="lineNum">    4502 </span><span class="lineCov">         20 :     return *this;</span>
 <span class="lineNum">    4503 </span>            : }
 <span class="lineNum">    4504 </span>            : 
 <span class="lineNum">    4505 </span>            : template&lt;class _Tp&gt;
@@ -4574,8 +4574,8 @@
 <span class="lineNum">    4512 </span>            : &gt;::type
 <span class="lineNum">    4513 </span>            : shared_ptr&lt;_Tp&gt;::operator=(shared_ptr&lt;_Yp&gt;&amp;&amp; __r)
 <span class="lineNum">    4514 </span>            : {
-<span class="lineNum">    4515 </span><span class="lineCov">         18 :     shared_ptr(_VSTD::move(__r)).swap(*this);</span>
-<span class="lineNum">    4516 </span><span class="lineCov">         18 :     return *this;</span>
+<span class="lineNum">    4515 </span><span class="lineCov">         19 :     shared_ptr(_VSTD::move(__r)).swap(*this);</span>
+<span class="lineNum">    4516 </span><span class="lineCov">         19 :     return *this;</span>
 <span class="lineNum">    4517 </span>            : }
 <span class="lineNum">    4518 </span>            : 
 <span class="lineNum">    4519 </span>            : #if _LIBCPP_STD_VER &lt;= 14 || defined(_LIBCPP_ENABLE_CXX17_REMOVED_AUTO_PTR)
@@ -4653,9 +4653,9 @@
 <span class="lineNum">    4591 </span>            : void
 <span class="lineNum">    4592 </span>            : shared_ptr&lt;_Tp&gt;::swap(shared_ptr&amp; __r) _NOEXCEPT
 <span class="lineNum">    4593 </span>            : {
-<span class="lineNum">    4594 </span><span class="lineCov">         41 :     _VSTD::swap(__ptr_, __r.__ptr_);</span>
-<span class="lineNum">    4595 </span><span class="lineCov">         41 :     _VSTD::swap(__cntrl_, __r.__cntrl_);</span>
-<span class="lineNum">    4596 </span><span class="lineCov">         41 : }</span>
+<span class="lineNum">    4594 </span><span class="lineCov">         43 :     _VSTD::swap(__ptr_, __r.__ptr_);</span>
+<span class="lineNum">    4595 </span><span class="lineCov">         43 :     _VSTD::swap(__cntrl_, __r.__cntrl_);</span>
+<span class="lineNum">    4596 </span><span class="lineCov">         43 : }</span>
 <span class="lineNum">    4597 </span>            : 
 <span class="lineNum">    4598 </span>            : template&lt;class _Tp&gt;
 <a name="4599"><span class="lineNum">    4599 </span>            : inline</a>
@@ -4715,7 +4715,7 @@
 <span class="lineNum">    4653 </span>            : &gt;::type
 <span class="lineNum">    4654 </span>            : make_shared(_Args&amp;&amp; ...__args)
 <span class="lineNum">    4655 </span>            : {
-<span class="lineNum">    4656 </span><span class="lineCov">         74 :     return shared_ptr&lt;_Tp&gt;::make_shared(_VSTD::forward&lt;_Args&gt;(__args)...);</span>
+<span class="lineNum">    4656 </span><span class="lineCov">         76 :     return shared_ptr&lt;_Tp&gt;::make_shared(_VSTD::forward&lt;_Args&gt;(__args)...);</span>
 <span class="lineNum">    4657 </span>            : }
 <span class="lineNum">    4658 </span>            : 
 <span class="lineNum">    4659 </span>            : template&lt;class _Tp, class _Alloc, class ..._Args&gt;

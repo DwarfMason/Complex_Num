@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2019-02-01 18:12:07</td>
+            <td class="headerValue">2019-02-01 21:23:38</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">15</td>
@@ -346,7 +346,7 @@
 <span class="lineNum">     284 </span>            : #endif
 <span class="lineNum">     285 </span>            : move_if_noexcept(_Tp&amp; __x) _NOEXCEPT
 <span class="lineNum">     286 </span>            : {
-<span class="lineNum">     287 </span><span class="lineCov">        360 :     return _VSTD::move(__x);</span>
+<span class="lineNum">     287 </span><span class="lineCov">        376 :     return _VSTD::move(__x);</span>
 <span class="lineNum">     288 </span>            : }
 <span class="lineNum">     289 </span>            : 
 <span class="lineNum">     290 </span>            : #if _LIBCPP_STD_VER &gt; 14
@@ -496,7 +496,7 @@
 <a name="434"><span class="lineNum">     434 </span>            :     &gt; = false&gt;</a>
 <span class="lineNum">     435 </span>            :     _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR_AFTER_CXX11
 <span class="lineNum">     436 </span>            :     pair(_U1&amp;&amp; __u1, _U2&amp;&amp; __u2)
-<span class="lineNum">     437 </span><span class="lineCov">         40 :         : first(_VSTD::forward&lt;_U1&gt;(__u1)), second(_VSTD::forward&lt;_U2&gt;(__u2)) {}</span>
+<span class="lineNum">     437 </span><span class="lineCov">         42 :         : first(_VSTD::forward&lt;_U1&gt;(__u1)), second(_VSTD::forward&lt;_U2&gt;(__u2)) {}</span>
 <span class="lineNum">     438 </span>            : 
 <span class="lineNum">     439 </span>            :     template&lt;class _U1, class _U2, _EnableB&lt;
 <span class="lineNum">     440 </span>            :             _CheckArgs::template __enable_explicit&lt;_U1 const&amp;, _U2 const&amp;&gt;()
@@ -524,7 +524,7 @@
 <a name="462"><span class="lineNum">     462 </span>            :     &gt; = false&gt;</a>
 <span class="lineNum">     463 </span>            :     _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR_AFTER_CXX11
 <span class="lineNum">     464 </span>            :     pair(pair&lt;_U1, _U2&gt;&amp;&amp; __p)
-<span class="lineNum">     465 </span><span class="lineCov">         40 :         : first(_VSTD::forward&lt;_U1&gt;(__p.first)), second(_VSTD::forward&lt;_U2&gt;(__p.second)) {}</span>
+<span class="lineNum">     465 </span><span class="lineCov">         42 :         : first(_VSTD::forward&lt;_U1&gt;(__p.first)), second(_VSTD::forward&lt;_U2&gt;(__p.second)) {}</span>
 <span class="lineNum">     466 </span>            : 
 <span class="lineNum">     467 </span>            :     template&lt;class _Tuple, _EnableB&lt;
 <span class="lineNum">     468 </span>            :             _CheckTLC&lt;_Tuple&gt;::template __enable_explicit&lt;_Tuple&gt;()

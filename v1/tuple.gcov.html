@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2019-02-01 18:12:07</td>
+            <td class="headerValue">2019-02-01 21:23:38</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">346</td>
@@ -285,9 +285,9 @@
 <a name="223"><span class="lineNum">     223 </span>            :             &gt;</a>
 <span class="lineNum">     224 </span>            :         _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR_AFTER_CXX11
 <span class="lineNum">     225 </span>            :         explicit __tuple_leaf(_Tp&amp;&amp; __t) _NOEXCEPT_((is_nothrow_constructible&lt;_Hp, _Tp&gt;::value))
-<span class="lineNum">     226 </span><span class="lineCov">        196 :             : __value_(_VSTD::forward&lt;_Tp&gt;(__t))</span>
+<span class="lineNum">     226 </span><span class="lineCov">        204 :             : __value_(_VSTD::forward&lt;_Tp&gt;(__t))</span>
 <span class="lineNum">     227 </span>            :         {static_assert(__can_bind_reference&lt;_Tp&gt;(),
-<span class="lineNum">     228 </span><span class="lineCov">        196 :        &quot;Attempted to construct a reference element in a tuple with an rvalue&quot;);}</span>
+<span class="lineNum">     228 </span><span class="lineCov">        204 :        &quot;Attempted to construct a reference element in a tuple with an rvalue&quot;);}</span>
 <span class="lineNum">     229 </span>            : 
 <span class="lineNum">     230 </span>            :     template &lt;class _Tp, class _Alloc&gt;
 <span class="lineNum">     231 </span>            :         _LIBCPP_INLINE_VISIBILITY
@@ -329,7 +329,7 @@
 <span class="lineNum">     267 </span>            :         return 0;
 <a name="268"><span class="lineNum">     268 </span>            :     }</a>
 <span class="lineNum">     269 </span>            : 
-<span class="lineNum">     270 </span><span class="lineCov">        196 :     _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR_AFTER_CXX11       _Hp&amp; get()       _NOEXCEPT {return __value_;}</span>
+<span class="lineNum">     270 </span><span class="lineCov">        204 :     _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR_AFTER_CXX11       _Hp&amp; get()       _NOEXCEPT {return __value_;}</span>
 <span class="lineNum">     271 </span>            :     _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR_AFTER_CXX11 const _Hp&amp; get() const _NOEXCEPT {return __value_;}
 <span class="lineNum">     272 </span>            : };
 <span class="lineNum">     273 </span>            : 
@@ -444,9 +444,9 @@
 <span class="lineNum">     382 </span>            :                      _Up&amp;&amp;... __u)
 <span class="lineNum">     383 </span>            :                      _NOEXCEPT_((__all&lt;is_nothrow_constructible&lt;_Tf, _Up&gt;::value...&gt;::value &amp;&amp;
 <span class="lineNum">     384 </span>            :                                  __all&lt;is_nothrow_default_constructible&lt;_Tl&gt;::value...&gt;::value)) :
-<span class="lineNum">     385 </span><span class="lineCov">        196 :             __tuple_leaf&lt;_Uf, _Tf&gt;(_VSTD::forward&lt;_Up&gt;(__u))...,</span>
+<span class="lineNum">     385 </span><span class="lineCov">        204 :             __tuple_leaf&lt;_Uf, _Tf&gt;(_VSTD::forward&lt;_Up&gt;(__u))...,</span>
 <span class="lineNum">     386 </span>            :             __tuple_leaf&lt;_Ul, _Tl&gt;()...
-<span class="lineNum">     387 </span><span class="lineCov">        460 :             {}</span>
+<span class="lineNum">     387 </span><span class="lineCov">        476 :             {}</span>
 <span class="lineNum">     388 </span>            : 
 <span class="lineNum">     389 </span>            :     template &lt;class _Alloc, size_t ..._Uf, class ..._Tf,
 <span class="lineNum">     390 </span>            :               size_t ..._Ul, class ..._Tl, class ..._Up&gt;
@@ -706,12 +706,12 @@
 <a name="644"><span class="lineNum">     644 </span>            :         &gt;</a>
 <span class="lineNum">     645 </span>            :     _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR_AFTER_CXX11
 <span class="lineNum">     646 </span>            :     tuple(const _Tp&amp; ... __t) _NOEXCEPT_((__all&lt;is_nothrow_copy_constructible&lt;_Tp&gt;::value...&gt;::value))
-<span class="lineNum">     647 </span><span class="lineCov">        200 :         : __base_(typename __make_tuple_indices&lt;sizeof...(_Tp)&gt;::type(),</span>
+<span class="lineNum">     647 </span><span class="lineCov">        204 :         : __base_(typename __make_tuple_indices&lt;sizeof...(_Tp)&gt;::type(),</span>
 <span class="lineNum">     648 </span>            :                 typename __make_tuple_types&lt;tuple, sizeof...(_Tp)&gt;::type(),
 <span class="lineNum">     649 </span>            :                 typename __make_tuple_indices&lt;0&gt;::type(),
 <span class="lineNum">     650 </span>            :                 typename __make_tuple_types&lt;tuple, 0&gt;::type(),
-<span class="lineNum">     651 </span><span class="lineCov">        100 :                 __t...</span>
-<span class="lineNum">     652 </span><span class="lineCov">        200 :                ) {}</span>
+<span class="lineNum">     651 </span><span class="lineCov">        102 :                 __t...</span>
+<span class="lineNum">     652 </span><span class="lineCov">        204 :                ) {}</span>
 <span class="lineNum">     653 </span>            : 
 <span class="lineNum">     654 </span>            :     template &lt;bool _Dummy = true,
 <span class="lineNum">     655 </span>            :               typename enable_if
@@ -797,11 +797,11 @@
 <span class="lineNum">     735 </span>            :                     _Up...
 <span class="lineNum">     736 </span>            :                 &gt;::value
 <span class="lineNum">     737 </span>            :             ))
-<span class="lineNum">     738 </span><span class="lineCov">         64 :             : __base_(typename __make_tuple_indices&lt;sizeof...(_Up)&gt;::type(),</span>
+<span class="lineNum">     738 </span><span class="lineCov">         68 :             : __base_(typename __make_tuple_indices&lt;sizeof...(_Up)&gt;::type(),</span>
 <span class="lineNum">     739 </span>            :                     typename __make_tuple_types&lt;tuple, sizeof...(_Up)&gt;::type(),
 <span class="lineNum">     740 </span>            :                     typename __make_tuple_indices&lt;sizeof...(_Tp), sizeof...(_Up)&gt;::type(),
 <span class="lineNum">     741 </span>            :                     typename __make_tuple_types&lt;tuple, sizeof...(_Tp), sizeof...(_Up)&gt;::type(),
-<span class="lineNum">     742 </span><span class="lineCov">         96 :                     _VSTD::forward&lt;_Up&gt;(__u)...) {}</span>
+<span class="lineNum">     742 </span><span class="lineCov">        102 :                     _VSTD::forward&lt;_Up&gt;(__u)...) {}</span>
 <span class="lineNum">     743 </span>            : 
 <span class="lineNum">     744 </span>            :     template &lt;class ..._Up,
 <span class="lineNum">     745 </span>            :               typename enable_if
@@ -1020,7 +1020,7 @@
 <span class="lineNum">     958 </span>            : get(tuple&lt;_Tp...&gt;&amp; __t) _NOEXCEPT
 <span class="lineNum">     959 </span>            : {
 <span class="lineNum">     960 </span>            :     typedef typename tuple_element&lt;_Ip, tuple&lt;_Tp...&gt; &gt;::type type;
-<span class="lineNum">     961 </span><span class="lineCov">        196 :     return static_cast&lt;__tuple_leaf&lt;_Ip, type&gt;&amp;&gt;(__t.__base_).get();</span>
+<span class="lineNum">     961 </span><span class="lineCov">        204 :     return static_cast&lt;__tuple_leaf&lt;_Ip, type&gt;&amp;&gt;(__t.__base_).get();</span>
 <span class="lineNum">     962 </span>            : }
 <span class="lineNum">     963 </span>            : 
 <span class="lineNum">     964 </span>            : template &lt;size_t _Ip, class ..._Tp&gt;
@@ -1175,7 +1175,7 @@
 <span class="lineNum">    1113 </span>            : tuple&lt;_Tp&amp;&amp;...&gt;
 <span class="lineNum">    1114 </span>            : forward_as_tuple(_Tp&amp;&amp;... __t) _NOEXCEPT
 <span class="lineNum">    1115 </span>            : {
-<span class="lineNum">    1116 </span><span class="lineCov">        132 :     return tuple&lt;_Tp&amp;&amp;...&gt;(_VSTD::forward&lt;_Tp&gt;(__t)...);</span>
+<span class="lineNum">    1116 </span><span class="lineCov">        136 :     return tuple&lt;_Tp&amp;&amp;...&gt;(_VSTD::forward&lt;_Tp&gt;(__t)...);</span>
 <span class="lineNum">    1117 </span>            : }
 <span class="lineNum">    1118 </span>            : 
 <span class="lineNum">    1119 </span>            : template &lt;size_t _Ip&gt;

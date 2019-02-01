@@ -4,10 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/dwarf/Complex_Num/complex_num.cpp" "/home/dwarf/Complex_Num/cmake-build-debug/CMakeFiles/Complrx_Num.dir/complex_num.cpp.o"
-  "/home/dwarf/Complex_Num/main.cpp" "/home/dwarf/Complex_Num/cmake-build-debug/CMakeFiles/Complrx_Num.dir/main.cpp.o"
+  "/Users/hakintos/CLionProjects/Complex_Num/complex_num.cpp" "/Users/hakintos/CLionProjects/Complex_Num/cmake-build-debug/CMakeFiles/Complrx_Num.dir/complex_num.cpp.o"
+  "/Users/hakintos/CLionProjects/Complex_Num/main.cpp" "/Users/hakintos/CLionProjects/Complex_Num/cmake-build-debug/CMakeFiles/Complrx_Num.dir/main.cpp.o"
   )
-set(CMAKE_CXX_COMPILER_ID "GNU")
+set(CMAKE_CXX_COMPILER_ID "AppleClang")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH

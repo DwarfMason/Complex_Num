@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2019-02-01 18:12:07</td>
+            <td class="headerValue">2019-02-01 21:23:38</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">120</td>
@@ -143,7 +143,7 @@
 <span class="lineNum">      81 </span>            : bool
 <span class="lineNum">      82 </span>            : __tree_is_left_child(_NodePtr __x) _NOEXCEPT
 <span class="lineNum">      83 </span>            : {
-<span class="lineNum">      84 </span><span class="lineCov">         33 :     return __x == __x-&gt;__parent_-&gt;__left_;</span>
+<span class="lineNum">      84 </span><span class="lineCov">         34 :     return __x == __x-&gt;__parent_-&gt;__left_;</span>
 <span class="lineNum">      85 </span>            : }
 <span class="lineNum">      86 </span>            : 
 <span class="lineNum">      87 </span>            : // Determines if the subtree rooted at __x is a proper red black subtree.  If
@@ -342,21 +342,21 @@
 <span class="lineNum">     280 </span>            : void
 <span class="lineNum">     281 </span>            : __tree_balance_after_insert(_NodePtr __root, _NodePtr __x) _NOEXCEPT
 <span class="lineNum">     282 </span>            : {
-<span class="lineNum">     283 </span><span class="lineCov">         21 :     __x-&gt;__is_black_ = __x == __root;</span>
-<span class="lineNum">     284 </span><span class="lineCov">        123 :     while (__x != __root &amp;&amp; !__x-&gt;__parent_unsafe()-&gt;__is_black_)</span>
+<span class="lineNum">     283 </span><span class="lineCov">         22 :     __x-&gt;__is_black_ = __x == __root;</span>
+<span class="lineNum">     284 </span><span class="lineCov">        133 :     while (__x != __root &amp;&amp; !__x-&gt;__parent_unsafe()-&gt;__is_black_)</span>
 <span class="lineNum">     285 </span>            :     {
 <span class="lineNum">     286 </span>            :         // __x-&gt;__parent_ != __root because __x-&gt;__parent_-&gt;__is_black == false
-<span class="lineNum">     287 </span><span class="lineCov">         28 :         if (__tree_is_left_child(__x-&gt;__parent_unsafe()))</span>
+<span class="lineNum">     287 </span><span class="lineCov">         30 :         if (__tree_is_left_child(__x-&gt;__parent_unsafe()))</span>
 <span class="lineNum">     288 </span>            :         {
-<span class="lineNum">     289 </span><span class="lineCov">         21 :             _NodePtr __y = __x-&gt;__parent_unsafe()-&gt;__parent_unsafe()-&gt;__right_;</span>
-<span class="lineNum">     290 </span><span class="lineCov">          9 :             if (__y != nullptr &amp;&amp; !__y-&gt;__is_black_)</span>
+<span class="lineNum">     289 </span><span class="lineCov">         24 :             _NodePtr __y = __x-&gt;__parent_unsafe()-&gt;__parent_unsafe()-&gt;__right_;</span>
+<span class="lineNum">     290 </span><span class="lineCov">         11 :             if (__y != nullptr &amp;&amp; !__y-&gt;__is_black_)</span>
 <span class="lineNum">     291 </span>            :             {
-<span class="lineNum">     292 </span><span class="lineCov">          4 :                 __x = __x-&gt;__parent_unsafe();</span>
-<span class="lineNum">     293 </span><span class="lineCov">          2 :                 __x-&gt;__is_black_ = true;</span>
-<span class="lineNum">     294 </span><span class="lineCov">          4 :                 __x = __x-&gt;__parent_unsafe();</span>
-<span class="lineNum">     295 </span><span class="lineCov">          2 :                 __x-&gt;__is_black_ = __x == __root;</span>
-<span class="lineNum">     296 </span><span class="lineCov">          2 :                 __y-&gt;__is_black_ = true;</span>
-<span class="lineNum">     297 </span><span class="lineCov">          2 :             }</span>
+<span class="lineNum">     292 </span><span class="lineCov">          6 :                 __x = __x-&gt;__parent_unsafe();</span>
+<span class="lineNum">     293 </span><span class="lineCov">          3 :                 __x-&gt;__is_black_ = true;</span>
+<span class="lineNum">     294 </span><span class="lineCov">          6 :                 __x = __x-&gt;__parent_unsafe();</span>
+<span class="lineNum">     295 </span><span class="lineCov">          3 :                 __x-&gt;__is_black_ = __x == __root;</span>
+<span class="lineNum">     296 </span><span class="lineCov">          3 :                 __y-&gt;__is_black_ = true;</span>
+<span class="lineNum">     297 </span><span class="lineCov">          3 :             }</span>
 <span class="lineNum">     298 </span>            :             else
 <span class="lineNum">     299 </span>            :             {
 <span class="lineNum">     300 </span><span class="lineCov">          5 :                 if (!__tree_is_left_child(__x))</span>
@@ -371,7 +371,7 @@
 <span class="lineNum">     309 </span><span class="lineCov">          5 :                 __tree_right_rotate(__x);</span>
 <span class="lineNum">     310 </span><span class="lineCov">          5 :                 break;</span>
 <span class="lineNum">     311 </span>            :             }
-<span class="lineNum">     312 </span><span class="lineCov">          2 :         }</span>
+<span class="lineNum">     312 </span><span class="lineCov">          3 :         }</span>
 <span class="lineNum">     313 </span>            :         else
 <span class="lineNum">     314 </span>            :         {
 <span class="lineNum">     315 </span><span class="lineCov">         14 :             _NodePtr __y = __x-&gt;__parent_unsafe()-&gt;__parent_-&gt;__left_;</span>
@@ -399,7 +399,7 @@
 <span class="lineNum">     337 </span>            :             }
 <span class="lineNum">     338 </span>            :         }
 <span class="lineNum">     339 </span>            :     }
-<span class="lineNum">     340 </span><span class="lineCov">         21 : }</span>
+<span class="lineNum">     340 </span><span class="lineCov">         22 : }</span>
 <span class="lineNum">     341 </span>            : 
 <span class="lineNum">     342 </span>            : // Precondition:  __root != nullptr &amp;&amp; __z != nullptr.
 <span class="lineNum">     343 </span>            : //                __tree_invariant(__root) == true.
@@ -621,7 +621,7 @@
 <a name="559"><span class="lineNum">     559 </span>            : </a>
 <span class="lineNum">     560 </span>            :   _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">     561 </span>            :   static key_type const&amp; __get_key(_Tp const&amp; __v) {
-<span class="lineNum">     562 </span><span class="lineCov">         17 :     return __v;</span>
+<span class="lineNum">     562 </span><span class="lineCov">         18 :     return __v;</span>
 <span class="lineNum">     563 </span>            :   }
 <span class="lineNum">     564 </span>            :   _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">     565 </span>            :   static __container_value_type const&amp; __get_value(__node_value_type const&amp; __v) {
@@ -629,7 +629,7 @@
 <a name="567"><span class="lineNum">     567 </span>            :   }</a>
 <span class="lineNum">     568 </span>            :   _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">     569 </span>            :   static __container_value_type* __get_ptr(__node_value_type&amp; __n) {
-<span class="lineNum">     570 </span><span class="lineCov">         34 :     return _VSTD::addressof(__n);</span>
+<span class="lineNum">     570 </span><span class="lineCov">         36 :     return _VSTD::addressof(__n);</span>
 <span class="lineNum">     571 </span>            :   }
 <span class="lineNum">     572 </span>            : 
 <span class="lineNum">     573 </span>            : #ifndef _LIBCPP_CXX03_LANG
@@ -801,7 +801,7 @@
 <span class="lineNum">     739 </span>            :     bool __is_black_;
 <a name="740"><span class="lineNum">     740 </span>            : </a>
 <span class="lineNum">     741 </span>            :     _LIBCPP_INLINE_VISIBILITY
-<span class="lineNum">     742 </span><span class="lineCov">         89 :     pointer __parent_unsafe() const { return static_cast&lt;pointer&gt;(__parent_);}</span>
+<span class="lineNum">     742 </span><span class="lineCov">         96 :     pointer __parent_unsafe() const { return static_cast&lt;pointer&gt;(__parent_);}</span>
 <a name="743"><span class="lineNum">     743 </span>            : </a>
 <span class="lineNum">     744 </span>            :     _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">     745 </span>            :     void __set_parent(pointer __p) {
@@ -849,9 +849,9 @@
 <a name="787"><span class="lineNum">     787 </span>            : </a>
 <span class="lineNum">     788 </span>            :     _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">     789 </span>            :     explicit __tree_node_destructor(allocator_type&amp; __na, bool __val = false) _NOEXCEPT
-<span class="lineNum">     790 </span><span class="lineCov">         21 :         : __na_(__na),</span>
-<span class="lineNum">     791 </span><span class="lineCov">         21 :           __value_constructed(__val)</span>
-<span class="lineNum">     792 </span><span class="lineCov">         42 :         {}</span>
+<span class="lineNum">     790 </span><span class="lineCov">         22 :         : __na_(__na),</span>
+<span class="lineNum">     791 </span><span class="lineCov">         22 :           __value_constructed(__val)</span>
+<span class="lineNum">     792 </span><span class="lineCov">         44 :         {}</span>
 <a name="793"><span class="lineNum">     793 </span>            : </a>
 <span class="lineNum">     794 </span>            :     _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">     795 </span>            :     void operator()(pointer __p) _NOEXCEPT
@@ -925,7 +925,7 @@
 <span class="lineNum">     863 </span>            : 
 <a name="864"><span class="lineNum">     864 </span>            : private:</a>
 <span class="lineNum">     865 </span>            :     _LIBCPP_INLINE_VISIBILITY
-<a name="866"><span class="lineNum">     866 </span><span class="lineCov">         42 :     explicit __tree_iterator(__node_pointer __p) _NOEXCEPT : __ptr_(__p) {}</span></a>
+<a name="866"><span class="lineNum">     866 </span><span class="lineCov">         44 :     explicit __tree_iterator(__node_pointer __p) _NOEXCEPT : __ptr_(__p) {}</span></a>
 <span class="lineNum">     867 </span>            :     _LIBCPP_INLINE_VISIBILITY
 <a name="868"><span class="lineNum">     868 </span><span class="lineCov">          4 :     explicit __tree_iterator(__end_node_pointer __p) _NOEXCEPT : __ptr_(__p) {}</span></a>
 <span class="lineNum">     869 </span>            :     _LIBCPP_INLINE_VISIBILITY
@@ -970,7 +970,7 @@
 <a name="908"><span class="lineNum">     908 </span>            : public:</a>
 <span class="lineNum">     909 </span>            :     _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">     910 </span>            :     __tree_const_iterator(__non_const_iterator __p) _NOEXCEPT
-<a name="911"><span class="lineNum">     911 </span><span class="lineCov">         36 :         : __ptr_(__p.__ptr_) {}</span></a>
+<a name="911"><span class="lineNum">     911 </span><span class="lineCov">         38 :         : __ptr_(__p.__ptr_) {}</span></a>
 <span class="lineNum">     912 </span>            : 
 <a name="913"><span class="lineNum">     913 </span>            :     _LIBCPP_INLINE_VISIBILITY reference operator*() const</a>
 <span class="lineNum">     914 </span><span class="lineCov">          1 :         {return __get_np()-&gt;__value_;}</span>
@@ -1106,27 +1106,27 @@
 <span class="lineNum">    1044 </span>            :     _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">    1045 </span>            :     __iter_pointer __end_node() _NOEXCEPT
 <span class="lineNum">    1046 </span>            :     {
-<span class="lineNum">    1047 </span><span class="lineCov">         28 :         return static_cast&lt;__iter_pointer&gt;(</span>
-<span class="lineNum">    1048 </span><span class="lineCov">         28 :                 pointer_traits&lt;__end_node_ptr&gt;::pointer_to(__pair1_.first())</span>
+<span class="lineNum">    1047 </span><span class="lineCov">         29 :         return static_cast&lt;__iter_pointer&gt;(</span>
+<span class="lineNum">    1048 </span><span class="lineCov">         29 :                 pointer_traits&lt;__end_node_ptr&gt;::pointer_to(__pair1_.first())</span>
 <span class="lineNum">    1049 </span>            :         );
 <a name="1050"><span class="lineNum">    1050 </span>            :     }</a>
 <span class="lineNum">    1051 </span>            :     _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">    1052 </span>            :     __iter_pointer __end_node() const _NOEXCEPT
 <span class="lineNum">    1053 </span>            :     {
-<span class="lineNum">    1054 </span><span class="lineCov">         51 :         return static_cast&lt;__iter_pointer&gt;(</span>
-<span class="lineNum">    1055 </span><span class="lineCov">         51 :             pointer_traits&lt;__end_node_ptr&gt;::pointer_to(</span>
-<span class="lineNum">    1056 </span><span class="lineCov">         51 :                 const_cast&lt;__end_node_t&amp;&gt;(__pair1_.first())</span>
+<span class="lineNum">    1054 </span><span class="lineCov">         53 :         return static_cast&lt;__iter_pointer&gt;(</span>
+<span class="lineNum">    1055 </span><span class="lineCov">         53 :             pointer_traits&lt;__end_node_ptr&gt;::pointer_to(</span>
+<span class="lineNum">    1056 </span><span class="lineCov">         53 :                 const_cast&lt;__end_node_t&amp;&gt;(__pair1_.first())</span>
 <span class="lineNum">    1057 </span>            :             )
 <span class="lineNum">    1058 </span>            :         );
 <a name="1059"><span class="lineNum">    1059 </span>            :     }</a>
 <span class="lineNum">    1060 </span>            :     _LIBCPP_INLINE_VISIBILITY
-<span class="lineNum">    1061 </span><span class="lineCov">         42 :           __node_allocator&amp; __node_alloc() _NOEXCEPT {return __pair1_.second();}</span>
+<span class="lineNum">    1061 </span><span class="lineCov">         44 :           __node_allocator&amp; __node_alloc() _NOEXCEPT {return __pair1_.second();}</span>
 <span class="lineNum">    1062 </span>            : private:
 <span class="lineNum">    1063 </span>            :     _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">    1064 </span>            :     const __node_allocator&amp; __node_alloc() const _NOEXCEPT
 <a name="1065"><span class="lineNum">    1065 </span>            :         {return __pair1_.second();}</a>
 <span class="lineNum">    1066 </span>            :     _LIBCPP_INLINE_VISIBILITY
-<a name="1067"><span class="lineNum">    1067 </span><span class="lineCov">         34 :           __iter_pointer&amp; __begin_node() _NOEXCEPT {return __begin_node_;}</span></a>
+<a name="1067"><span class="lineNum">    1067 </span><span class="lineCov">         35 :           __iter_pointer&amp; __begin_node() _NOEXCEPT {return __begin_node_;}</span></a>
 <span class="lineNum">    1068 </span>            :     _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">    1069 </span><span class="lineCov">          1 :     const __iter_pointer&amp; __begin_node() const _NOEXCEPT {return __begin_node_;}</span>
 <span class="lineNum">    1070 </span>            : public:
@@ -1135,12 +1135,12 @@
 <span class="lineNum">    1073 </span>            :         {return allocator_type(__node_alloc());}
 <a name="1074"><span class="lineNum">    1074 </span>            : private:</a>
 <span class="lineNum">    1075 </span>            :     _LIBCPP_INLINE_VISIBILITY
-<span class="lineNum">    1076 </span><span class="lineCov">         21 :           size_type&amp; size() _NOEXCEPT {return __pair3_.first();}</span>
+<span class="lineNum">    1076 </span><span class="lineCov">         22 :           size_type&amp; size() _NOEXCEPT {return __pair3_.first();}</span>
 <a name="1077"><span class="lineNum">    1077 </span>            : public:</a>
 <span class="lineNum">    1078 </span>            :     _LIBCPP_INLINE_VISIBILITY
 <a name="1079"><span class="lineNum">    1079 </span><span class="lineNoCov">          0 :     const size_type&amp; size() const _NOEXCEPT {return __pair3_.first();}</span></a>
 <span class="lineNum">    1080 </span>            :     _LIBCPP_INLINE_VISIBILITY
-<a name="1081"><span class="lineNum">    1081 </span><span class="lineCov">         82 :           value_compare&amp; value_comp() _NOEXCEPT {return __pair3_.second();}</span></a>
+<a name="1081"><span class="lineNum">    1081 </span><span class="lineCov">         88 :           value_compare&amp; value_comp() _NOEXCEPT {return __pair3_.second();}</span></a>
 <span class="lineNum">    1082 </span>            :     _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">    1083 </span>            :     const value_compare&amp; value_comp() const _NOEXCEPT
 <span class="lineNum">    1084 </span><span class="lineCov">          5 :         {return __pair3_.second();}</span>
@@ -1148,10 +1148,10 @@
 <a name="1086"><span class="lineNum">    1086 </span>            : </a>
 <span class="lineNum">    1087 </span>            :     _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">    1088 </span>            :     __node_pointer __root() const _NOEXCEPT
-<a name="1089"><span class="lineNum">    1089 </span><span class="lineCov">         26 :         {return static_cast&lt;__node_pointer&gt;(__end_node()-&gt;__left_);}</span></a>
+<a name="1089"><span class="lineNum">    1089 </span><span class="lineCov">         27 :         {return static_cast&lt;__node_pointer&gt;(__end_node()-&gt;__left_);}</span></a>
 <span class="lineNum">    1090 </span>            : 
 <span class="lineNum">    1091 </span>            :     __node_base_pointer* __root_ptr() const _NOEXCEPT {
-<span class="lineNum">    1092 </span><span class="lineCov">         20 :         return _VSTD::addressof(__end_node()-&gt;__left_);</span>
+<span class="lineNum">    1092 </span><span class="lineCov">         21 :         return _VSTD::addressof(__end_node()-&gt;__left_);</span>
 <span class="lineNum">    1093 </span>            :     }
 <span class="lineNum">    1094 </span>            : 
 <span class="lineNum">    1095 </span>            :     typedef __tree_iterator&lt;value_type, __node_pointer, difference_type&gt;             iterator;
@@ -1332,7 +1332,7 @@
 <a name="1270"><span class="lineNum">    1270 </span>            : </a>
 <span class="lineNum">    1271 </span>            :     _LIBCPP_INLINE_VISIBILITY
 <span class="lineNum">    1272 </span>            :     pair&lt;iterator, bool&gt; __insert_unique(const __container_value_type&amp; __v) {
-<span class="lineNum">    1273 </span><span class="lineCov">         16 :         return __emplace_unique_key_args(_NodeTypes::__get_key(__v), __v);</span>
+<span class="lineNum">    1273 </span><span class="lineCov">         17 :         return __emplace_unique_key_args(_NodeTypes::__get_key(__v), __v);</span>
 <span class="lineNum">    1274 </span>            :     }
 <a name="1275"><span class="lineNum">    1275 </span>            : </a>
 <span class="lineNum">    1276 </span>            :     _LIBCPP_INLINE_VISIBILITY
@@ -1887,15 +1887,15 @@
 <span class="lineNum">    1825 </span>            : void
 <span class="lineNum">    1826 </span>            : __tree&lt;_Tp, _Compare, _Allocator&gt;::destroy(__node_pointer __nd) _NOEXCEPT
 <span class="lineNum">    1827 </span>            : {
-<span class="lineNum">    1828 </span><span class="lineCov">         46 :     if (__nd != nullptr)</span>
+<span class="lineNum">    1828 </span><span class="lineCov">         48 :     if (__nd != nullptr)</span>
 <span class="lineNum">    1829 </span>            :     {
 <span class="lineNum">    1830 </span><span class="lineCov">         11 :         destroy(static_cast&lt;__node_pointer&gt;(__nd-&gt;__left_));</span>
 <span class="lineNum">    1831 </span><span class="lineCov">         11 :         destroy(static_cast&lt;__node_pointer&gt;(__nd-&gt;__right_));</span>
 <span class="lineNum">    1832 </span><span class="lineCov">         11 :         __node_allocator&amp; __na = __node_alloc();</span>
-<span class="lineNum">    1833 </span><span class="lineCov">         32 :         __node_traits::destroy(__na, _NodeTypes::__get_ptr(__nd-&gt;__value_));</span>
-<span class="lineNum">    1834 </span><span class="lineCov">         21 :         __node_traits::deallocate(__na, __nd, 1);</span>
-<span class="lineNum">    1835 </span><span class="lineCov">         21 :     }</span>
-<span class="lineNum">    1836 </span><span class="lineCov">         46 : }</span>
+<span class="lineNum">    1833 </span><span class="lineCov">         33 :         __node_traits::destroy(__na, _NodeTypes::__get_ptr(__nd-&gt;__value_));</span>
+<span class="lineNum">    1834 </span><span class="lineCov">         22 :         __node_traits::deallocate(__na, __nd, 1);</span>
+<span class="lineNum">    1835 </span><span class="lineCov">         22 :     }</span>
+<span class="lineNum">    1836 </span><span class="lineCov">         48 : }</span>
 <span class="lineNum">    1837 </span>            : 
 <span class="lineNum">    1838 </span>            : template &lt;class _Tp, class _Compare, class _Allocator&gt;
 <span class="lineNum">    1839 </span>            : void
@@ -2060,32 +2060,32 @@
 <span class="lineNum">    1998 </span>            : __tree&lt;_Tp, _Compare, _Allocator&gt;::__find_equal(__parent_pointer&amp; __parent,
 <span class="lineNum">    1999 </span>            :                                                 const _Key&amp; __v)
 <span class="lineNum">    2000 </span>            : {
-<span class="lineNum">    2001 </span><span class="lineCov">         20 :     __node_pointer __nd = __root();</span>
-<span class="lineNum">    2002 </span><span class="lineCov">         20 :     __node_base_pointer* __nd_ptr = __root_ptr();</span>
-<span class="lineNum">    2003 </span><span class="lineCov">         20 :     if (__nd != nullptr)</span>
+<span class="lineNum">    2001 </span><span class="lineCov">         21 :     __node_pointer __nd = __root();</span>
+<span class="lineNum">    2002 </span><span class="lineCov">         21 :     __node_base_pointer* __nd_ptr = __root_ptr();</span>
+<span class="lineNum">    2003 </span><span class="lineCov">         21 :     if (__nd != nullptr)</span>
 <span class="lineNum">    2004 </span>            :     {
-<span class="lineNum">    2005 </span><span class="lineCov">         52 :         while (true)</span>
+<span class="lineNum">    2005 </span><span class="lineCov">         56 :         while (true)</span>
 <span class="lineNum">    2006 </span>            :         {
-<span class="lineNum">    2007 </span><span class="lineCov">         52 :             if (value_comp()(__v, __nd-&gt;__value_))</span>
+<span class="lineNum">    2007 </span><span class="lineCov">         56 :             if (value_comp()(__v, __nd-&gt;__value_))</span>
 <span class="lineNum">    2008 </span>            :             {
-<span class="lineNum">    2009 </span><span class="lineCov">         22 :                 if (__nd-&gt;__left_ != nullptr) {</span>
-<span class="lineNum">    2010 </span><span class="lineCov">         14 :                     __nd_ptr = _VSTD::addressof(__nd-&gt;__left_);</span>
-<span class="lineNum">    2011 </span><span class="lineCov">         14 :                     __nd = static_cast&lt;__node_pointer&gt;(__nd-&gt;__left_);</span>
-<span class="lineNum">    2012 </span><span class="lineCov">         14 :                 } else {</span>
+<span class="lineNum">    2009 </span><span class="lineCov">         24 :                 if (__nd-&gt;__left_ != nullptr) {</span>
+<span class="lineNum">    2010 </span><span class="lineCov">         16 :                     __nd_ptr = _VSTD::addressof(__nd-&gt;__left_);</span>
+<span class="lineNum">    2011 </span><span class="lineCov">         16 :                     __nd = static_cast&lt;__node_pointer&gt;(__nd-&gt;__left_);</span>
+<span class="lineNum">    2012 </span><span class="lineCov">         16 :                 } else {</span>
 <span class="lineNum">    2013 </span><span class="lineCov">          8 :                     __parent = static_cast&lt;__parent_pointer&gt;(__nd);</span>
 <span class="lineNum">    2014 </span><span class="lineCov">          8 :                     return __parent-&gt;__left_;</span>
 <span class="lineNum">    2015 </span>            :                 }
-<span class="lineNum">    2016 </span><span class="lineCov">         14 :             }</span>
-<span class="lineNum">    2017 </span><span class="lineCov">         30 :             else if (value_comp()(__nd-&gt;__value_, __v))</span>
+<span class="lineNum">    2016 </span><span class="lineCov">         16 :             }</span>
+<span class="lineNum">    2017 </span><span class="lineCov">         32 :             else if (value_comp()(__nd-&gt;__value_, __v))</span>
 <span class="lineNum">    2018 </span>            :             {
-<span class="lineNum">    2019 </span><span class="lineCov">         30 :                 if (__nd-&gt;__right_ != nullptr) {</span>
-<span class="lineNum">    2020 </span><span class="lineCov">         20 :                     __nd_ptr = _VSTD::addressof(__nd-&gt;__right_);</span>
-<span class="lineNum">    2021 </span><span class="lineCov">         20 :                     __nd = static_cast&lt;__node_pointer&gt;(__nd-&gt;__right_);</span>
-<span class="lineNum">    2022 </span><span class="lineCov">         20 :                 } else {</span>
-<span class="lineNum">    2023 </span><span class="lineCov">         10 :                     __parent = static_cast&lt;__parent_pointer&gt;(__nd);</span>
-<span class="lineNum">    2024 </span><span class="lineCov">         10 :                     return __nd-&gt;__right_;</span>
+<span class="lineNum">    2019 </span><span class="lineCov">         32 :                 if (__nd-&gt;__right_ != nullptr) {</span>
+<span class="lineNum">    2020 </span><span class="lineCov">         21 :                     __nd_ptr = _VSTD::addressof(__nd-&gt;__right_);</span>
+<span class="lineNum">    2021 </span><span class="lineCov">         21 :                     __nd = static_cast&lt;__node_pointer&gt;(__nd-&gt;__right_);</span>
+<span class="lineNum">    2022 </span><span class="lineCov">         21 :                 } else {</span>
+<span class="lineNum">    2023 </span><span class="lineCov">         11 :                     __parent = static_cast&lt;__parent_pointer&gt;(__nd);</span>
+<span class="lineNum">    2024 </span><span class="lineCov">         11 :                     return __nd-&gt;__right_;</span>
 <span class="lineNum">    2025 </span>            :                 }
-<span class="lineNum">    2026 </span><span class="lineCov">         20 :             }</span>
+<span class="lineNum">    2026 </span><span class="lineCov">         21 :             }</span>
 <span class="lineNum">    2027 </span>            :             else
 <span class="lineNum">    2028 </span>            :             {
 <span class="lineNum">    2029 </span><span class="lineNoCov">          0 :                 __parent = static_cast&lt;__parent_pointer&gt;(__nd);</span>
@@ -2095,7 +2095,7 @@
 <span class="lineNum">    2033 </span>            :     }
 <span class="lineNum">    2034 </span><span class="lineCov">          2 :     __parent = static_cast&lt;__parent_pointer&gt;(__end_node());</span>
 <span class="lineNum">    2035 </span><span class="lineCov">          2 :     return __parent-&gt;__left_;</span>
-<span class="lineNum">    2036 </span><span class="lineCov">         20 : }</span>
+<span class="lineNum">    2036 </span><span class="lineCov">         21 : }</span>
 <span class="lineNum">    2037 </span>            : 
 <span class="lineNum">    2038 </span>            : // Find place to insert if __v doesn't exist
 <span class="lineNum">    2039 </span>            : // First check prior to __hint.
@@ -2166,16 +2166,16 @@
 <span class="lineNum">    2104 </span>            :                                                     __node_base_pointer&amp; __child,
 <span class="lineNum">    2105 </span>            :                                                     __node_base_pointer  __new_node)
 <span class="lineNum">    2106 </span>            : {
-<span class="lineNum">    2107 </span><span class="lineCov">         21 :     __new_node-&gt;__left_   = nullptr;</span>
-<span class="lineNum">    2108 </span><span class="lineCov">         21 :     __new_node-&gt;__right_  = nullptr;</span>
-<span class="lineNum">    2109 </span><span class="lineCov">         21 :     __new_node-&gt;__parent_ = __parent;</span>
+<span class="lineNum">    2107 </span><span class="lineCov">         22 :     __new_node-&gt;__left_   = nullptr;</span>
+<span class="lineNum">    2108 </span><span class="lineCov">         22 :     __new_node-&gt;__right_  = nullptr;</span>
+<span class="lineNum">    2109 </span><span class="lineCov">         22 :     __new_node-&gt;__parent_ = __parent;</span>
 <span class="lineNum">    2110 </span>            :     // __new_node-&gt;__is_black_ is initialized in __tree_balance_after_insert
-<span class="lineNum">    2111 </span><span class="lineCov">         21 :     __child = __new_node;</span>
-<span class="lineNum">    2112 </span><span class="lineCov">         21 :     if (__begin_node()-&gt;__left_ != nullptr)</span>
+<span class="lineNum">    2111 </span><span class="lineCov">         22 :     __child = __new_node;</span>
+<span class="lineNum">    2112 </span><span class="lineCov">         22 :     if (__begin_node()-&gt;__left_ != nullptr)</span>
 <span class="lineNum">    2113 </span><span class="lineCov">          4 :         __begin_node() = static_cast&lt;__iter_pointer&gt;(__begin_node()-&gt;__left_);</span>
-<span class="lineNum">    2114 </span><span class="lineCov">         21 :     __tree_balance_after_insert(__end_node()-&gt;__left_, __child);</span>
-<span class="lineNum">    2115 </span><span class="lineCov">         21 :     ++size();</span>
-<span class="lineNum">    2116 </span><span class="lineCov">         21 : }</span>
+<span class="lineNum">    2114 </span><span class="lineCov">         22 :     __tree_balance_after_insert(__end_node()-&gt;__left_, __child);</span>
+<span class="lineNum">    2115 </span><span class="lineCov">         22 :     ++size();</span>
+<span class="lineNum">    2116 </span><span class="lineCov">         22 : }</span>
 <span class="lineNum">    2117 </span>            : 
 <span class="lineNum">    2118 </span>            : #ifndef _LIBCPP_CXX03_LANG
 <span class="lineNum">    2119 </span>            : template &lt;class _Tp, class _Compare, class _Allocator&gt;
@@ -2190,21 +2190,21 @@
 <span class="lineNum">    2128 </span>            : #endif
 <span class="lineNum">    2129 </span>            : {
 <span class="lineNum">    2130 </span>            :     __parent_pointer __parent;
-<span class="lineNum">    2131 </span><span class="lineCov">         20 :     __node_base_pointer&amp; __child = __find_equal(__parent, __k);</span>
-<span class="lineNum">    2132 </span><span class="lineCov">         20 :     __node_pointer __r = static_cast&lt;__node_pointer&gt;(__child);</span>
-<span class="lineNum">    2133 </span><span class="lineCov">         20 :     bool __inserted = false;</span>
-<span class="lineNum">    2134 </span><span class="lineCov">         20 :     if (__child == nullptr)</span>
+<span class="lineNum">    2131 </span><span class="lineCov">         21 :     __node_base_pointer&amp; __child = __find_equal(__parent, __k);</span>
+<span class="lineNum">    2132 </span><span class="lineCov">         21 :     __node_pointer __r = static_cast&lt;__node_pointer&gt;(__child);</span>
+<span class="lineNum">    2133 </span><span class="lineCov">         21 :     bool __inserted = false;</span>
+<span class="lineNum">    2134 </span><span class="lineCov">         21 :     if (__child == nullptr)</span>
 <span class="lineNum">    2135 </span>            :     {
 <span class="lineNum">    2136 </span>            : #ifndef _LIBCPP_CXX03_LANG
-<span class="lineNum">    2137 </span><span class="lineCov">         20 :         __node_holder __h = __construct_node(_VSTD::forward&lt;_Args&gt;(__args)...);</span>
+<span class="lineNum">    2137 </span><span class="lineCov">         21 :         __node_holder __h = __construct_node(_VSTD::forward&lt;_Args&gt;(__args)...);</span>
 <span class="lineNum">    2138 </span>            : #else
 <span class="lineNum">    2139 </span>            :         __node_holder __h = __construct_node(__args);
 <span class="lineNum">    2140 </span>            : #endif
-<span class="lineNum">    2141 </span><span class="lineCov">         20 :         __insert_node_at(__parent, __child, static_cast&lt;__node_base_pointer&gt;(__h.get()));</span>
-<span class="lineNum">    2142 </span><span class="lineCov">         20 :         __r = __h.release();</span>
-<span class="lineNum">    2143 </span><span class="lineCov">         20 :         __inserted = true;</span>
-<span class="lineNum">    2144 </span><span class="lineCov">         20 :     }</span>
-<span class="lineNum">    2145 </span><span class="lineCov">         20 :     return pair&lt;iterator, bool&gt;(iterator(__r), __inserted);</span>
+<span class="lineNum">    2141 </span><span class="lineCov">         21 :         __insert_node_at(__parent, __child, static_cast&lt;__node_base_pointer&gt;(__h.get()));</span>
+<span class="lineNum">    2142 </span><span class="lineCov">         21 :         __r = __h.release();</span>
+<span class="lineNum">    2143 </span><span class="lineCov">         21 :         __inserted = true;</span>
+<span class="lineNum">    2144 </span><span class="lineCov">         21 :     }</span>
+<span class="lineNum">    2145 </span><span class="lineCov">         21 :     return pair&lt;iterator, bool&gt;(iterator(__r), __inserted);</span>
 <span class="lineNum">    2146 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">    2147 </span>            : 
 <span class="lineNum">    2148 </span>            : 
@@ -2249,12 +2249,12 @@
 <span class="lineNum">    2187 </span>            : {
 <span class="lineNum">    2188 </span>            :     static_assert(!__is_tree_value_type&lt;_Args...&gt;::value,
 <span class="lineNum">    2189 </span>            :                   &quot;Cannot construct from __value_type&quot;);
-<span class="lineNum">    2190 </span><span class="lineCov">         21 :     __node_allocator&amp; __na = __node_alloc();</span>
-<span class="lineNum">    2191 </span><span class="lineCov">         21 :     __node_holder __h(__node_traits::allocate(__na, 1), _Dp(__na));</span>
-<span class="lineNum">    2192 </span><span class="lineCov">         42 :     __node_traits::construct(__na, _NodeTypes::__get_ptr(__h-&gt;__value_), _VSTD::forward&lt;_Args&gt;(__args)...);</span>
-<span class="lineNum">    2193 </span><span class="lineCov">         21 :     __h.get_deleter().__value_constructed = true;</span>
-<span class="lineNum">    2194 </span><span class="lineCov">         21 :     return __h;</span>
-<span class="lineNum">    2195 </span><span class="lineCov">         42 : }</span>
+<span class="lineNum">    2190 </span><span class="lineCov">         22 :     __node_allocator&amp; __na = __node_alloc();</span>
+<span class="lineNum">    2191 </span><span class="lineCov">         22 :     __node_holder __h(__node_traits::allocate(__na, 1), _Dp(__na));</span>
+<span class="lineNum">    2192 </span><span class="lineCov">         44 :     __node_traits::construct(__na, _NodeTypes::__get_ptr(__h-&gt;__value_), _VSTD::forward&lt;_Args&gt;(__args)...);</span>
+<span class="lineNum">    2193 </span><span class="lineCov">         22 :     __h.get_deleter().__value_constructed = true;</span>
+<span class="lineNum">    2194 </span><span class="lineCov">         22 :     return __h;</span>
+<span class="lineNum">    2195 </span><span class="lineCov">         44 : }</span>
 <span class="lineNum">    2196 </span>            : 
 <span class="lineNum">    2197 </span>            : 
 <span class="lineNum">    2198 </span>            : template &lt;class _Tp, class _Compare, class _Allocator&gt;

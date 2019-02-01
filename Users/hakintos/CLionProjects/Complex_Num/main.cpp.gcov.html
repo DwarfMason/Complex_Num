@@ -31,17 +31,17 @@
             <td class="headerValue">test.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">130</td>
-            <td class="headerCovTableEntry">130</td>
+            <td class="headerCovTableEntry">162</td>
+            <td class="headerCovTableEntry">162</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2019-02-01 18:12:07</td>
+            <td class="headerValue">2019-02-01 21:23:38</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">32</td>
-            <td class="headerCovTableEntry">32</td>
+            <td class="headerCovTableEntry">34</td>
+            <td class="headerCovTableEntry">34</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -69,7 +69,7 @@
 <a name="7"><span class="lineNum">       7 </span>            : using namespace complex;</a>
 <span class="lineNum">       8 </span>            : 
 <span class="lineNum">       9 </span><span class="lineCov">          2 : TEST_CASE(&quot;EQ_Test&quot;) {</span>
-<span class="lineNum">      10 </span><span class="lineCov">          2 :   CartCompNum x1 (4, 66), x2 (4, 66);</span>
+<span class="lineNum">      10 </span><span class="lineCov">          2 :   CartCompNum x1(4, 66), x2(4, 66);</span>
 <span class="lineNum">      11 </span><span class="lineCov">          8 :   REQUIRE(x1 == x1);</span>
 <span class="lineNum">      12 </span><span class="lineCov">          8 :   REQUIRE(x1 == x2);</span>
 <span class="lineNum">      13 </span><span class="lineCov">          9 :   REQUIRE(x1 == CartCompNum(4, 66));</span>
@@ -77,7 +77,7 @@
 <a name="15"><span class="lineNum">      15 </span><span class="lineCov">          9 :   REQUIRE(x1 == CartCompNum(2, 5));</span></a>
 <span class="lineNum">      16 </span><span class="lineCov">          1 : }</span>
 <span class="lineNum">      17 </span><span class="lineCov">          2 : TEST_CASE(&quot;EqualTest&quot;) {</span>
-<span class="lineNum">      18 </span><span class="lineCov">          2 :   CartCompNum x1(2,33), x2(2, 33);</span>
+<span class="lineNum">      18 </span><span class="lineCov">          2 :   CartCompNum x1(2, 33), x2(2, 33);</span>
 <span class="lineNum">      19 </span><span class="lineCov">          8 :   REQUIRE(x1 == x1);</span>
 <span class="lineNum">      20 </span><span class="lineCov">          8 :   REQUIRE(x1 == x2);</span>
 <span class="lineNum">      21 </span><span class="lineCov">          9 :   REQUIRE(x1 == CartCompNum(2, 33));</span>
@@ -89,132 +89,164 @@
 <span class="lineNum">      27 </span><span class="lineCov">          2 :   CartCompNum x1(20, 32), x2(12, 8), x3(-12, -8);</span>
 <span class="lineNum">      28 </span><span class="lineCov">         10 :   REQUIRE((x1 + x2) == CartCompNum(32, 40));</span>
 <span class="lineNum">      29 </span><span class="lineCov">         10 :   REQUIRE((x1 + x3) == CartCompNum(8, 24));</span>
-<span class="lineNum">      30 </span><span class="lineCov">          1 :   x1 += x1;</span>
-<span class="lineNum">      31 </span><span class="lineCov">          9 :   REQUIRE(x1 == CartCompNum(40, 64));</span>
-<a name="32"><span class="lineNum">      32 </span><span class="lineCov">          1 : }</span></a>
-<span class="lineNum">      33 </span>            : 
-<span class="lineNum">      34 </span><span class="lineCov">          2 : TEST_CASE(&quot;MinusTest&quot;) {</span>
-<span class="lineNum">      35 </span><span class="lineCov">          2 :   CartCompNum x1(20, 32), x2(12, 8), x3(-12, -8);</span>
-<span class="lineNum">      36 </span><span class="lineCov">         10 :   REQUIRE((x1 - x2) == CartCompNum(8, 24));</span>
-<span class="lineNum">      37 </span><span class="lineCov">         10 :   REQUIRE((x2 - x1) == CartCompNum(-8, -24));</span>
-<span class="lineNum">      38 </span><span class="lineCov">         10 :   REQUIRE((x2 - x3) == CartCompNum(24, 16));</span>
-<a name="39"><span class="lineNum">      39 </span><span class="lineCov">          1 : }</span></a>
-<span class="lineNum">      40 </span>            : 
-<span class="lineNum">      41 </span><span class="lineCov">          2 : TEST_CASE(&quot;MultTest&quot;) {</span>
-<span class="lineNum">      42 </span><span class="lineCov">          2 :   CartCompNum x1(7, 3), x2(5, -8), x3(-10, -4), x4(8, 0);</span>
-<span class="lineNum">      43 </span><span class="lineCov">         10 :   REQUIRE(x1 * x2 == CartCompNum (59, -41));</span>
-<span class="lineNum">      44 </span><span class="lineCov">         10 :   REQUIRE(x3 * x4 == CartCompNum (-80, -32));</span>
+<span class="lineNum">      30 </span><span class="lineCov">          9 :   REQUIRE(+x1 == x1);</span>
+<span class="lineNum">      31 </span><span class="lineCov">         10 :   REQUIRE((x1 + 4) == CartCompNum(24, 32));</span>
+<span class="lineNum">      32 </span><span class="lineCov">         10 :   REQUIRE((4 + x1) == CartCompNum(24, 32));</span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 :   x1 += x1;</span>
+<span class="lineNum">      34 </span><span class="lineCov">          9 :   REQUIRE(x1 == CartCompNum(40, 64));</span>
+<a name="35"><span class="lineNum">      35 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">      36 </span>            : 
+<span class="lineNum">      37 </span><span class="lineCov">          2 : TEST_CASE(&quot;MinusTest&quot;) {</span>
+<span class="lineNum">      38 </span><span class="lineCov">          2 :   CartCompNum x1(20, 32), x2(12, 8), x3(-12, -8);</span>
+<span class="lineNum">      39 </span><span class="lineCov">         10 :   REQUIRE(-x1 == x1 * (-1));</span>
+<span class="lineNum">      40 </span><span class="lineCov">         10 :   REQUIRE((x1 - 4) == CartCompNum(16, 32));</span>
+<span class="lineNum">      41 </span><span class="lineCov">         10 :   REQUIRE((4 - x1) == CartCompNum(-16, 32));</span>
+<span class="lineNum">      42 </span><span class="lineCov">         10 :   REQUIRE((x1 - x2) == CartCompNum(8, 24));</span>
+<span class="lineNum">      43 </span><span class="lineCov">         10 :   REQUIRE((x2 - x1) == CartCompNum(-8, -24));</span>
+<span class="lineNum">      44 </span><span class="lineCov">         10 :   REQUIRE((x2 - x3) == CartCompNum(24, 16));</span>
 <a name="45"><span class="lineNum">      45 </span><span class="lineCov">          1 : }</span></a>
 <span class="lineNum">      46 </span>            : 
-<span class="lineNum">      47 </span><span class="lineCov">          2 : TEST_CASE(&quot;DivTest&quot;) {</span>
-<span class="lineNum">      48 </span><span class="lineCov">          2 :   CartCompNum x1(2, 5), x2(3, -2);</span>
-<span class="lineNum">      49 </span><span class="lineCov">         10 :   REQUIRE((x1 / x2) == CartCompNum(-4.0 / 13.0, 19.0 / 13));</span>
-<a name="50"><span class="lineNum">      50 </span><span class="lineCov">          1 : }</span></a>
-<span class="lineNum">      51 </span>            : 
-<span class="lineNum">      52 </span><span class="lineCov">          2 : TEST_CASE(&quot;GET_SET_ARG_ABS&quot;) {</span>
-<span class="lineNum">      53 </span><span class="lineCov">          2 :   CartCompNum x1(2, 5), x2(-3, -8), x3(0, 8), x4(0, -8);</span>
-<span class="lineNum">      54 </span><span class="lineCov">          1 :   x1.SetIm(9);</span>
-<span class="lineNum">      55 </span><span class="lineCov">          9 :   REQUIRE(x1 == CartCompNum(2, 9));</span>
-<span class="lineNum">      56 </span><span class="lineCov">          1 :   x1.SetRe(-8);</span>
-<span class="lineNum">      57 </span><span class="lineCov">          9 :   REQUIRE(x1 == CartCompNum(-8, 9));</span>
-<span class="lineNum">      58 </span><span class="lineCov">          9 :   REQUIRE(x1.GetIm() == 9);</span>
-<span class="lineNum">      59 </span><span class="lineCov">          9 :   REQUIRE(x1.GetRe() == -8);</span>
-<span class="lineNum">      60 </span><span class="lineCov">          9 :   REQUIRE(std::abs(x1.arg() - 2.29) &lt; 0.008);</span>
-<span class="lineNum">      61 </span><span class="lineCov">          9 :   REQUIRE(std::abs(x1.abs() - 12.04159) &lt; 0.002);</span>
-<span class="lineNum">      62 </span><span class="lineCov">          1 :   x1.SetIm(-5);</span>
-<span class="lineNum">      63 </span><span class="lineCov">          9 :   REQUIRE(std::abs(x1.arg()) &gt; 2.58);</span>
-<span class="lineNum">      64 </span><span class="lineCov">          9 :   REQUIRE(x3.arg() == (M_PI / 2));</span>
-<span class="lineNum">      65 </span><span class="lineCov">          9 :   REQUIRE(x4.arg() == -(M_PI / 2));</span>
-<span class="lineNum">      66 </span><span class="lineCov">         10 :   REQUIRE(x2 == PolarToCart(CartToPolar(x2)));</span>
-<span class="lineNum">      67 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">      68 </span>            : 
-<a name="69"><span class="lineNum">      69 </span>            : //polar numbers tests</a>
-<span class="lineNum">      70 </span>            : 
-<span class="lineNum">      71 </span><span class="lineCov">          2 : TEST_CASE(&quot;STRING_IN&quot;){</span>
-<span class="lineNum">      72 </span><span class="lineCov">          2 :   PolarCompNum x2(12, 12);</span>
-<span class="lineNum">      73 </span><span class="lineCov">          1 :   CartCompNum x1(10, 10);</span>
-<span class="lineNum">      74 </span><span class="lineCov">          1 :   std::stringstream ss;</span>
-<span class="lineNum">      75 </span><span class="lineCov">          1 :   ss &lt;&lt; x2;</span>
-<span class="lineNum">      76 </span><span class="lineCov">         10 :   REQUIRE(ss.str() == &quot;(r=12,f=12)&quot;);</span>
-<span class="lineNum">      77 </span><span class="lineCov">          3 :   ss.str(&quot;&quot;);</span>
-<span class="lineNum">      78 </span><span class="lineCov">          1 :   ss &lt;&lt; x1;</span>
-<span class="lineNum">      79 </span><span class="lineCov">         10 :   REQUIRE(ss.str() == &quot;(10,i*10)&quot;);</span>
-<a name="80"><span class="lineNum">      80 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">      47 </span><span class="lineCov">          2 : TEST_CASE(&quot;MultTest&quot;) {</span>
+<span class="lineNum">      48 </span><span class="lineCov">          2 :   CartCompNum x1(7, 3), x2(5, -8), x3(-10, -4), x4(8, 0);</span>
+<span class="lineNum">      49 </span><span class="lineCov">         10 :   REQUIRE((x1 * 2) == CartCompNum(14, 6));</span>
+<span class="lineNum">      50 </span><span class="lineCov">         10 :   REQUIRE((2 * x1) == CartCompNum(14, 6));</span>
+<span class="lineNum">      51 </span><span class="lineCov">         10 :   REQUIRE(x1 * x2 == CartCompNum(59, -41));</span>
+<span class="lineNum">      52 </span><span class="lineCov">         10 :   REQUIRE(x3 * x4 == CartCompNum(-80, -32));</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 :   x1 *= x2;</span>
+<span class="lineNum">      54 </span><span class="lineCov">          9 :   REQUIRE(x1 == CartCompNum(59, -41));</span>
+<a name="55"><span class="lineNum">      55 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">      56 </span>            : 
+<span class="lineNum">      57 </span><span class="lineCov">          2 : TEST_CASE(&quot;DivTest&quot;) {</span>
+<span class="lineNum">      58 </span><span class="lineCov">          2 :   CartCompNum x1(2, 5), x2(3, -2);</span>
+<span class="lineNum">      59 </span><span class="lineCov">         10 :   REQUIRE((x1 / 2) == CartCompNum(1, 2.5));</span>
+<span class="lineNum">      60 </span><span class="lineCov">         10 :   REQUIRE((x1 / x2) == CartCompNum(-4.0 / 13.0, 19.0 / 13));</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 :   x1 /= x2;</span>
+<span class="lineNum">      62 </span><span class="lineCov">          9 :   REQUIRE(x1 == CartCompNum(-4.0 / 13.0, 19.0 / 13));</span>
+<a name="63"><span class="lineNum">      63 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">      64 </span>            : 
+<span class="lineNum">      65 </span><span class="lineCov">          2 : TEST_CASE(&quot;GET_SET_ARG_ABS&quot;) {</span>
+<span class="lineNum">      66 </span><span class="lineCov">          2 :   CartCompNum x1(2, 5), x2(-3, -8), x3(0, 8), x4(0, -8);</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 :   x1.SetIm(9);</span>
+<span class="lineNum">      68 </span><span class="lineCov">          9 :   REQUIRE(x1 == CartCompNum(2, 9));</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 :   x1.SetRe(-8);</span>
+<span class="lineNum">      70 </span><span class="lineCov">          9 :   REQUIRE(x1 == CartCompNum(-8, 9));</span>
+<span class="lineNum">      71 </span><span class="lineCov">          9 :   REQUIRE(x1.GetIm() == 9);</span>
+<span class="lineNum">      72 </span><span class="lineCov">          9 :   REQUIRE(x1.GetRe() == -8);</span>
+<span class="lineNum">      73 </span><span class="lineCov">          9 :   REQUIRE(std::abs(x1.arg() - 2.29) &lt; 0.008);</span>
+<span class="lineNum">      74 </span><span class="lineCov">          9 :   REQUIRE(std::abs(x1.abs() - 12.04159) &lt; 0.002);</span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 :   x1.SetIm(-5);</span>
+<span class="lineNum">      76 </span><span class="lineCov">          9 :   REQUIRE(std::abs(x1.arg()) &gt; 2.58);</span>
+<span class="lineNum">      77 </span><span class="lineCov">          9 :   REQUIRE(x3.arg() == (M_PI / 2));</span>
+<span class="lineNum">      78 </span><span class="lineCov">          9 :   REQUIRE(x4.arg() == -(M_PI / 2));</span>
+<span class="lineNum">      79 </span><span class="lineCov">         10 :   REQUIRE(x2 == PolarToCart(CartToPolar(x2)));</span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 : }</span>
 <span class="lineNum">      81 </span>            : 
-<span class="lineNum">      82 </span><span class="lineCov">          2 : TEST_CASE(&quot;STRINGTEST_OUT&quot;){</span>
-<span class="lineNum">      83 </span><span class="lineCov">          2 :   PolarCompNum x2;</span>
-<span class="lineNum">      84 </span><span class="lineCov">          1 :   std::stringstream ss;</span>
-<span class="lineNum">      85 </span><span class="lineCov">          1 :   std::stringstream ss1;</span>
-<span class="lineNum">      86 </span><span class="lineCov">          1 :   ss &lt;&lt; &quot;1 2&quot;;</span>
-<span class="lineNum">      87 </span><span class="lineCov">          1 :   CartCompNum x1;</span>
-<span class="lineNum">      88 </span><span class="lineCov">          1 :   ss &gt;&gt; x1;</span>
-<span class="lineNum">      89 </span><span class="lineCov">         10 :   REQUIRE(x1 == CartCompNum(1,2));</span>
-<span class="lineNum">      90 </span><span class="lineCov">          1 :   ss1 &lt;&lt; (&quot;2 3&quot;);</span>
-<span class="lineNum">      91 </span><span class="lineCov">          1 :   ss1 &gt;&gt; x2;</span>
-<span class="lineNum">      92 </span><span class="lineCov">         10 :   REQUIRE(x2 == PolarCompNum(2, 3));</span>
+<a name="82"><span class="lineNum">      82 </span>            : //polar numbers tests</a>
+<span class="lineNum">      83 </span>            : 
+<span class="lineNum">      84 </span><span class="lineCov">          2 : TEST_CASE(&quot;STRING_IN&quot;) {</span>
+<span class="lineNum">      85 </span><span class="lineCov">          2 :   PolarCompNum x2(12, 12);</span>
+<span class="lineNum">      86 </span><span class="lineCov">          1 :   CartCompNum x1(10, 10);</span>
+<span class="lineNum">      87 </span><span class="lineCov">          1 :   std::stringstream ss;</span>
+<span class="lineNum">      88 </span><span class="lineCov">          1 :   ss &lt;&lt; x2;</span>
+<span class="lineNum">      89 </span><span class="lineCov">         10 :   REQUIRE(ss.str() == &quot;(r=12,f=12)&quot;);</span>
+<span class="lineNum">      90 </span><span class="lineCov">          3 :   ss.str(&quot;&quot;);</span>
+<span class="lineNum">      91 </span><span class="lineCov">          1 :   ss &lt;&lt; x1;</span>
+<span class="lineNum">      92 </span><span class="lineCov">         10 :   REQUIRE(ss.str() == &quot;(10,i*10)&quot;);</span>
 <a name="93"><span class="lineNum">      93 </span><span class="lineCov">          1 : }</span></a>
 <span class="lineNum">      94 </span>            : 
-<span class="lineNum">      95 </span><span class="lineCov">          2 : TEST_CASE(&quot;EqualsTestPolar&quot;) {</span>
-<span class="lineNum">      96 </span><span class="lineCov">          2 :   PolarCompNum x1(20, 32), x2(20, 32);</span>
-<span class="lineNum">      97 </span><span class="lineCov">          8 :   REQUIRE(x1 == x1);</span>
-<span class="lineNum">      98 </span><span class="lineCov">          8 :   REQUIRE(x1 == x2);</span>
-<span class="lineNum">      99 </span><span class="lineCov">          9 :   REQUIRE(x1 == PolarCompNum(20, 32));</span>
-<a name="100"><span class="lineNum">     100 </span><span class="lineCov">          1 : }</span></a>
-<span class="lineNum">     101 </span>            : 
-<span class="lineNum">     102 </span><span class="lineCov">          2 : TEST_CASE(&quot;SumTestPolar&quot;) {</span>
-<span class="lineNum">     103 </span><span class="lineCov">          2 :   PolarCompNum x1(20, 32), x2(12, 8), x3(-12, -8), x4(10, 10), x5(12, 8);</span>
-<span class="lineNum">     104 </span><span class="lineCov">         13 :   REQUIRE((x1 + x2) == CartToPolar(PolarToCart(x1) + PolarToCart(x2)));</span>
-<span class="lineNum">     105 </span><span class="lineCov">         13 :   REQUIRE((x1 + x3) == CartToPolar(PolarToCart(x1) + PolarToCart(x3)));</span>
-<span class="lineNum">     106 </span><span class="lineCov">          1 :   x5 += x4;</span>
-<span class="lineNum">     107 </span><span class="lineCov">          9 :   REQUIRE((x4 + x2) == x5);</span>
-<a name="108"><span class="lineNum">     108 </span><span class="lineCov">          1 : }</span></a>
-<span class="lineNum">     109 </span>            : 
-<span class="lineNum">     110 </span><span class="lineCov">          2 : TEST_CASE(&quot;MinusTestPolar&quot;) {</span>
-<span class="lineNum">     111 </span><span class="lineCov">          2 :   PolarCompNum x1(20, 32), x2(12, 8), x3(-12, 0), x4(-12, M_PI), x5(10, 0);</span>
-<span class="lineNum">     112 </span><span class="lineCov">         13 :   REQUIRE((x1 - x2) == CartToPolar(PolarToCart(x1) - PolarToCart(x2)));</span>
-<span class="lineNum">     113 </span><span class="lineCov">         13 :   REQUIRE((x1 - x3) == CartToPolar(PolarToCart(x1) - PolarToCart(x3)));</span>
-<span class="lineNum">     114 </span><span class="lineCov">          1 :   x1 -= x5;</span>
-<span class="lineNum">     115 </span><span class="lineCov">         14 :   REQUIRE(x1 == CartToPolar(PolarToCart(PolarCompNum(20, 32)) - PolarToCart(PolarCompNum(10, 0))));</span>
-<span class="lineNum">     116 </span><span class="lineCov">         14 :   REQUIRE((x1 - PolarCompNum(10)) == CartToPolar(PolarToCart(x1) - PolarToCart(x5)));</span>
-<span class="lineNum">     117 </span><span class="lineCov">          1 :   x1 = PolarCompNum(10, 10);</span>
-<span class="lineNum">     118 </span><span class="lineCov">          9 :   REQUIRE(x1 == PolarCompNum(10, 10));</span>
-<span class="lineNum">     119 </span><span class="lineCov">          1 : }</span>
-<a name="120"><span class="lineNum">     120 </span>            : </a>
-<span class="lineNum">     121 </span>            : 
-<span class="lineNum">     122 </span><span class="lineCov">          2 : TEST_CASE(&quot;MultTestPolar&quot;) {</span>
-<span class="lineNum">     123 </span><span class="lineCov">          2 :   PolarCompNum x1(7, 3), x2(3, -8), x3(-10, -4), x4(8, 0);</span>
-<span class="lineNum">     124 </span><span class="lineCov">         10 :   REQUIRE((x1 * x2) == PolarCompNum(21, -5));</span>
-<span class="lineNum">     125 </span><span class="lineCov">         11 :   REQUIRE((x3 * PolarCompNum(8)) == (x3 * x4));</span>
-<a name="126"><span class="lineNum">     126 </span><span class="lineCov">          1 : }</span></a>
-<span class="lineNum">     127 </span>            : 
-<span class="lineNum">     128 </span><span class="lineCov">          2 : TEST_CASE(&quot;DivTestPolar&quot;) {</span>
-<span class="lineNum">     129 </span><span class="lineCov">          2 :   PolarCompNum x1(2, 5), x2(3, -2);</span>
-<span class="lineNum">     130 </span><span class="lineCov">         10 :   REQUIRE((x1 / x2) == PolarCompNum(2.0 / 3, 7));</span>
-<a name="131"><span class="lineNum">     131 </span><span class="lineCov">          1 : }</span></a>
-<span class="lineNum">     132 </span>            : 
-<span class="lineNum">     133 </span><span class="lineCov">          2 : TEST_CASE(&quot;GET_SET_POLAR&quot;) {</span>
-<span class="lineNum">     134 </span><span class="lineCov">          2 :   PolarCompNum x1(9, 9);</span>
-<span class="lineNum">     135 </span><span class="lineCov">          1 :   x1.SetF(8);</span>
-<span class="lineNum">     136 </span><span class="lineCov">          9 :   REQUIRE(x1 == PolarCompNum(9, 8));</span>
-<span class="lineNum">     137 </span><span class="lineCov">          1 :   x1.SetR(8);</span>
-<span class="lineNum">     138 </span><span class="lineCov">          9 :   REQUIRE(x1 == PolarCompNum(8, 8));</span>
-<a name="139"><span class="lineNum">     139 </span><span class="lineCov">          1 : }</span></a>
-<span class="lineNum">     140 </span>            : 
-<span class="lineNum">     141 </span><span class="lineCov">          2 : TEST_CASE(&quot;OTHERTESTS&quot;) {</span>
-<span class="lineNum">     142 </span><span class="lineCov">          2 :   CartCompNum x1, x2(10), x3(CartCompNum(10, 19));</span>
-<span class="lineNum">     143 </span><span class="lineCov">          9 :   REQUIRE(x1 == CartCompNum());</span>
-<span class="lineNum">     144 </span><span class="lineCov">          9 :   REQUIRE(x2 == CartCompNum(10));</span>
-<span class="lineNum">     145 </span><span class="lineCov">          9 :   REQUIRE(x3 == CartCompNum(10, 19));</span>
-<span class="lineNum">     146 </span><span class="lineCov">          1 :   CartCompNum x4 = x3;</span>
-<span class="lineNum">     147 </span><span class="lineCov">          9 :   REQUIRE(x4 == CartCompNum(10, 19));</span>
-<span class="lineNum">     148 </span><span class="lineCov">          1 :   x4 -= x3;</span>
-<span class="lineNum">     149 </span><span class="lineCov">          9 :   REQUIRE(x4 == CartCompNum(0, 0));</span>
-<span class="lineNum">     150 </span><span class="lineCov">          1 :   PolarCompNum y1, y2(10);</span>
-<span class="lineNum">     151 </span><span class="lineCov">          9 :   REQUIRE(y2 == PolarCompNum(y2));</span>
-<span class="lineNum">     152 </span><span class="lineCov">          9 :   REQUIRE(y1 == PolarCompNum());</span>
-<span class="lineNum">     153 </span><span class="lineCov">          9 :   REQUIRE(y2.abs() == 10);</span>
-<span class="lineNum">     154 </span><span class="lineCov">          9 :   REQUIRE(y2.arg() == 0);</span>
-<span class="lineNum">     155 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      95 </span><span class="lineCov">          2 : TEST_CASE(&quot;STRINGTEST_OUT&quot;) {</span>
+<span class="lineNum">      96 </span><span class="lineCov">          2 :   PolarCompNum x2;</span>
+<span class="lineNum">      97 </span><span class="lineCov">          1 :   std::stringstream ss;</span>
+<span class="lineNum">      98 </span><span class="lineCov">          1 :   std::stringstream ss1;</span>
+<span class="lineNum">      99 </span><span class="lineCov">          1 :   ss &lt;&lt; &quot;1 2&quot;;</span>
+<span class="lineNum">     100 </span><span class="lineCov">          1 :   CartCompNum x1;</span>
+<span class="lineNum">     101 </span><span class="lineCov">          1 :   ss &gt;&gt; x1;</span>
+<span class="lineNum">     102 </span><span class="lineCov">         10 :   REQUIRE(x1 == CartCompNum(1, 2));</span>
+<span class="lineNum">     103 </span><span class="lineCov">          1 :   ss1 &lt;&lt; (&quot;2 3&quot;);</span>
+<span class="lineNum">     104 </span><span class="lineCov">          1 :   ss1 &gt;&gt; x2;</span>
+<span class="lineNum">     105 </span><span class="lineCov">         10 :   REQUIRE(x2 == PolarCompNum(2, 3));</span>
+<a name="106"><span class="lineNum">     106 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     107 </span>            : 
+<span class="lineNum">     108 </span><span class="lineCov">          2 : TEST_CASE(&quot;EqualsTestPolar&quot;) {</span>
+<span class="lineNum">     109 </span><span class="lineCov">          2 :   PolarCompNum x1(20, 32), x2(20, 32);</span>
+<span class="lineNum">     110 </span><span class="lineCov">          8 :   REQUIRE(x1 == x1);</span>
+<span class="lineNum">     111 </span><span class="lineCov">          8 :   REQUIRE(x1 == x2);</span>
+<span class="lineNum">     112 </span><span class="lineCov">          9 :   REQUIRE(x1 == PolarCompNum(20, 32));</span>
+<a name="113"><span class="lineNum">     113 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     114 </span>            : 
+<span class="lineNum">     115 </span><span class="lineCov">          2 : TEST_CASE(&quot;SumTestPolar&quot;) {</span>
+<span class="lineNum">     116 </span><span class="lineCov">          2 :   PolarCompNum x1(20, 32), x2(12, 8), x3(-12, -8), x4(10, 10), x5(12, 8);</span>
+<span class="lineNum">     117 </span><span class="lineCov">         13 :   REQUIRE((x1 + x2) == CartToPolar(PolarToCart(x1) + PolarToCart(x2)));</span>
+<span class="lineNum">     118 </span><span class="lineCov">         13 :   REQUIRE((x1 + x3) == CartToPolar(PolarToCart(x1) + PolarToCart(x3)));</span>
+<span class="lineNum">     119 </span><span class="lineCov">          9 :   REQUIRE(+x5 == x5);</span>
+<span class="lineNum">     120 </span><span class="lineCov">          1 :   x5 += x4;</span>
+<span class="lineNum">     121 </span><span class="lineCov">          9 :   REQUIRE((x4 + x2) == x5);</span>
+<a name="122"><span class="lineNum">     122 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     123 </span>            : 
+<span class="lineNum">     124 </span><span class="lineCov">          2 : TEST_CASE(&quot;MinusTestPolar&quot;) {</span>
+<span class="lineNum">     125 </span><span class="lineCov">          2 :   PolarCompNum x1(20, 32), x2(12, 8), x3(-12, 0), x4(-12, M_PI), x5(10, 0);</span>
+<span class="lineNum">     126 </span><span class="lineCov">         13 :   REQUIRE((x1 - x2) == CartToPolar(PolarToCart(x1) - PolarToCart(x2)));</span>
+<span class="lineNum">     127 </span><span class="lineCov">         13 :   REQUIRE((x1 - x3) == CartToPolar(PolarToCart(x1) - PolarToCart(x3)));</span>
+<span class="lineNum">     128 </span><span class="lineCov">          1 :   x1 -= x5;</span>
+<span class="lineNum">     129 </span><span class="lineCov">         14 :   REQUIRE(x1 == CartToPolar(PolarToCart(PolarCompNum(20, 32)) - PolarToCart(PolarCompNum(10, 0))));</span>
+<span class="lineNum">     130 </span><span class="lineCov">         14 :   REQUIRE((x1 - PolarCompNum(10)) == CartToPolar(PolarToCart(x1) - PolarToCart(x5)));</span>
+<span class="lineNum">     131 </span><span class="lineCov">          1 :   x1 = PolarCompNum(10, 10);</span>
+<span class="lineNum">     132 </span><span class="lineCov">          9 :   REQUIRE(x1 == PolarCompNum(10, 10));</span>
+<span class="lineNum">     133 </span><span class="lineCov">         10 :   REQUIRE(-x1 == x1 * (-1));</span>
+<a name="134"><span class="lineNum">     134 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     135 </span>            : 
+<span class="lineNum">     136 </span><span class="lineCov">          2 : TEST_CASE(&quot;MultTestPolar&quot;) {</span>
+<span class="lineNum">     137 </span><span class="lineCov">          2 :   PolarCompNum x1(7, 3), x2(3, -8), x3(-10, -4), x4(8, 0);</span>
+<span class="lineNum">     138 </span><span class="lineCov">         10 :   REQUIRE((x1 * x2) == PolarCompNum(21, -5));</span>
+<span class="lineNum">     139 </span><span class="lineCov">          1 :   x1 *= x2;</span>
+<span class="lineNum">     140 </span><span class="lineCov">          9 :   REQUIRE(x1 == PolarCompNum(21, -5));</span>
+<span class="lineNum">     141 </span><span class="lineCov">         10 :   REQUIRE((x1 * 2) == PolarCompNum(42, -5));</span>
+<span class="lineNum">     142 </span><span class="lineCov">          1 :   x1 *= 2;</span>
+<span class="lineNum">     143 </span><span class="lineCov">          9 :   REQUIRE(x1 == PolarCompNum(42, -5));</span>
+<span class="lineNum">     144 </span><span class="lineCov">         11 :   REQUIRE((x3 * PolarCompNum(8)) == (x3 * x4));</span>
+<a name="145"><span class="lineNum">     145 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     146 </span>            : 
+<span class="lineNum">     147 </span><span class="lineCov">          2 : TEST_CASE(&quot;DivTestPolar&quot;) {</span>
+<span class="lineNum">     148 </span><span class="lineCov">          2 :   PolarCompNum x1(2, 5), x2(3, -2);</span>
+<span class="lineNum">     149 </span><span class="lineCov">         10 :   REQUIRE((x1 / x2) == PolarCompNum(2.0 / 3, 7));</span>
+<span class="lineNum">     150 </span><span class="lineCov">         10 :   REQUIRE((x1 /2) == PolarCompNum(1, 5));</span>
+<span class="lineNum">     151 </span><span class="lineCov">          1 :   x1 /= x2;</span>
+<span class="lineNum">     152 </span><span class="lineCov">          9 :   REQUIRE(x1 == PolarCompNum(2.0 / 3, 7));</span>
+<span class="lineNum">     153 </span><span class="lineCov">          1 :   x1 /= 2;</span>
+<span class="lineNum">     154 </span><span class="lineCov">          9 :   REQUIRE(x1 == PolarCompNum(1.0 / 3, 7));</span>
+<a name="155"><span class="lineNum">     155 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     156 </span>            : 
+<span class="lineNum">     157 </span><span class="lineCov">          2 : TEST_CASE(&quot;GET_SET_POLAR&quot;) {</span>
+<span class="lineNum">     158 </span><span class="lineCov">          2 :   PolarCompNum x1(9, 9);</span>
+<span class="lineNum">     159 </span><span class="lineCov">          1 :   x1.SetF(8);</span>
+<span class="lineNum">     160 </span><span class="lineCov">          9 :   REQUIRE(x1 == PolarCompNum(9, 8));</span>
+<span class="lineNum">     161 </span><span class="lineCov">         11 :   REQUIRE(PolarCompNum(x1.GetR(), x1.GetF()) == x1);</span>
+<span class="lineNum">     162 </span><span class="lineCov">          1 :   x1.SetR(8);</span>
+<span class="lineNum">     163 </span><span class="lineCov">          9 :   REQUIRE(x1 == PolarCompNum(8, 8));</span>
+<a name="164"><span class="lineNum">     164 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     165 </span>            : 
+<span class="lineNum">     166 </span><span class="lineCov">          2 : TEST_CASE(&quot;POW&quot;) {</span>
+<span class="lineNum">     167 </span><span class="lineCov">          2 :   PolarCompNum x1(4, 3);</span>
+<span class="lineNum">     168 </span><span class="lineCov">          1 :   CartCompNum x2(3, 6);</span>
+<span class="lineNum">     169 </span><span class="lineCov">         10 :   REQUIRE(bpow(x2, 3) == CartCompNum(-297, -54));</span>
+<span class="lineNum">     170 </span><span class="lineCov">         10 :   REQUIRE(bpow(x1, 3) == PolarCompNum(64, 9));</span>
+<a name="171"><span class="lineNum">     171 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">     172 </span>            : 
+<span class="lineNum">     173 </span><span class="lineCov">          2 : TEST_CASE(&quot;OTHERTESTS&quot;) {</span>
+<span class="lineNum">     174 </span><span class="lineCov">          2 :   CartCompNum x1, x2(10), x3(CartCompNum(10, 19));</span>
+<span class="lineNum">     175 </span><span class="lineCov">          9 :   REQUIRE(x1 == CartCompNum());</span>
+<span class="lineNum">     176 </span><span class="lineCov">          9 :   REQUIRE(x2 == CartCompNum(10));</span>
+<span class="lineNum">     177 </span><span class="lineCov">          9 :   REQUIRE(x3 == CartCompNum(10, 19));</span>
+<span class="lineNum">     178 </span><span class="lineCov">          1 :   CartCompNum x4 = x3;</span>
+<span class="lineNum">     179 </span><span class="lineCov">          9 :   REQUIRE(x4 == CartCompNum(10, 19));</span>
+<span class="lineNum">     180 </span><span class="lineCov">          1 :   x4 -= x3;</span>
+<span class="lineNum">     181 </span><span class="lineCov">          9 :   REQUIRE(x4 == CartCompNum(0, 0));</span>
+<span class="lineNum">     182 </span><span class="lineCov">          1 :   PolarCompNum y1, y2(10);</span>
+<span class="lineNum">     183 </span><span class="lineCov">          9 :   REQUIRE(y2 == PolarCompNum(y2));</span>
+<span class="lineNum">     184 </span><span class="lineCov">          9 :   REQUIRE(y1 == PolarCompNum());</span>
+<span class="lineNum">     185 </span><span class="lineCov">          9 :   REQUIRE(y2.abs() == 10);</span>
+<span class="lineNum">     186 </span><span class="lineCov">          9 :   REQUIRE(y2.arg() == 0);</span>
+<span class="lineNum">     187 </span><span class="lineCov">          1 : }</span>
 </pre>
       </td>
     </tr>

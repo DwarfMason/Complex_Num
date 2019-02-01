@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2019-02-01 18:12:07</td>
+            <td class="headerValue">2019-02-01 21:23:38</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">6</td>
@@ -423,7 +423,7 @@
 <span class="lineNum">     361 </span>            :     _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR
 <span class="lineNum">     362 </span>            :     _ToDuration operator()(const _FromDuration&amp; __fd) const
 <span class="lineNum">     363 </span>            :     {
-<span class="lineNum">     364 </span><span class="lineCov">         32 :         return _ToDuration(static_cast&lt;typename _ToDuration::rep&gt;(__fd.count()));</span>
+<span class="lineNum">     364 </span><span class="lineCov">         34 :         return _ToDuration(static_cast&lt;typename _ToDuration::rep&gt;(__fd.count()));</span>
 <span class="lineNum">     365 </span>            :     }
 <span class="lineNum">     366 </span>            : };
 <span class="lineNum">     367 </span>            : 
@@ -474,7 +474,7 @@
 <span class="lineNum">     412 </span>            : &gt;::type
 <span class="lineNum">     413 </span>            : duration_cast(const duration&lt;_Rep, _Period&gt;&amp; __fd)
 <span class="lineNum">     414 </span>            : {
-<span class="lineNum">     415 </span><span class="lineCov">         32 :     return __duration_cast&lt;duration&lt;_Rep, _Period&gt;, _ToDuration&gt;()(__fd);</span>
+<span class="lineNum">     415 </span><span class="lineCov">         34 :     return __duration_cast&lt;duration&lt;_Rep, _Period&gt;, _ToDuration&gt;()(__fd);</span>
 <span class="lineNum">     416 </span>            : }
 <span class="lineNum">     417 </span>            : 
 <span class="lineNum">     418 </span>            : template &lt;class _Rep&gt;
@@ -609,7 +609,7 @@
 <span class="lineNum">     547 </span>            :                (treat_as_floating_point&lt;rep&gt;::value ||
 <span class="lineNum">     548 </span>            :                !treat_as_floating_point&lt;_Rep2&gt;::value)
 <span class="lineNum">     549 </span>            :             &gt;::type* = 0)
-<span class="lineNum">     550 </span><span class="lineCov">         64 :                 : __rep_(__r) {}</span>
+<span class="lineNum">     550 </span><span class="lineCov">         68 :                 : __rep_(__r) {}</span>
 <span class="lineNum">     551 </span>            : 
 <span class="lineNum">     552 </span>            :     // conversions
 <span class="lineNum">     553 </span>            :     template &lt;class _Rep2, class _Period2&gt;
@@ -626,7 +626,7 @@
 <span class="lineNum">     564 </span>            : 
 <a name="565"><span class="lineNum">     565 </span>            :     // observer</a>
 <span class="lineNum">     566 </span>            : 
-<span class="lineNum">     567 </span><span class="lineCov">         64 :     _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR rep count() const {return __rep_;}</span>
+<span class="lineNum">     567 </span><span class="lineCov">         68 :     _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR rep count() const {return __rep_;}</span>
 <span class="lineNum">     568 </span>            : 
 <span class="lineNum">     569 </span>            :     // arithmetic
 <span class="lineNum">     570 </span>            : 
@@ -921,7 +921,7 @@
 <span class="lineNum">     859 </span>            : 
 <a name="860"><span class="lineNum">     860 </span>            :     // observer</a>
 <span class="lineNum">     861 </span>            : 
-<span class="lineNum">     862 </span><span class="lineCov">         32 :     _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR_AFTER_CXX11 duration time_since_epoch() const {return __d_;}</span>
+<span class="lineNum">     862 </span><span class="lineCov">         34 :     _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR_AFTER_CXX11 duration time_since_epoch() const {return __d_;}</span>
 <span class="lineNum">     863 </span>            : 
 <span class="lineNum">     864 </span>            :     // arithmetic
 <span class="lineNum">     865 </span>            : 

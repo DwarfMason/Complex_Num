@@ -1,3 +1,3 @@
-/home/dwarf/Complex_Num/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/dwarf/Complex_Num/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/dwarf/Complex_Num/cmake-build-debug/CMakeFiles/Complrx_Num.dir
+/Users/hakintos/CLionProjects/Complex_Num/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/hakintos/CLionProjects/Complex_Num/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/hakintos/CLionProjects/Complex_Num/cmake-build-debug/CMakeFiles/Complrx_Num.dir
