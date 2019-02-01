@@ -1,0 +1,1244 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - test.info - v1/chrono</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../index.html">top level</a> - <a href="index.html">v1</a> - chrono<span style="font-size: 80%;"> (source / <a href="chrono.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">test.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">5</td>
+            <td class="headerCovTableEntry">5</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2019-02-01 18:12:07</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : // -*- C++ -*-</a>
+<span class="lineNum">       2 </span>            : //===---------------------------- chrono ----------------------------------===//
+<span class="lineNum">       3 </span>            : //
+<span class="lineNum">       4 </span>            : //                     The LLVM Compiler Infrastructure
+<span class="lineNum">       5 </span>            : //
+<span class="lineNum">       6 </span>            : // This file is dual licensed under the MIT and the University of Illinois Open
+<span class="lineNum">       7 </span>            : // Source Licenses. See LICENSE.TXT for details.
+<span class="lineNum">       8 </span>            : //
+<span class="lineNum">       9 </span>            : //===----------------------------------------------------------------------===//
+<span class="lineNum">      10 </span>            : 
+<span class="lineNum">      11 </span>            : #ifndef _LIBCPP_CHRONO
+<span class="lineNum">      12 </span>            : #define _LIBCPP_CHRONO
+<span class="lineNum">      13 </span>            : 
+<span class="lineNum">      14 </span>            : /*
+<span class="lineNum">      15 </span>            :     chrono synopsis
+<span class="lineNum">      16 </span>            : 
+<span class="lineNum">      17 </span>            : namespace std
+<span class="lineNum">      18 </span>            : {
+<span class="lineNum">      19 </span>            : namespace chrono
+<span class="lineNum">      20 </span>            : {
+<span class="lineNum">      21 </span>            : 
+<span class="lineNum">      22 </span>            : template &lt;class ToDuration, class Rep, class Period&gt;
+<span class="lineNum">      23 </span>            : constexpr
+<span class="lineNum">      24 </span>            : ToDuration
+<span class="lineNum">      25 </span>            : duration_cast(const duration&lt;Rep, Period&gt;&amp; fd);
+<span class="lineNum">      26 </span>            : 
+<span class="lineNum">      27 </span>            : template &lt;class Rep&gt; struct treat_as_floating_point : is_floating_point&lt;Rep&gt; {};
+<span class="lineNum">      28 </span>            : 
+<span class="lineNum">      29 </span>            : template &lt;class Rep&gt; inline constexpr bool treat_as_floating_point_v
+<span class="lineNum">      30 </span>            :     = treat_as_floating_point&lt;Rep&gt;::value;                       // C++17
+<span class="lineNum">      31 </span>            : 
+<span class="lineNum">      32 </span>            : template &lt;class Rep&gt;
+<span class="lineNum">      33 </span>            : struct duration_values
+<span class="lineNum">      34 </span>            : {
+<span class="lineNum">      35 </span>            : public:
+<span class="lineNum">      36 </span>            :     static constexpr Rep zero();
+<span class="lineNum">      37 </span>            :     static constexpr Rep max();
+<span class="lineNum">      38 </span>            :     static constexpr Rep min();
+<span class="lineNum">      39 </span>            : };
+<span class="lineNum">      40 </span>            : 
+<span class="lineNum">      41 </span>            : // duration
+<span class="lineNum">      42 </span>            : 
+<span class="lineNum">      43 </span>            : template &lt;class Rep, class Period = ratio&lt;1&gt;&gt;
+<span class="lineNum">      44 </span>            : class duration
+<span class="lineNum">      45 </span>            : {
+<span class="lineNum">      46 </span>            :     static_assert(!__is_duration&lt;Rep&gt;::value, &quot;A duration representation can not be a duration&quot;);
+<span class="lineNum">      47 </span>            :     static_assert(__is_ratio&lt;Period&gt;::value, &quot;Second template parameter of duration must be a std::ratio&quot;);
+<span class="lineNum">      48 </span>            :     static_assert(Period::num &gt; 0, &quot;duration period must be positive&quot;);
+<span class="lineNum">      49 </span>            : public:
+<span class="lineNum">      50 </span>            :     typedef Rep rep;
+<span class="lineNum">      51 </span>            :     typedef typename _Period::type period;
+<span class="lineNum">      52 </span>            : 
+<span class="lineNum">      53 </span>            :     constexpr duration() = default;
+<span class="lineNum">      54 </span>            :     template &lt;class Rep2&gt;
+<span class="lineNum">      55 </span>            :         constexpr explicit duration(const Rep2&amp; r,
+<span class="lineNum">      56 </span>            :             typename enable_if
+<span class="lineNum">      57 </span>            :             &lt;
+<span class="lineNum">      58 </span>            :                is_convertible&lt;Rep2, rep&gt;::value &amp;&amp;
+<span class="lineNum">      59 </span>            :                (treat_as_floating_point&lt;rep&gt;::value ||
+<span class="lineNum">      60 </span>            :                !treat_as_floating_point&lt;rep&gt;::value &amp;&amp; !treat_as_floating_point&lt;Rep2&gt;::value)
+<span class="lineNum">      61 </span>            :             &gt;::type* = 0);
+<span class="lineNum">      62 </span>            : 
+<span class="lineNum">      63 </span>            :     // conversions
+<span class="lineNum">      64 </span>            :     template &lt;class Rep2, class Period2&gt;
+<span class="lineNum">      65 </span>            :         constexpr duration(const duration&lt;Rep2, Period2&gt;&amp; d,
+<span class="lineNum">      66 </span>            :             typename enable_if
+<span class="lineNum">      67 </span>            :             &lt;
+<span class="lineNum">      68 </span>            :                 treat_as_floating_point&lt;rep&gt;::value ||
+<span class="lineNum">      69 </span>            :                 ratio_divide&lt;Period2, period&gt;::type::den == 1
+<span class="lineNum">      70 </span>            :             &gt;::type* = 0);
+<span class="lineNum">      71 </span>            : 
+<span class="lineNum">      72 </span>            :     // observer
+<span class="lineNum">      73 </span>            : 
+<span class="lineNum">      74 </span>            :     constexpr rep count() const;
+<span class="lineNum">      75 </span>            : 
+<span class="lineNum">      76 </span>            :     // arithmetic
+<span class="lineNum">      77 </span>            : 
+<span class="lineNum">      78 </span>            :     constexpr common_type&lt;duration&gt;::type  operator+() const;
+<span class="lineNum">      79 </span>            :     constexpr common_type&lt;duration&gt;::type  operator-() const;
+<span class="lineNum">      80 </span>            :     constexpr duration&amp; operator++();
+<span class="lineNum">      81 </span>            :     constexpr duration  operator++(int);
+<span class="lineNum">      82 </span>            :     constexpr duration&amp; operator--();
+<span class="lineNum">      83 </span>            :     constexpr duration  operator--(int);
+<span class="lineNum">      84 </span>            : 
+<span class="lineNum">      85 </span>            :     constexpr duration&amp; operator+=(const duration&amp; d);
+<span class="lineNum">      86 </span>            :     constexpr duration&amp; operator-=(const duration&amp; d);
+<span class="lineNum">      87 </span>            : 
+<span class="lineNum">      88 </span>            :     duration&amp; operator*=(const rep&amp; rhs);
+<span class="lineNum">      89 </span>            :     duration&amp; operator/=(const rep&amp; rhs);
+<span class="lineNum">      90 </span>            : 
+<span class="lineNum">      91 </span>            :     // special values
+<span class="lineNum">      92 </span>            : 
+<span class="lineNum">      93 </span>            :     static constexpr duration zero();
+<span class="lineNum">      94 </span>            :     static constexpr duration min();
+<span class="lineNum">      95 </span>            :     static constexpr duration max();
+<span class="lineNum">      96 </span>            : };
+<span class="lineNum">      97 </span>            : 
+<span class="lineNum">      98 </span>            : typedef duration&lt;long long,         nano&gt; nanoseconds;
+<span class="lineNum">      99 </span>            : typedef duration&lt;long long,        micro&gt; microseconds;
+<span class="lineNum">     100 </span>            : typedef duration&lt;long long,        milli&gt; milliseconds;
+<span class="lineNum">     101 </span>            : typedef duration&lt;long long              &gt; seconds;
+<span class="lineNum">     102 </span>            : typedef duration&lt;     long, ratio&lt;  60&gt; &gt; minutes;
+<span class="lineNum">     103 </span>            : typedef duration&lt;     long, ratio&lt;3600&gt; &gt; hours;
+<span class="lineNum">     104 </span>            : 
+<span class="lineNum">     105 </span>            : template &lt;class Clock, class Duration = typename Clock::duration&gt;
+<span class="lineNum">     106 </span>            : class time_point
+<span class="lineNum">     107 </span>            : {
+<span class="lineNum">     108 </span>            : public:
+<span class="lineNum">     109 </span>            :     typedef Clock                     clock;
+<span class="lineNum">     110 </span>            :     typedef Duration                  duration;
+<span class="lineNum">     111 </span>            :     typedef typename duration::rep    rep;
+<span class="lineNum">     112 </span>            :     typedef typename duration::period period;
+<span class="lineNum">     113 </span>            : private:
+<span class="lineNum">     114 </span>            :     duration d_;  // exposition only
+<span class="lineNum">     115 </span>            : 
+<span class="lineNum">     116 </span>            : public:
+<span class="lineNum">     117 </span>            :     time_point();  // has value &quot;epoch&quot; // constexpr in C++14
+<span class="lineNum">     118 </span>            :     explicit time_point(const duration&amp; d);  // same as time_point() + d // constexpr in C++14
+<span class="lineNum">     119 </span>            : 
+<span class="lineNum">     120 </span>            :     // conversions
+<span class="lineNum">     121 </span>            :     template &lt;class Duration2&gt;
+<span class="lineNum">     122 </span>            :        time_point(const time_point&lt;clock, Duration2&gt;&amp; t); // constexpr in C++14
+<span class="lineNum">     123 </span>            : 
+<span class="lineNum">     124 </span>            :     // observer
+<span class="lineNum">     125 </span>            : 
+<span class="lineNum">     126 </span>            :     duration time_since_epoch() const; // constexpr in C++14
+<span class="lineNum">     127 </span>            : 
+<span class="lineNum">     128 </span>            :     // arithmetic
+<span class="lineNum">     129 </span>            : 
+<span class="lineNum">     130 </span>            :     time_point&amp; operator+=(const duration&amp; d);
+<span class="lineNum">     131 </span>            :     time_point&amp; operator-=(const duration&amp; d);
+<span class="lineNum">     132 </span>            : 
+<span class="lineNum">     133 </span>            :     // special values
+<span class="lineNum">     134 </span>            : 
+<span class="lineNum">     135 </span>            :     static constexpr time_point min();
+<span class="lineNum">     136 </span>            :     static constexpr time_point max();
+<span class="lineNum">     137 </span>            : };
+<span class="lineNum">     138 </span>            : 
+<span class="lineNum">     139 </span>            : } // chrono
+<span class="lineNum">     140 </span>            : 
+<span class="lineNum">     141 </span>            : // common_type traits
+<span class="lineNum">     142 </span>            : template &lt;class Rep1, class Period1, class Rep2, class Period2&gt;
+<span class="lineNum">     143 </span>            :   struct common_type&lt;chrono::duration&lt;Rep1, Period1&gt;, chrono::duration&lt;Rep2, Period2&gt;&gt;;
+<span class="lineNum">     144 </span>            : 
+<span class="lineNum">     145 </span>            : template &lt;class Clock, class Duration1, class Duration2&gt;
+<span class="lineNum">     146 </span>            :   struct common_type&lt;chrono::time_point&lt;Clock, Duration1&gt;, chrono::time_point&lt;Clock, Duration2&gt;&gt;;
+<span class="lineNum">     147 </span>            : 
+<span class="lineNum">     148 </span>            : namespace chrono {
+<span class="lineNum">     149 </span>            : 
+<span class="lineNum">     150 </span>            : // duration arithmetic
+<span class="lineNum">     151 </span>            : template &lt;class Rep1, class Period1, class Rep2, class Period2&gt;
+<span class="lineNum">     152 </span>            :   constexpr
+<span class="lineNum">     153 </span>            :   typename common_type&lt;duration&lt;Rep1, Period1&gt;, duration&lt;Rep2, Period2&gt;&gt;::type
+<span class="lineNum">     154 </span>            :   operator+(const duration&lt;Rep1, Period1&gt;&amp; lhs, const duration&lt;Rep2, Period2&gt;&amp; rhs);
+<span class="lineNum">     155 </span>            : template &lt;class Rep1, class Period1, class Rep2, class Period2&gt;
+<span class="lineNum">     156 </span>            :   constexpr
+<span class="lineNum">     157 </span>            :   typename common_type&lt;duration&lt;Rep1, Period1&gt;, duration&lt;Rep2, Period2&gt;&gt;::type
+<span class="lineNum">     158 </span>            :   operator-(const duration&lt;Rep1, Period1&gt;&amp; lhs, const duration&lt;Rep2, Period2&gt;&amp; rhs);
+<span class="lineNum">     159 </span>            : template &lt;class Rep1, class Period, class Rep2&gt;
+<span class="lineNum">     160 </span>            :   constexpr
+<span class="lineNum">     161 </span>            :   duration&lt;typename common_type&lt;Rep1, Rep2&gt;::type, Period&gt;
+<span class="lineNum">     162 </span>            :   operator*(const duration&lt;Rep1, Period&gt;&amp; d, const Rep2&amp; s);
+<span class="lineNum">     163 </span>            : template &lt;class Rep1, class Period, class Rep2&gt;
+<span class="lineNum">     164 </span>            :   constexpr
+<span class="lineNum">     165 </span>            :   duration&lt;typename common_type&lt;Rep1, Rep2&gt;::type, Period&gt;
+<span class="lineNum">     166 </span>            :   operator*(const Rep1&amp; s, const duration&lt;Rep2, Period&gt;&amp; d);
+<span class="lineNum">     167 </span>            : template &lt;class Rep1, class Period, class Rep2&gt;
+<span class="lineNum">     168 </span>            :   constexpr
+<span class="lineNum">     169 </span>            :   duration&lt;typename common_type&lt;Rep1, Rep2&gt;::type, Period&gt;
+<span class="lineNum">     170 </span>            :   operator/(const duration&lt;Rep1, Period&gt;&amp; d, const Rep2&amp; s);
+<span class="lineNum">     171 </span>            : template &lt;class Rep1, class Period1, class Rep2, class Period2&gt;
+<span class="lineNum">     172 </span>            :   constexpr
+<span class="lineNum">     173 </span>            :   typename common_type&lt;Rep1, Rep2&gt;::type
+<span class="lineNum">     174 </span>            :   operator/(const duration&lt;Rep1, Period1&gt;&amp; lhs, const duration&lt;Rep2, Period2&gt;&amp; rhs);
+<span class="lineNum">     175 </span>            : 
+<span class="lineNum">     176 </span>            : // duration comparisons
+<span class="lineNum">     177 </span>            : template &lt;class Rep1, class Period1, class Rep2, class Period2&gt;
+<span class="lineNum">     178 </span>            :    constexpr
+<span class="lineNum">     179 </span>            :    bool operator==(const duration&lt;Rep1, Period1&gt;&amp; lhs, const duration&lt;Rep2, Period2&gt;&amp; rhs);
+<span class="lineNum">     180 </span>            : template &lt;class Rep1, class Period1, class Rep2, class Period2&gt;
+<span class="lineNum">     181 </span>            :    constexpr
+<span class="lineNum">     182 </span>            :    bool operator!=(const duration&lt;Rep1, Period1&gt;&amp; lhs, const duration&lt;Rep2, Period2&gt;&amp; rhs);
+<span class="lineNum">     183 </span>            : template &lt;class Rep1, class Period1, class Rep2, class Period2&gt;
+<span class="lineNum">     184 </span>            :    constexpr
+<span class="lineNum">     185 </span>            :    bool operator&lt; (const duration&lt;Rep1, Period1&gt;&amp; lhs, const duration&lt;Rep2, Period2&gt;&amp; rhs);
+<span class="lineNum">     186 </span>            : template &lt;class Rep1, class Period1, class Rep2, class Period2&gt;
+<span class="lineNum">     187 </span>            :    constexpr
+<span class="lineNum">     188 </span>            :    bool operator&lt;=(const duration&lt;Rep1, Period1&gt;&amp; lhs, const duration&lt;Rep2, Period2&gt;&amp; rhs);
+<span class="lineNum">     189 </span>            : template &lt;class Rep1, class Period1, class Rep2, class Period2&gt;
+<span class="lineNum">     190 </span>            :    constexpr
+<span class="lineNum">     191 </span>            :    bool operator&gt; (const duration&lt;Rep1, Period1&gt;&amp; lhs, const duration&lt;Rep2, Period2&gt;&amp; rhs);
+<span class="lineNum">     192 </span>            : template &lt;class Rep1, class Period1, class Rep2, class Period2&gt;
+<span class="lineNum">     193 </span>            :    constexpr
+<span class="lineNum">     194 </span>            :    bool operator&gt;=(const duration&lt;Rep1, Period1&gt;&amp; lhs, const duration&lt;Rep2, Period2&gt;&amp; rhs);
+<span class="lineNum">     195 </span>            : 
+<span class="lineNum">     196 </span>            : // duration_cast
+<span class="lineNum">     197 </span>            : template &lt;class ToDuration, class Rep, class Period&gt;
+<span class="lineNum">     198 </span>            :   ToDuration duration_cast(const duration&lt;Rep, Period&gt;&amp; d);
+<span class="lineNum">     199 </span>            : 
+<span class="lineNum">     200 </span>            : template &lt;class ToDuration, class Rep, class Period&gt;
+<span class="lineNum">     201 </span>            :     constexpr ToDuration floor(const duration&lt;Rep, Period&gt;&amp; d);    // C++17
+<span class="lineNum">     202 </span>            : template &lt;class ToDuration, class Rep, class Period&gt;
+<span class="lineNum">     203 </span>            :     constexpr ToDuration ceil(const duration&lt;Rep, Period&gt;&amp; d);     // C++17
+<span class="lineNum">     204 </span>            : template &lt;class ToDuration, class Rep, class Period&gt;
+<span class="lineNum">     205 </span>            :     constexpr ToDuration round(const duration&lt;Rep, Period&gt;&amp; d);    // C++17
+<span class="lineNum">     206 </span>            : 
+<span class="lineNum">     207 </span>            : // time_point arithmetic (all constexpr in C++14)
+<span class="lineNum">     208 </span>            : template &lt;class Clock, class Duration1, class Rep2, class Period2&gt;
+<span class="lineNum">     209 </span>            :   time_point&lt;Clock, typename common_type&lt;Duration1, duration&lt;Rep2, Period2&gt;&gt;::type&gt;
+<span class="lineNum">     210 </span>            :   operator+(const time_point&lt;Clock, Duration1&gt;&amp; lhs, const duration&lt;Rep2, Period2&gt;&amp; rhs);
+<span class="lineNum">     211 </span>            : template &lt;class Rep1, class Period1, class Clock, class Duration2&gt;
+<span class="lineNum">     212 </span>            :   time_point&lt;Clock, typename common_type&lt;duration&lt;Rep1, Period1&gt;, Duration2&gt;::type&gt;
+<span class="lineNum">     213 </span>            :   operator+(const duration&lt;Rep1, Period1&gt;&amp; lhs, const time_point&lt;Clock, Duration2&gt;&amp; rhs);
+<span class="lineNum">     214 </span>            : template &lt;class Clock, class Duration1, class Rep2, class Period2&gt;
+<span class="lineNum">     215 </span>            :   time_point&lt;Clock, typename common_type&lt;Duration1, duration&lt;Rep2, Period2&gt;&gt;::type&gt;
+<span class="lineNum">     216 </span>            :   operator-(const time_point&lt;Clock, Duration1&gt;&amp; lhs, const duration&lt;Rep2, Period2&gt;&amp; rhs);
+<span class="lineNum">     217 </span>            : template &lt;class Clock, class Duration1, class Duration2&gt;
+<span class="lineNum">     218 </span>            :   typename common_type&lt;Duration1, Duration2&gt;::type
+<span class="lineNum">     219 </span>            :   operator-(const time_point&lt;Clock, Duration1&gt;&amp; lhs, const time_point&lt;Clock, Duration2&gt;&amp; rhs);
+<span class="lineNum">     220 </span>            : 
+<span class="lineNum">     221 </span>            : // time_point comparisons (all constexpr in C++14)
+<span class="lineNum">     222 </span>            : template &lt;class Clock, class Duration1, class Duration2&gt;
+<span class="lineNum">     223 </span>            :    bool operator==(const time_point&lt;Clock, Duration1&gt;&amp; lhs, const time_point&lt;Clock, Duration2&gt;&amp; rhs);
+<span class="lineNum">     224 </span>            : template &lt;class Clock, class Duration1, class Duration2&gt;
+<span class="lineNum">     225 </span>            :    bool operator!=(const time_point&lt;Clock, Duration1&gt;&amp; lhs, const time_point&lt;Clock, Duration2&gt;&amp; rhs);
+<span class="lineNum">     226 </span>            : template &lt;class Clock, class Duration1, class Duration2&gt;
+<span class="lineNum">     227 </span>            :    bool operator&lt; (const time_point&lt;Clock, Duration1&gt;&amp; lhs, const time_point&lt;Clock, Duration2&gt;&amp; rhs);
+<span class="lineNum">     228 </span>            : template &lt;class Clock, class Duration1, class Duration2&gt;
+<span class="lineNum">     229 </span>            :    bool operator&lt;=(const time_point&lt;Clock, Duration1&gt;&amp; lhs, const time_point&lt;Clock, Duration2&gt;&amp; rhs);
+<span class="lineNum">     230 </span>            : template &lt;class Clock, class Duration1, class Duration2&gt;
+<span class="lineNum">     231 </span>            :    bool operator&gt; (const time_point&lt;Clock, Duration1&gt;&amp; lhs, const time_point&lt;Clock, Duration2&gt;&amp; rhs);
+<span class="lineNum">     232 </span>            : template &lt;class Clock, class Duration1, class Duration2&gt;
+<span class="lineNum">     233 </span>            :    bool operator&gt;=(const time_point&lt;Clock, Duration1&gt;&amp; lhs, const time_point&lt;Clock, Duration2&gt;&amp; rhs);
+<span class="lineNum">     234 </span>            : 
+<span class="lineNum">     235 </span>            : // time_point_cast (constexpr in C++14)
+<span class="lineNum">     236 </span>            : 
+<span class="lineNum">     237 </span>            : template &lt;class ToDuration, class Clock, class Duration&gt;
+<span class="lineNum">     238 </span>            :   time_point&lt;Clock, ToDuration&gt; time_point_cast(const time_point&lt;Clock, Duration&gt;&amp; t);
+<span class="lineNum">     239 </span>            : 
+<span class="lineNum">     240 </span>            : template &lt;class ToDuration, class Clock, class Duration&gt;
+<span class="lineNum">     241 </span>            :     constexpr time_point&lt;Clock, ToDuration&gt;
+<span class="lineNum">     242 </span>            :     floor(const time_point&lt;Clock, Duration&gt;&amp; tp);                  // C++17
+<span class="lineNum">     243 </span>            : 
+<span class="lineNum">     244 </span>            : template &lt;class ToDuration, class Clock, class Duration&gt;
+<span class="lineNum">     245 </span>            :     constexpr time_point&lt;Clock, ToDuration&gt;
+<span class="lineNum">     246 </span>            :     ceil(const time_point&lt;Clock, Duration&gt;&amp; tp);                   // C++17
+<span class="lineNum">     247 </span>            : 
+<span class="lineNum">     248 </span>            : template &lt;class ToDuration, class Clock, class Duration&gt;
+<span class="lineNum">     249 </span>            :     constexpr time_point&lt;Clock, ToDuration&gt;
+<span class="lineNum">     250 </span>            :     round(const time_point&lt;Clock, Duration&gt;&amp; tp);                  // C++17
+<span class="lineNum">     251 </span>            : 
+<span class="lineNum">     252 </span>            : template &lt;class Rep, class Period&gt;
+<span class="lineNum">     253 </span>            :     constexpr duration&lt;Rep, Period&gt; abs(duration&lt;Rep, Period&gt; d);  // C++17
+<span class="lineNum">     254 </span>            : // Clocks
+<span class="lineNum">     255 </span>            : 
+<span class="lineNum">     256 </span>            : class system_clock
+<span class="lineNum">     257 </span>            : {
+<span class="lineNum">     258 </span>            : public:
+<span class="lineNum">     259 </span>            :     typedef microseconds                     duration;
+<span class="lineNum">     260 </span>            :     typedef duration::rep                    rep;
+<span class="lineNum">     261 </span>            :     typedef duration::period                 period;
+<span class="lineNum">     262 </span>            :     typedef chrono::time_point&lt;system_clock&gt; time_point;
+<span class="lineNum">     263 </span>            :     static const bool is_steady =            false; // constexpr in C++14
+<span class="lineNum">     264 </span>            : 
+<span class="lineNum">     265 </span>            :     static time_point now() noexcept;
+<span class="lineNum">     266 </span>            :     static time_t     to_time_t  (const time_point&amp; __t) noexcept;
+<span class="lineNum">     267 </span>            :     static time_point from_time_t(time_t __t) noexcept;
+<span class="lineNum">     268 </span>            : };
+<span class="lineNum">     269 </span>            : 
+<span class="lineNum">     270 </span>            : class steady_clock
+<span class="lineNum">     271 </span>            : {
+<span class="lineNum">     272 </span>            : public:
+<span class="lineNum">     273 </span>            :     typedef nanoseconds                                   duration;
+<span class="lineNum">     274 </span>            :     typedef duration::rep                                 rep;
+<span class="lineNum">     275 </span>            :     typedef duration::period                              period;
+<span class="lineNum">     276 </span>            :     typedef chrono::time_point&lt;steady_clock, duration&gt;    time_point;
+<span class="lineNum">     277 </span>            :     static const bool is_steady =                         true; // constexpr in C++14
+<span class="lineNum">     278 </span>            : 
+<span class="lineNum">     279 </span>            :     static time_point now() noexcept;
+<span class="lineNum">     280 </span>            : };
+<span class="lineNum">     281 </span>            : 
+<span class="lineNum">     282 </span>            : typedef steady_clock high_resolution_clock;
+<span class="lineNum">     283 </span>            : 
+<span class="lineNum">     284 </span>            : }  // chrono
+<span class="lineNum">     285 </span>            : 
+<span class="lineNum">     286 </span>            : constexpr chrono::hours                                 operator &quot;&quot;h(unsigned long long); // C++14
+<span class="lineNum">     287 </span>            : constexpr chrono::duration&lt;unspecified , ratio&lt;3600,1&gt;&gt; operator &quot;&quot;h(long double); // C++14
+<span class="lineNum">     288 </span>            : constexpr chrono::minutes                               operator &quot;&quot;min(unsigned long long); // C++14
+<span class="lineNum">     289 </span>            : constexpr chrono::duration&lt;unspecified , ratio&lt;60,1&gt;&gt;   operator &quot;&quot;min(long double); // C++14
+<span class="lineNum">     290 </span>            : constexpr chrono::seconds                               operator &quot;&quot;s(unsigned long long); // C++14
+<span class="lineNum">     291 </span>            : constexpr chrono::duration&lt;unspecified &gt;                operator &quot;&quot;s(long double); // C++14
+<span class="lineNum">     292 </span>            : constexpr chrono::milliseconds                          operator &quot;&quot;ms(unsigned long long); // C++14
+<span class="lineNum">     293 </span>            : constexpr chrono::duration&lt;unspecified , milli&gt;         operator &quot;&quot;ms(long double); // C++14
+<span class="lineNum">     294 </span>            : constexpr chrono::microseconds                          operator &quot;&quot;us(unsigned long long); // C++14
+<span class="lineNum">     295 </span>            : constexpr chrono::duration&lt;unspecified , micro&gt;         operator &quot;&quot;us(long double); // C++14
+<span class="lineNum">     296 </span>            : constexpr chrono::nanoseconds                           operator &quot;&quot;ns(unsigned long long); // C++14
+<span class="lineNum">     297 </span>            : constexpr chrono::duration&lt;unspecified , nano&gt;          operator &quot;&quot;ns(long double); // C++14
+<span class="lineNum">     298 </span>            : 
+<span class="lineNum">     299 </span>            : }  // std
+<span class="lineNum">     300 </span>            : */
+<span class="lineNum">     301 </span>            : 
+<span class="lineNum">     302 </span>            : #include &lt;__config&gt;
+<span class="lineNum">     303 </span>            : #include &lt;ctime&gt;
+<span class="lineNum">     304 </span>            : #include &lt;type_traits&gt;
+<span class="lineNum">     305 </span>            : #include &lt;ratio&gt;
+<span class="lineNum">     306 </span>            : #include &lt;limits&gt;
+<span class="lineNum">     307 </span>            : 
+<span class="lineNum">     308 </span>            : #if !defined(_LIBCPP_HAS_NO_PRAGMA_SYSTEM_HEADER)
+<span class="lineNum">     309 </span>            : #pragma GCC system_header
+<span class="lineNum">     310 </span>            : #endif
+<span class="lineNum">     311 </span>            : 
+<span class="lineNum">     312 </span>            : _LIBCPP_PUSH_MACROS
+<span class="lineNum">     313 </span>            : #include &lt;__undef_macros&gt;
+<span class="lineNum">     314 </span>            : 
+<span class="lineNum">     315 </span>            : 
+<span class="lineNum">     316 </span>            : _LIBCPP_BEGIN_NAMESPACE_STD
+<span class="lineNum">     317 </span>            : 
+<span class="lineNum">     318 </span>            : namespace chrono
+<span class="lineNum">     319 </span>            : {
+<span class="lineNum">     320 </span>            : 
+<span class="lineNum">     321 </span>            : template &lt;class _Rep, class _Period = ratio&lt;1&gt; &gt; class _LIBCPP_TEMPLATE_VIS duration;
+<span class="lineNum">     322 </span>            : 
+<span class="lineNum">     323 </span>            : template &lt;class _Tp&gt;
+<span class="lineNum">     324 </span>            : struct __is_duration : false_type {};
+<span class="lineNum">     325 </span>            : 
+<span class="lineNum">     326 </span>            : template &lt;class _Rep, class _Period&gt;
+<span class="lineNum">     327 </span>            : struct __is_duration&lt;duration&lt;_Rep, _Period&gt; &gt; : true_type  {};
+<span class="lineNum">     328 </span>            : 
+<span class="lineNum">     329 </span>            : template &lt;class _Rep, class _Period&gt;
+<span class="lineNum">     330 </span>            : struct __is_duration&lt;const duration&lt;_Rep, _Period&gt; &gt; : true_type  {};
+<span class="lineNum">     331 </span>            : 
+<span class="lineNum">     332 </span>            : template &lt;class _Rep, class _Period&gt;
+<span class="lineNum">     333 </span>            : struct __is_duration&lt;volatile duration&lt;_Rep, _Period&gt; &gt; : true_type  {};
+<span class="lineNum">     334 </span>            : 
+<span class="lineNum">     335 </span>            : template &lt;class _Rep, class _Period&gt;
+<span class="lineNum">     336 </span>            : struct __is_duration&lt;const volatile duration&lt;_Rep, _Period&gt; &gt; : true_type  {};
+<span class="lineNum">     337 </span>            : 
+<span class="lineNum">     338 </span>            : } // chrono
+<span class="lineNum">     339 </span>            : 
+<span class="lineNum">     340 </span>            : template &lt;class _Rep1, class _Period1, class _Rep2, class _Period2&gt;
+<span class="lineNum">     341 </span>            : struct _LIBCPP_TEMPLATE_VIS common_type&lt;chrono::duration&lt;_Rep1, _Period1&gt;,
+<span class="lineNum">     342 </span>            :                                          chrono::duration&lt;_Rep2, _Period2&gt; &gt;
+<span class="lineNum">     343 </span>            : {
+<span class="lineNum">     344 </span>            :     typedef chrono::duration&lt;typename common_type&lt;_Rep1, _Rep2&gt;::type,
+<span class="lineNum">     345 </span>            :                              typename __ratio_gcd&lt;_Period1, _Period2&gt;::type&gt; type;
+<span class="lineNum">     346 </span>            : };
+<span class="lineNum">     347 </span>            : 
+<span class="lineNum">     348 </span>            : namespace chrono {
+<span class="lineNum">     349 </span>            : 
+<span class="lineNum">     350 </span>            : // duration_cast
+<span class="lineNum">     351 </span>            : 
+<span class="lineNum">     352 </span>            : template &lt;class _FromDuration, class _ToDuration,
+<span class="lineNum">     353 </span>            :           class _Period = typename ratio_divide&lt;typename _FromDuration::period, typename _ToDuration::period&gt;::type,
+<span class="lineNum">     354 </span>            :           bool = _Period::num == 1,
+<span class="lineNum">     355 </span>            :           bool = _Period::den == 1&gt;
+<span class="lineNum">     356 </span>            : struct __duration_cast;
+<span class="lineNum">     357 </span>            : 
+<span class="lineNum">     358 </span>            : template &lt;class _FromDuration, class _ToDuration, class _Period&gt;
+<span class="lineNum">     359 </span>            : struct __duration_cast&lt;_FromDuration, _ToDuration, _Period, true, true&gt;
+<a name="360"><span class="lineNum">     360 </span>            : {</a>
+<span class="lineNum">     361 </span>            :     _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR
+<span class="lineNum">     362 </span>            :     _ToDuration operator()(const _FromDuration&amp; __fd) const
+<span class="lineNum">     363 </span>            :     {
+<span class="lineNum">     364 </span><span class="lineCov">         32 :         return _ToDuration(static_cast&lt;typename _ToDuration::rep&gt;(__fd.count()));</span>
+<span class="lineNum">     365 </span>            :     }
+<span class="lineNum">     366 </span>            : };
+<span class="lineNum">     367 </span>            : 
+<span class="lineNum">     368 </span>            : template &lt;class _FromDuration, class _ToDuration, class _Period&gt;
+<span class="lineNum">     369 </span>            : struct __duration_cast&lt;_FromDuration, _ToDuration, _Period, true, false&gt;
+<span class="lineNum">     370 </span>            : {
+<span class="lineNum">     371 </span>            :     _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR
+<span class="lineNum">     372 </span>            :     _ToDuration operator()(const _FromDuration&amp; __fd) const
+<span class="lineNum">     373 </span>            :     {
+<span class="lineNum">     374 </span>            :         typedef typename common_type&lt;typename _ToDuration::rep, typename _FromDuration::rep, intmax_t&gt;::type _Ct;
+<span class="lineNum">     375 </span>            :         return _ToDuration(static_cast&lt;typename _ToDuration::rep&gt;(
+<span class="lineNum">     376 </span>            :                            static_cast&lt;_Ct&gt;(__fd.count()) / static_cast&lt;_Ct&gt;(_Period::den)));
+<span class="lineNum">     377 </span>            :     }
+<span class="lineNum">     378 </span>            : };
+<span class="lineNum">     379 </span>            : 
+<span class="lineNum">     380 </span>            : template &lt;class _FromDuration, class _ToDuration, class _Period&gt;
+<span class="lineNum">     381 </span>            : struct __duration_cast&lt;_FromDuration, _ToDuration, _Period, false, true&gt;
+<span class="lineNum">     382 </span>            : {
+<span class="lineNum">     383 </span>            :     _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR
+<span class="lineNum">     384 </span>            :     _ToDuration operator()(const _FromDuration&amp; __fd) const
+<span class="lineNum">     385 </span>            :     {
+<span class="lineNum">     386 </span>            :         typedef typename common_type&lt;typename _ToDuration::rep, typename _FromDuration::rep, intmax_t&gt;::type _Ct;
+<span class="lineNum">     387 </span>            :         return _ToDuration(static_cast&lt;typename _ToDuration::rep&gt;(
+<span class="lineNum">     388 </span>            :                            static_cast&lt;_Ct&gt;(__fd.count()) * static_cast&lt;_Ct&gt;(_Period::num)));
+<span class="lineNum">     389 </span>            :     }
+<span class="lineNum">     390 </span>            : };
+<span class="lineNum">     391 </span>            : 
+<span class="lineNum">     392 </span>            : template &lt;class _FromDuration, class _ToDuration, class _Period&gt;
+<span class="lineNum">     393 </span>            : struct __duration_cast&lt;_FromDuration, _ToDuration, _Period, false, false&gt;
+<span class="lineNum">     394 </span>            : {
+<span class="lineNum">     395 </span>            :     _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR
+<span class="lineNum">     396 </span>            :     _ToDuration operator()(const _FromDuration&amp; __fd) const
+<span class="lineNum">     397 </span>            :     {
+<span class="lineNum">     398 </span>            :         typedef typename common_type&lt;typename _ToDuration::rep, typename _FromDuration::rep, intmax_t&gt;::type _Ct;
+<span class="lineNum">     399 </span>            :         return _ToDuration(static_cast&lt;typename _ToDuration::rep&gt;(
+<span class="lineNum">     400 </span>            :                            static_cast&lt;_Ct&gt;(__fd.count()) * static_cast&lt;_Ct&gt;(_Period::num)
+<span class="lineNum">     401 </span>            :                                                           / static_cast&lt;_Ct&gt;(_Period::den)));
+<span class="lineNum">     402 </span>            :     }
+<span class="lineNum">     403 </span>            : };
+<span class="lineNum">     404 </span>            : 
+<span class="lineNum">     405 </span>            : template &lt;class _ToDuration, class _Rep, class _Period&gt;
+<span class="lineNum">     406 </span>            : inline _LIBCPP_INLINE_VISIBILITY
+<span class="lineNum">     407 </span>            : _LIBCPP_CONSTEXPR
+<span class="lineNum">     408 </span>            : typename enable_if
+<span class="lineNum">     409 </span>            : &lt;
+<span class="lineNum">     410 </span>            :     __is_duration&lt;_ToDuration&gt;::value,
+<a name="411"><span class="lineNum">     411 </span>            :     _ToDuration</a>
+<span class="lineNum">     412 </span>            : &gt;::type
+<span class="lineNum">     413 </span>            : duration_cast(const duration&lt;_Rep, _Period&gt;&amp; __fd)
+<span class="lineNum">     414 </span>            : {
+<span class="lineNum">     415 </span><span class="lineCov">         32 :     return __duration_cast&lt;duration&lt;_Rep, _Period&gt;, _ToDuration&gt;()(__fd);</span>
+<span class="lineNum">     416 </span>            : }
+<span class="lineNum">     417 </span>            : 
+<span class="lineNum">     418 </span>            : template &lt;class _Rep&gt;
+<span class="lineNum">     419 </span>            : struct _LIBCPP_TEMPLATE_VIS treat_as_floating_point : is_floating_point&lt;_Rep&gt; {};
+<span class="lineNum">     420 </span>            : 
+<span class="lineNum">     421 </span>            : #if _LIBCPP_STD_VER &gt; 14 &amp;&amp; !defined(_LIBCPP_HAS_NO_VARIABLE_TEMPLATES)
+<span class="lineNum">     422 </span>            : template &lt;class _Rep&gt;
+<span class="lineNum">     423 </span>            : _LIBCPP_INLINE_VAR _LIBCPP_CONSTEXPR bool treat_as_floating_point_v
+<span class="lineNum">     424 </span>            :     = treat_as_floating_point&lt;_Rep&gt;::value;
+<span class="lineNum">     425 </span>            : #endif
+<span class="lineNum">     426 </span>            : 
+<span class="lineNum">     427 </span>            : template &lt;class _Rep&gt;
+<span class="lineNum">     428 </span>            : struct _LIBCPP_TEMPLATE_VIS duration_values
+<span class="lineNum">     429 </span>            : {
+<span class="lineNum">     430 </span>            : public:
+<span class="lineNum">     431 </span>            :     _LIBCPP_INLINE_VISIBILITY static _LIBCPP_CONSTEXPR _Rep zero() {return _Rep(0);}
+<span class="lineNum">     432 </span>            :     _LIBCPP_INLINE_VISIBILITY static _LIBCPP_CONSTEXPR _Rep max()  {return numeric_limits&lt;_Rep&gt;::max();}
+<span class="lineNum">     433 </span>            :     _LIBCPP_INLINE_VISIBILITY static _LIBCPP_CONSTEXPR _Rep min()  {return numeric_limits&lt;_Rep&gt;::lowest();}
+<span class="lineNum">     434 </span>            : };
+<span class="lineNum">     435 </span>            : 
+<span class="lineNum">     436 </span>            : #if _LIBCPP_STD_VER &gt; 14
+<span class="lineNum">     437 </span>            : template &lt;class _ToDuration, class _Rep, class _Period&gt;
+<span class="lineNum">     438 </span>            : inline _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR
+<span class="lineNum">     439 </span>            : typename enable_if
+<span class="lineNum">     440 </span>            : &lt;
+<span class="lineNum">     441 </span>            :     __is_duration&lt;_ToDuration&gt;::value,
+<span class="lineNum">     442 </span>            :     _ToDuration
+<span class="lineNum">     443 </span>            : &gt;::type
+<span class="lineNum">     444 </span>            : floor(const duration&lt;_Rep, _Period&gt;&amp; __d)
+<span class="lineNum">     445 </span>            : {
+<span class="lineNum">     446 </span>            :     _ToDuration __t = duration_cast&lt;_ToDuration&gt;(__d);
+<span class="lineNum">     447 </span>            :     if (__t &gt; __d)
+<span class="lineNum">     448 </span>            :         __t = __t - _ToDuration{1};
+<span class="lineNum">     449 </span>            :     return __t;
+<span class="lineNum">     450 </span>            : }
+<span class="lineNum">     451 </span>            : 
+<span class="lineNum">     452 </span>            : template &lt;class _ToDuration, class _Rep, class _Period&gt;
+<span class="lineNum">     453 </span>            : inline _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR
+<span class="lineNum">     454 </span>            : typename enable_if
+<span class="lineNum">     455 </span>            : &lt;
+<span class="lineNum">     456 </span>            :     __is_duration&lt;_ToDuration&gt;::value,
+<span class="lineNum">     457 </span>            :     _ToDuration
+<span class="lineNum">     458 </span>            : &gt;::type
+<span class="lineNum">     459 </span>            : ceil(const duration&lt;_Rep, _Period&gt;&amp; __d)
+<span class="lineNum">     460 </span>            : {
+<span class="lineNum">     461 </span>            :     _ToDuration __t = duration_cast&lt;_ToDuration&gt;(__d);
+<span class="lineNum">     462 </span>            :     if (__t &lt; __d)
+<span class="lineNum">     463 </span>            :         __t = __t + _ToDuration{1};
+<span class="lineNum">     464 </span>            :     return __t;
+<span class="lineNum">     465 </span>            : }
+<span class="lineNum">     466 </span>            : 
+<span class="lineNum">     467 </span>            : template &lt;class _ToDuration, class _Rep, class _Period&gt;
+<span class="lineNum">     468 </span>            : inline _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR
+<span class="lineNum">     469 </span>            : typename enable_if
+<span class="lineNum">     470 </span>            : &lt;
+<span class="lineNum">     471 </span>            :     __is_duration&lt;_ToDuration&gt;::value,
+<span class="lineNum">     472 </span>            :     _ToDuration
+<span class="lineNum">     473 </span>            : &gt;::type
+<span class="lineNum">     474 </span>            : round(const duration&lt;_Rep, _Period&gt;&amp; __d)
+<span class="lineNum">     475 </span>            : {
+<span class="lineNum">     476 </span>            :     _ToDuration __lower = floor&lt;_ToDuration&gt;(__d);
+<span class="lineNum">     477 </span>            :     _ToDuration __upper = __lower + _ToDuration{1};
+<span class="lineNum">     478 </span>            :     auto __lowerDiff = __d - __lower;
+<span class="lineNum">     479 </span>            :     auto __upperDiff = __upper - __d;
+<span class="lineNum">     480 </span>            :     if (__lowerDiff &lt; __upperDiff)
+<span class="lineNum">     481 </span>            :         return __lower;
+<span class="lineNum">     482 </span>            :     if (__lowerDiff &gt; __upperDiff)
+<span class="lineNum">     483 </span>            :         return __upper;
+<span class="lineNum">     484 </span>            :     return __lower.count() &amp; 1 ? __upper : __lower;
+<span class="lineNum">     485 </span>            : }
+<span class="lineNum">     486 </span>            : #endif
+<span class="lineNum">     487 </span>            : 
+<span class="lineNum">     488 </span>            : // duration
+<span class="lineNum">     489 </span>            : 
+<span class="lineNum">     490 </span>            : template &lt;class _Rep, class _Period&gt;
+<span class="lineNum">     491 </span>            : class _LIBCPP_TEMPLATE_VIS duration
+<span class="lineNum">     492 </span>            : {
+<span class="lineNum">     493 </span>            :     static_assert(!__is_duration&lt;_Rep&gt;::value, &quot;A duration representation can not be a duration&quot;);
+<span class="lineNum">     494 </span>            :     static_assert(__is_ratio&lt;_Period&gt;::value, &quot;Second template parameter of duration must be a std::ratio&quot;);
+<span class="lineNum">     495 </span>            :     static_assert(_Period::num &gt; 0, &quot;duration period must be positive&quot;);
+<span class="lineNum">     496 </span>            : 
+<span class="lineNum">     497 </span>            :     template &lt;class _R1, class _R2&gt;
+<span class="lineNum">     498 </span>            :     struct __no_overflow
+<span class="lineNum">     499 </span>            :     {
+<span class="lineNum">     500 </span>            :     private:
+<span class="lineNum">     501 </span>            :         static const intmax_t __gcd_n1_n2 = __static_gcd&lt;_R1::num, _R2::num&gt;::value;
+<span class="lineNum">     502 </span>            :         static const intmax_t __gcd_d1_d2 = __static_gcd&lt;_R1::den, _R2::den&gt;::value;
+<span class="lineNum">     503 </span>            :         static const intmax_t __n1 = _R1::num / __gcd_n1_n2;
+<span class="lineNum">     504 </span>            :         static const intmax_t __d1 = _R1::den / __gcd_d1_d2;
+<span class="lineNum">     505 </span>            :         static const intmax_t __n2 = _R2::num / __gcd_n1_n2;
+<span class="lineNum">     506 </span>            :         static const intmax_t __d2 = _R2::den / __gcd_d1_d2;
+<span class="lineNum">     507 </span>            :         static const intmax_t max = -((intmax_t(1) &lt;&lt; (sizeof(intmax_t) * CHAR_BIT - 1)) + 1);
+<span class="lineNum">     508 </span>            : 
+<span class="lineNum">     509 </span>            :         template &lt;intmax_t _Xp, intmax_t _Yp, bool __overflow&gt;
+<span class="lineNum">     510 </span>            :         struct __mul    // __overflow == false
+<span class="lineNum">     511 </span>            :         {
+<span class="lineNum">     512 </span>            :             static const intmax_t value = _Xp * _Yp;
+<span class="lineNum">     513 </span>            :         };
+<span class="lineNum">     514 </span>            : 
+<span class="lineNum">     515 </span>            :         template &lt;intmax_t _Xp, intmax_t _Yp&gt;
+<span class="lineNum">     516 </span>            :         struct __mul&lt;_Xp, _Yp, true&gt;
+<span class="lineNum">     517 </span>            :         {
+<span class="lineNum">     518 </span>            :             static const intmax_t value = 1;
+<span class="lineNum">     519 </span>            :         };
+<span class="lineNum">     520 </span>            : 
+<span class="lineNum">     521 </span>            :     public:
+<span class="lineNum">     522 </span>            :         static const bool value = (__n1 &lt;= max / __d2) &amp;&amp; (__n2 &lt;= max / __d1);
+<span class="lineNum">     523 </span>            :         typedef ratio&lt;__mul&lt;__n1, __d2, !value&gt;::value,
+<span class="lineNum">     524 </span>            :                       __mul&lt;__n2, __d1, !value&gt;::value&gt; type;
+<span class="lineNum">     525 </span>            :     };
+<span class="lineNum">     526 </span>            :     
+<span class="lineNum">     527 </span>            : public:
+<span class="lineNum">     528 </span>            :     typedef _Rep rep;
+<span class="lineNum">     529 </span>            :     typedef typename _Period::type period;
+<span class="lineNum">     530 </span>            : private:
+<span class="lineNum">     531 </span>            :     rep __rep_;
+<span class="lineNum">     532 </span>            : public:
+<span class="lineNum">     533 </span>            : 
+<span class="lineNum">     534 </span>            :     _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR
+<span class="lineNum">     535 </span>            : #ifndef _LIBCPP_CXX03_LANG
+<span class="lineNum">     536 </span>            :         duration() = default;
+<span class="lineNum">     537 </span>            : #else
+<span class="lineNum">     538 </span>            :         duration() {}
+<span class="lineNum">     539 </span>            : #endif
+<span class="lineNum">     540 </span>            : 
+<a name="541"><span class="lineNum">     541 </span>            :     template &lt;class _Rep2&gt;</a>
+<span class="lineNum">     542 </span>            :         _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR
+<span class="lineNum">     543 </span>            :         explicit duration(const _Rep2&amp; __r,
+<span class="lineNum">     544 </span>            :             typename enable_if
+<span class="lineNum">     545 </span>            :             &lt;
+<span class="lineNum">     546 </span>            :                is_convertible&lt;_Rep2, rep&gt;::value &amp;&amp;
+<span class="lineNum">     547 </span>            :                (treat_as_floating_point&lt;rep&gt;::value ||
+<span class="lineNum">     548 </span>            :                !treat_as_floating_point&lt;_Rep2&gt;::value)
+<span class="lineNum">     549 </span>            :             &gt;::type* = 0)
+<span class="lineNum">     550 </span><span class="lineCov">         64 :                 : __rep_(__r) {}</span>
+<span class="lineNum">     551 </span>            : 
+<span class="lineNum">     552 </span>            :     // conversions
+<span class="lineNum">     553 </span>            :     template &lt;class _Rep2, class _Period2&gt;
+<span class="lineNum">     554 </span>            :         _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR
+<span class="lineNum">     555 </span>            :         duration(const duration&lt;_Rep2, _Period2&gt;&amp; __d,
+<span class="lineNum">     556 </span>            :             typename enable_if
+<span class="lineNum">     557 </span>            :             &lt;
+<span class="lineNum">     558 </span>            :                 __no_overflow&lt;_Period2, period&gt;::value &amp;&amp; (
+<span class="lineNum">     559 </span>            :                 treat_as_floating_point&lt;rep&gt;::value ||
+<span class="lineNum">     560 </span>            :                 (__no_overflow&lt;_Period2, period&gt;::type::den == 1 &amp;&amp;
+<span class="lineNum">     561 </span>            :                  !treat_as_floating_point&lt;_Rep2&gt;::value))
+<span class="lineNum">     562 </span>            :             &gt;::type* = 0)
+<span class="lineNum">     563 </span>            :                 : __rep_(_VSTD::chrono::duration_cast&lt;duration&gt;(__d).count()) {}
+<span class="lineNum">     564 </span>            : 
+<a name="565"><span class="lineNum">     565 </span>            :     // observer</a>
+<span class="lineNum">     566 </span>            : 
+<span class="lineNum">     567 </span><span class="lineCov">         64 :     _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR rep count() const {return __rep_;}</span>
+<span class="lineNum">     568 </span>            : 
+<span class="lineNum">     569 </span>            :     // arithmetic
+<span class="lineNum">     570 </span>            : 
+<span class="lineNum">     571 </span>            :     _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR typename common_type&lt;duration&gt;::type operator+() const {return typename common_type&lt;duration&gt;::type(*this);}
+<span class="lineNum">     572 </span>            :     _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR typename common_type&lt;duration&gt;::type operator-() const {return typename common_type&lt;duration&gt;::type(-__rep_);}
+<span class="lineNum">     573 </span>            :     _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR_AFTER_CXX14 duration&amp; operator++()      {++__rep_; return *this;}
+<span class="lineNum">     574 </span>            :     _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR_AFTER_CXX14 duration  operator++(int)   {return duration(__rep_++);}
+<span class="lineNum">     575 </span>            :     _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR_AFTER_CXX14 duration&amp; operator--()      {--__rep_; return *this;}
+<span class="lineNum">     576 </span>            :     _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR_AFTER_CXX14 duration  operator--(int)   {return duration(__rep_--);}
+<span class="lineNum">     577 </span>            : 
+<span class="lineNum">     578 </span>            :     _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR_AFTER_CXX14 duration&amp; operator+=(const duration&amp; __d) {__rep_ += __d.count(); return *this;}
+<span class="lineNum">     579 </span>            :     _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR_AFTER_CXX14 duration&amp; operator-=(const duration&amp; __d) {__rep_ -= __d.count(); return *this;}
+<span class="lineNum">     580 </span>            : 
+<span class="lineNum">     581 </span>            :     _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR_AFTER_CXX14 duration&amp; operator*=(const rep&amp; rhs) {__rep_ *= rhs; return *this;}
+<span class="lineNum">     582 </span>            :     _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR_AFTER_CXX14 duration&amp; operator/=(const rep&amp; rhs) {__rep_ /= rhs; return *this;}
+<span class="lineNum">     583 </span>            :     _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR_AFTER_CXX14 duration&amp; operator%=(const rep&amp; rhs) {__rep_ %= rhs; return *this;}
+<span class="lineNum">     584 </span>            :     _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR_AFTER_CXX14 duration&amp; operator%=(const duration&amp; rhs) {__rep_ %= rhs.count(); return *this;}
+<span class="lineNum">     585 </span>            : 
+<span class="lineNum">     586 </span>            :     // special values
+<span class="lineNum">     587 </span>            : 
+<span class="lineNum">     588 </span>            :     _LIBCPP_INLINE_VISIBILITY static _LIBCPP_CONSTEXPR duration zero() {return duration(duration_values&lt;rep&gt;::zero());}
+<span class="lineNum">     589 </span>            :     _LIBCPP_INLINE_VISIBILITY static _LIBCPP_CONSTEXPR duration min()  {return duration(duration_values&lt;rep&gt;::min());}
+<span class="lineNum">     590 </span>            :     _LIBCPP_INLINE_VISIBILITY static _LIBCPP_CONSTEXPR duration max()  {return duration(duration_values&lt;rep&gt;::max());}
+<span class="lineNum">     591 </span>            : };
+<span class="lineNum">     592 </span>            : 
+<span class="lineNum">     593 </span>            : typedef duration&lt;long long,         nano&gt; nanoseconds;
+<span class="lineNum">     594 </span>            : typedef duration&lt;long long,        micro&gt; microseconds;
+<span class="lineNum">     595 </span>            : typedef duration&lt;long long,        milli&gt; milliseconds;
+<span class="lineNum">     596 </span>            : typedef duration&lt;long long              &gt; seconds;
+<span class="lineNum">     597 </span>            : typedef duration&lt;     long, ratio&lt;  60&gt; &gt; minutes;
+<span class="lineNum">     598 </span>            : typedef duration&lt;     long, ratio&lt;3600&gt; &gt; hours;
+<span class="lineNum">     599 </span>            : 
+<span class="lineNum">     600 </span>            : // Duration ==
+<span class="lineNum">     601 </span>            : 
+<span class="lineNum">     602 </span>            : template &lt;class _LhsDuration, class _RhsDuration&gt;
+<span class="lineNum">     603 </span>            : struct __duration_eq
+<span class="lineNum">     604 </span>            : {
+<span class="lineNum">     605 </span>            :     _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR
+<span class="lineNum">     606 </span>            :     bool operator()(const _LhsDuration&amp; __lhs, const _RhsDuration&amp; __rhs) const
+<span class="lineNum">     607 </span>            :         {
+<span class="lineNum">     608 </span>            :             typedef typename common_type&lt;_LhsDuration, _RhsDuration&gt;::type _Ct;
+<span class="lineNum">     609 </span>            :             return _Ct(__lhs).count() == _Ct(__rhs).count();
+<span class="lineNum">     610 </span>            :         }
+<span class="lineNum">     611 </span>            : };
+<span class="lineNum">     612 </span>            : 
+<span class="lineNum">     613 </span>            : template &lt;class _LhsDuration&gt;
+<span class="lineNum">     614 </span>            : struct __duration_eq&lt;_LhsDuration, _LhsDuration&gt;
+<span class="lineNum">     615 </span>            : {
+<span class="lineNum">     616 </span>            :     _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR
+<span class="lineNum">     617 </span>            :     bool operator()(const _LhsDuration&amp; __lhs, const _LhsDuration&amp; __rhs) const
+<span class="lineNum">     618 </span>            :         {return __lhs.count() == __rhs.count();}
+<span class="lineNum">     619 </span>            : };
+<span class="lineNum">     620 </span>            : 
+<span class="lineNum">     621 </span>            : template &lt;class _Rep1, class _Period1, class _Rep2, class _Period2&gt;
+<span class="lineNum">     622 </span>            : inline _LIBCPP_INLINE_VISIBILITY
+<span class="lineNum">     623 </span>            : _LIBCPP_CONSTEXPR
+<span class="lineNum">     624 </span>            : bool
+<span class="lineNum">     625 </span>            : operator==(const duration&lt;_Rep1, _Period1&gt;&amp; __lhs, const duration&lt;_Rep2, _Period2&gt;&amp; __rhs)
+<span class="lineNum">     626 </span>            : {
+<span class="lineNum">     627 </span>            :     return __duration_eq&lt;duration&lt;_Rep1, _Period1&gt;, duration&lt;_Rep2, _Period2&gt; &gt;()(__lhs, __rhs);
+<span class="lineNum">     628 </span>            : }
+<span class="lineNum">     629 </span>            : 
+<span class="lineNum">     630 </span>            : // Duration !=
+<span class="lineNum">     631 </span>            : 
+<span class="lineNum">     632 </span>            : template &lt;class _Rep1, class _Period1, class _Rep2, class _Period2&gt;
+<span class="lineNum">     633 </span>            : inline _LIBCPP_INLINE_VISIBILITY
+<span class="lineNum">     634 </span>            : _LIBCPP_CONSTEXPR
+<span class="lineNum">     635 </span>            : bool
+<span class="lineNum">     636 </span>            : operator!=(const duration&lt;_Rep1, _Period1&gt;&amp; __lhs, const duration&lt;_Rep2, _Period2&gt;&amp; __rhs)
+<span class="lineNum">     637 </span>            : {
+<span class="lineNum">     638 </span>            :     return !(__lhs == __rhs);
+<span class="lineNum">     639 </span>            : }
+<span class="lineNum">     640 </span>            : 
+<span class="lineNum">     641 </span>            : // Duration &lt;
+<span class="lineNum">     642 </span>            : 
+<span class="lineNum">     643 </span>            : template &lt;class _LhsDuration, class _RhsDuration&gt;
+<span class="lineNum">     644 </span>            : struct __duration_lt
+<span class="lineNum">     645 </span>            : {
+<span class="lineNum">     646 </span>            :     _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR
+<span class="lineNum">     647 </span>            :     bool operator()(const _LhsDuration&amp; __lhs, const _RhsDuration&amp; __rhs) const
+<span class="lineNum">     648 </span>            :         {
+<span class="lineNum">     649 </span>            :             typedef typename common_type&lt;_LhsDuration, _RhsDuration&gt;::type _Ct;
+<span class="lineNum">     650 </span>            :             return _Ct(__lhs).count() &lt; _Ct(__rhs).count();
+<span class="lineNum">     651 </span>            :         }
+<span class="lineNum">     652 </span>            : };
+<span class="lineNum">     653 </span>            : 
+<span class="lineNum">     654 </span>            : template &lt;class _LhsDuration&gt;
+<span class="lineNum">     655 </span>            : struct __duration_lt&lt;_LhsDuration, _LhsDuration&gt;
+<span class="lineNum">     656 </span>            : {
+<span class="lineNum">     657 </span>            :     _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR
+<span class="lineNum">     658 </span>            :     bool operator()(const _LhsDuration&amp; __lhs, const _LhsDuration&amp; __rhs) const
+<span class="lineNum">     659 </span>            :         {return __lhs.count() &lt; __rhs.count();}
+<span class="lineNum">     660 </span>            : };
+<span class="lineNum">     661 </span>            : 
+<span class="lineNum">     662 </span>            : template &lt;class _Rep1, class _Period1, class _Rep2, class _Period2&gt;
+<span class="lineNum">     663 </span>            : inline _LIBCPP_INLINE_VISIBILITY
+<span class="lineNum">     664 </span>            : _LIBCPP_CONSTEXPR
+<span class="lineNum">     665 </span>            : bool
+<span class="lineNum">     666 </span>            : operator&lt; (const duration&lt;_Rep1, _Period1&gt;&amp; __lhs, const duration&lt;_Rep2, _Period2&gt;&amp; __rhs)
+<span class="lineNum">     667 </span>            : {
+<span class="lineNum">     668 </span>            :     return __duration_lt&lt;duration&lt;_Rep1, _Period1&gt;, duration&lt;_Rep2, _Period2&gt; &gt;()(__lhs, __rhs);
+<span class="lineNum">     669 </span>            : }
+<span class="lineNum">     670 </span>            : 
+<span class="lineNum">     671 </span>            : // Duration &gt;
+<span class="lineNum">     672 </span>            : 
+<span class="lineNum">     673 </span>            : template &lt;class _Rep1, class _Period1, class _Rep2, class _Period2&gt;
+<span class="lineNum">     674 </span>            : inline _LIBCPP_INLINE_VISIBILITY
+<span class="lineNum">     675 </span>            : _LIBCPP_CONSTEXPR
+<span class="lineNum">     676 </span>            : bool
+<span class="lineNum">     677 </span>            : operator&gt; (const duration&lt;_Rep1, _Period1&gt;&amp; __lhs, const duration&lt;_Rep2, _Period2&gt;&amp; __rhs)
+<span class="lineNum">     678 </span>            : {
+<span class="lineNum">     679 </span>            :     return __rhs &lt; __lhs;
+<span class="lineNum">     680 </span>            : }
+<span class="lineNum">     681 </span>            : 
+<span class="lineNum">     682 </span>            : // Duration &lt;=
+<span class="lineNum">     683 </span>            : 
+<span class="lineNum">     684 </span>            : template &lt;class _Rep1, class _Period1, class _Rep2, class _Period2&gt;
+<span class="lineNum">     685 </span>            : inline _LIBCPP_INLINE_VISIBILITY
+<span class="lineNum">     686 </span>            : _LIBCPP_CONSTEXPR
+<span class="lineNum">     687 </span>            : bool
+<span class="lineNum">     688 </span>            : operator&lt;=(const duration&lt;_Rep1, _Period1&gt;&amp; __lhs, const duration&lt;_Rep2, _Period2&gt;&amp; __rhs)
+<span class="lineNum">     689 </span>            : {
+<span class="lineNum">     690 </span>            :     return !(__rhs &lt; __lhs);
+<span class="lineNum">     691 </span>            : }
+<span class="lineNum">     692 </span>            : 
+<span class="lineNum">     693 </span>            : // Duration &gt;=
+<span class="lineNum">     694 </span>            : 
+<span class="lineNum">     695 </span>            : template &lt;class _Rep1, class _Period1, class _Rep2, class _Period2&gt;
+<span class="lineNum">     696 </span>            : inline _LIBCPP_INLINE_VISIBILITY
+<span class="lineNum">     697 </span>            : _LIBCPP_CONSTEXPR
+<span class="lineNum">     698 </span>            : bool
+<span class="lineNum">     699 </span>            : operator&gt;=(const duration&lt;_Rep1, _Period1&gt;&amp; __lhs, const duration&lt;_Rep2, _Period2&gt;&amp; __rhs)
+<span class="lineNum">     700 </span>            : {
+<span class="lineNum">     701 </span>            :     return !(__lhs &lt; __rhs);
+<span class="lineNum">     702 </span>            : }
+<span class="lineNum">     703 </span>            : 
+<span class="lineNum">     704 </span>            : // Duration +
+<span class="lineNum">     705 </span>            : 
+<span class="lineNum">     706 </span>            : template &lt;class _Rep1, class _Period1, class _Rep2, class _Period2&gt;
+<span class="lineNum">     707 </span>            : inline _LIBCPP_INLINE_VISIBILITY
+<span class="lineNum">     708 </span>            : _LIBCPP_CONSTEXPR
+<span class="lineNum">     709 </span>            : typename common_type&lt;duration&lt;_Rep1, _Period1&gt;, duration&lt;_Rep2, _Period2&gt; &gt;::type
+<span class="lineNum">     710 </span>            : operator+(const duration&lt;_Rep1, _Period1&gt;&amp; __lhs, const duration&lt;_Rep2, _Period2&gt;&amp; __rhs)
+<span class="lineNum">     711 </span>            : {
+<span class="lineNum">     712 </span>            :     typedef typename common_type&lt;duration&lt;_Rep1, _Period1&gt;, duration&lt;_Rep2, _Period2&gt; &gt;::type _Cd;
+<span class="lineNum">     713 </span>            :     return _Cd(_Cd(__lhs).count() + _Cd(__rhs).count());
+<span class="lineNum">     714 </span>            : }
+<span class="lineNum">     715 </span>            : 
+<span class="lineNum">     716 </span>            : // Duration -
+<span class="lineNum">     717 </span>            : 
+<span class="lineNum">     718 </span>            : template &lt;class _Rep1, class _Period1, class _Rep2, class _Period2&gt;
+<span class="lineNum">     719 </span>            : inline _LIBCPP_INLINE_VISIBILITY
+<span class="lineNum">     720 </span>            : _LIBCPP_CONSTEXPR
+<span class="lineNum">     721 </span>            : typename common_type&lt;duration&lt;_Rep1, _Period1&gt;, duration&lt;_Rep2, _Period2&gt; &gt;::type
+<span class="lineNum">     722 </span>            : operator-(const duration&lt;_Rep1, _Period1&gt;&amp; __lhs, const duration&lt;_Rep2, _Period2&gt;&amp; __rhs)
+<span class="lineNum">     723 </span>            : {
+<span class="lineNum">     724 </span>            :     typedef typename common_type&lt;duration&lt;_Rep1, _Period1&gt;, duration&lt;_Rep2, _Period2&gt; &gt;::type _Cd;
+<span class="lineNum">     725 </span>            :     return _Cd(_Cd(__lhs).count() - _Cd(__rhs).count());
+<span class="lineNum">     726 </span>            : }
+<span class="lineNum">     727 </span>            : 
+<span class="lineNum">     728 </span>            : // Duration *
+<span class="lineNum">     729 </span>            : 
+<span class="lineNum">     730 </span>            : template &lt;class _Rep1, class _Period, class _Rep2&gt;
+<span class="lineNum">     731 </span>            : inline _LIBCPP_INLINE_VISIBILITY
+<span class="lineNum">     732 </span>            : _LIBCPP_CONSTEXPR
+<span class="lineNum">     733 </span>            : typename enable_if
+<span class="lineNum">     734 </span>            : &lt;
+<span class="lineNum">     735 </span>            :     is_convertible&lt;_Rep2, typename common_type&lt;_Rep1, _Rep2&gt;::type&gt;::value,
+<span class="lineNum">     736 </span>            :     duration&lt;typename common_type&lt;_Rep1, _Rep2&gt;::type, _Period&gt;
+<span class="lineNum">     737 </span>            : &gt;::type
+<span class="lineNum">     738 </span>            : operator*(const duration&lt;_Rep1, _Period&gt;&amp; __d, const _Rep2&amp; __s)
+<span class="lineNum">     739 </span>            : {
+<span class="lineNum">     740 </span>            :     typedef typename common_type&lt;_Rep1, _Rep2&gt;::type _Cr;
+<span class="lineNum">     741 </span>            :     typedef duration&lt;_Cr, _Period&gt; _Cd;
+<span class="lineNum">     742 </span>            :     return _Cd(_Cd(__d).count() * static_cast&lt;_Cr&gt;(__s));
+<span class="lineNum">     743 </span>            : }
+<span class="lineNum">     744 </span>            : 
+<span class="lineNum">     745 </span>            : template &lt;class _Rep1, class _Period, class _Rep2&gt;
+<span class="lineNum">     746 </span>            : inline _LIBCPP_INLINE_VISIBILITY
+<span class="lineNum">     747 </span>            : _LIBCPP_CONSTEXPR
+<span class="lineNum">     748 </span>            : typename enable_if
+<span class="lineNum">     749 </span>            : &lt;
+<span class="lineNum">     750 </span>            :     is_convertible&lt;_Rep1, typename common_type&lt;_Rep1, _Rep2&gt;::type&gt;::value,
+<span class="lineNum">     751 </span>            :     duration&lt;typename common_type&lt;_Rep1, _Rep2&gt;::type, _Period&gt;
+<span class="lineNum">     752 </span>            : &gt;::type
+<span class="lineNum">     753 </span>            : operator*(const _Rep1&amp; __s, const duration&lt;_Rep2, _Period&gt;&amp; __d)
+<span class="lineNum">     754 </span>            : {
+<span class="lineNum">     755 </span>            :     return __d * __s;
+<span class="lineNum">     756 </span>            : }
+<span class="lineNum">     757 </span>            : 
+<span class="lineNum">     758 </span>            : // Duration /
+<span class="lineNum">     759 </span>            : 
+<span class="lineNum">     760 </span>            : template &lt;class _Duration, class _Rep, bool = __is_duration&lt;_Rep&gt;::value&gt;
+<span class="lineNum">     761 </span>            : struct __duration_divide_result
+<span class="lineNum">     762 </span>            : {
+<span class="lineNum">     763 </span>            : };
+<span class="lineNum">     764 </span>            : 
+<span class="lineNum">     765 </span>            : template &lt;class _Duration, class _Rep2,
+<span class="lineNum">     766 </span>            :     bool = is_convertible&lt;_Rep2,
+<span class="lineNum">     767 </span>            :                           typename common_type&lt;typename _Duration::rep, _Rep2&gt;::type&gt;::value&gt;
+<span class="lineNum">     768 </span>            : struct __duration_divide_imp
+<span class="lineNum">     769 </span>            : {
+<span class="lineNum">     770 </span>            : };
+<span class="lineNum">     771 </span>            : 
+<span class="lineNum">     772 </span>            : template &lt;class _Rep1, class _Period, class _Rep2&gt;
+<span class="lineNum">     773 </span>            : struct __duration_divide_imp&lt;duration&lt;_Rep1, _Period&gt;, _Rep2, true&gt;
+<span class="lineNum">     774 </span>            : {
+<span class="lineNum">     775 </span>            :     typedef duration&lt;typename common_type&lt;_Rep1, _Rep2&gt;::type, _Period&gt; type;
+<span class="lineNum">     776 </span>            : };
+<span class="lineNum">     777 </span>            : 
+<span class="lineNum">     778 </span>            : template &lt;class _Rep1, class _Period, class _Rep2&gt;
+<span class="lineNum">     779 </span>            : struct __duration_divide_result&lt;duration&lt;_Rep1, _Period&gt;, _Rep2, false&gt;
+<span class="lineNum">     780 </span>            :     : __duration_divide_imp&lt;duration&lt;_Rep1, _Period&gt;, _Rep2&gt;
+<span class="lineNum">     781 </span>            : {
+<span class="lineNum">     782 </span>            : };
+<span class="lineNum">     783 </span>            : 
+<span class="lineNum">     784 </span>            : template &lt;class _Rep1, class _Period, class _Rep2&gt;
+<span class="lineNum">     785 </span>            : inline _LIBCPP_INLINE_VISIBILITY
+<span class="lineNum">     786 </span>            : _LIBCPP_CONSTEXPR
+<span class="lineNum">     787 </span>            : typename __duration_divide_result&lt;duration&lt;_Rep1, _Period&gt;, _Rep2&gt;::type
+<span class="lineNum">     788 </span>            : operator/(const duration&lt;_Rep1, _Period&gt;&amp; __d, const _Rep2&amp; __s)
+<span class="lineNum">     789 </span>            : {
+<span class="lineNum">     790 </span>            :     typedef typename common_type&lt;_Rep1, _Rep2&gt;::type _Cr;
+<span class="lineNum">     791 </span>            :     typedef duration&lt;_Cr, _Period&gt; _Cd;
+<span class="lineNum">     792 </span>            :     return _Cd(_Cd(__d).count() / static_cast&lt;_Cr&gt;(__s));
+<span class="lineNum">     793 </span>            : }
+<span class="lineNum">     794 </span>            : 
+<span class="lineNum">     795 </span>            : template &lt;class _Rep1, class _Period1, class _Rep2, class _Period2&gt;
+<span class="lineNum">     796 </span>            : inline _LIBCPP_INLINE_VISIBILITY
+<span class="lineNum">     797 </span>            : _LIBCPP_CONSTEXPR
+<span class="lineNum">     798 </span>            : typename common_type&lt;_Rep1, _Rep2&gt;::type
+<span class="lineNum">     799 </span>            : operator/(const duration&lt;_Rep1, _Period1&gt;&amp; __lhs, const duration&lt;_Rep2, _Period2&gt;&amp; __rhs)
+<span class="lineNum">     800 </span>            : {
+<span class="lineNum">     801 </span>            :     typedef typename common_type&lt;duration&lt;_Rep1, _Period1&gt;, duration&lt;_Rep2, _Period2&gt; &gt;::type _Ct;
+<span class="lineNum">     802 </span>            :     return _Ct(__lhs).count() / _Ct(__rhs).count();
+<span class="lineNum">     803 </span>            : }
+<span class="lineNum">     804 </span>            : 
+<span class="lineNum">     805 </span>            : // Duration %
+<span class="lineNum">     806 </span>            : 
+<span class="lineNum">     807 </span>            : template &lt;class _Rep1, class _Period, class _Rep2&gt;
+<span class="lineNum">     808 </span>            : inline _LIBCPP_INLINE_VISIBILITY
+<span class="lineNum">     809 </span>            : _LIBCPP_CONSTEXPR
+<span class="lineNum">     810 </span>            : typename __duration_divide_result&lt;duration&lt;_Rep1, _Period&gt;, _Rep2&gt;::type
+<span class="lineNum">     811 </span>            : operator%(const duration&lt;_Rep1, _Period&gt;&amp; __d, const _Rep2&amp; __s)
+<span class="lineNum">     812 </span>            : {
+<span class="lineNum">     813 </span>            :     typedef typename common_type&lt;_Rep1, _Rep2&gt;::type _Cr;
+<span class="lineNum">     814 </span>            :     typedef duration&lt;_Cr, _Period&gt; _Cd;
+<span class="lineNum">     815 </span>            :     return _Cd(_Cd(__d).count() % static_cast&lt;_Cr&gt;(__s));
+<span class="lineNum">     816 </span>            : }
+<span class="lineNum">     817 </span>            : 
+<span class="lineNum">     818 </span>            : template &lt;class _Rep1, class _Period1, class _Rep2, class _Period2&gt;
+<span class="lineNum">     819 </span>            : inline _LIBCPP_INLINE_VISIBILITY
+<span class="lineNum">     820 </span>            : _LIBCPP_CONSTEXPR
+<span class="lineNum">     821 </span>            : typename common_type&lt;duration&lt;_Rep1, _Period1&gt;, duration&lt;_Rep2, _Period2&gt; &gt;::type
+<span class="lineNum">     822 </span>            : operator%(const duration&lt;_Rep1, _Period1&gt;&amp; __lhs, const duration&lt;_Rep2, _Period2&gt;&amp; __rhs)
+<span class="lineNum">     823 </span>            : {
+<span class="lineNum">     824 </span>            :     typedef typename common_type&lt;_Rep1, _Rep2&gt;::type _Cr;
+<span class="lineNum">     825 </span>            :     typedef typename common_type&lt;duration&lt;_Rep1, _Period1&gt;, duration&lt;_Rep2, _Period2&gt; &gt;::type _Cd;
+<span class="lineNum">     826 </span>            :     return _Cd(static_cast&lt;_Cr&gt;(_Cd(__lhs).count()) % static_cast&lt;_Cr&gt;(_Cd(__rhs).count()));
+<span class="lineNum">     827 </span>            : }
+<span class="lineNum">     828 </span>            : 
+<span class="lineNum">     829 </span>            : //////////////////////////////////////////////////////////
+<span class="lineNum">     830 </span>            : ///////////////////// time_point /////////////////////////
+<span class="lineNum">     831 </span>            : //////////////////////////////////////////////////////////
+<span class="lineNum">     832 </span>            : 
+<span class="lineNum">     833 </span>            : template &lt;class _Clock, class _Duration = typename _Clock::duration&gt;
+<span class="lineNum">     834 </span>            : class _LIBCPP_TEMPLATE_VIS time_point
+<span class="lineNum">     835 </span>            : {
+<span class="lineNum">     836 </span>            :     static_assert(__is_duration&lt;_Duration&gt;::value,
+<span class="lineNum">     837 </span>            :                   &quot;Second template parameter of time_point must be a std::chrono::duration&quot;);
+<span class="lineNum">     838 </span>            : public:
+<span class="lineNum">     839 </span>            :     typedef _Clock                    clock;
+<span class="lineNum">     840 </span>            :     typedef _Duration                 duration;
+<span class="lineNum">     841 </span>            :     typedef typename duration::rep    rep;
+<span class="lineNum">     842 </span>            :     typedef typename duration::period period;
+<span class="lineNum">     843 </span>            : private:
+<span class="lineNum">     844 </span>            :     duration __d_;
+<span class="lineNum">     845 </span>            : 
+<span class="lineNum">     846 </span>            : public:
+<span class="lineNum">     847 </span>            :     _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR_AFTER_CXX11 time_point() : __d_(duration::zero()) {}
+<span class="lineNum">     848 </span>            :     _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR_AFTER_CXX11 explicit time_point(const duration&amp; __d) : __d_(__d) {}
+<span class="lineNum">     849 </span>            : 
+<span class="lineNum">     850 </span>            :     // conversions
+<span class="lineNum">     851 </span>            :     template &lt;class _Duration2&gt;
+<span class="lineNum">     852 </span>            :     _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR_AFTER_CXX11
+<span class="lineNum">     853 </span>            :     time_point(const time_point&lt;clock, _Duration2&gt;&amp; t,
+<span class="lineNum">     854 </span>            :         typename enable_if
+<span class="lineNum">     855 </span>            :         &lt;
+<span class="lineNum">     856 </span>            :             is_convertible&lt;_Duration2, duration&gt;::value
+<span class="lineNum">     857 </span>            :         &gt;::type* = 0)
+<span class="lineNum">     858 </span>            :             : __d_(t.time_since_epoch()) {}
+<span class="lineNum">     859 </span>            : 
+<a name="860"><span class="lineNum">     860 </span>            :     // observer</a>
+<span class="lineNum">     861 </span>            : 
+<span class="lineNum">     862 </span><span class="lineCov">         32 :     _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR_AFTER_CXX11 duration time_since_epoch() const {return __d_;}</span>
+<span class="lineNum">     863 </span>            : 
+<span class="lineNum">     864 </span>            :     // arithmetic
+<span class="lineNum">     865 </span>            : 
+<span class="lineNum">     866 </span>            :     _LIBCPP_INLINE_VISIBILITY time_point&amp; operator+=(const duration&amp; __d) {__d_ += __d; return *this;}
+<span class="lineNum">     867 </span>            :     _LIBCPP_INLINE_VISIBILITY time_point&amp; operator-=(const duration&amp; __d) {__d_ -= __d; return *this;}
+<span class="lineNum">     868 </span>            : 
+<span class="lineNum">     869 </span>            :     // special values
+<span class="lineNum">     870 </span>            : 
+<span class="lineNum">     871 </span>            :     _LIBCPP_INLINE_VISIBILITY static _LIBCPP_CONSTEXPR time_point min() {return time_point(duration::min());}
+<span class="lineNum">     872 </span>            :     _LIBCPP_INLINE_VISIBILITY static _LIBCPP_CONSTEXPR time_point max() {return time_point(duration::max());}
+<span class="lineNum">     873 </span>            : };
+<span class="lineNum">     874 </span>            : 
+<span class="lineNum">     875 </span>            : } // chrono
+<span class="lineNum">     876 </span>            : 
+<span class="lineNum">     877 </span>            : template &lt;class _Clock, class _Duration1, class _Duration2&gt;
+<span class="lineNum">     878 </span>            : struct _LIBCPP_TEMPLATE_VIS common_type&lt;chrono::time_point&lt;_Clock, _Duration1&gt;,
+<span class="lineNum">     879 </span>            :                                          chrono::time_point&lt;_Clock, _Duration2&gt; &gt;
+<span class="lineNum">     880 </span>            : {
+<span class="lineNum">     881 </span>            :     typedef chrono::time_point&lt;_Clock, typename common_type&lt;_Duration1, _Duration2&gt;::type&gt; type;
+<span class="lineNum">     882 </span>            : };
+<span class="lineNum">     883 </span>            : 
+<span class="lineNum">     884 </span>            : namespace chrono {
+<span class="lineNum">     885 </span>            : 
+<span class="lineNum">     886 </span>            : template &lt;class _ToDuration, class _Clock, class _Duration&gt;
+<span class="lineNum">     887 </span>            : inline _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR_AFTER_CXX11
+<span class="lineNum">     888 </span>            : time_point&lt;_Clock, _ToDuration&gt;
+<span class="lineNum">     889 </span>            : time_point_cast(const time_point&lt;_Clock, _Duration&gt;&amp; __t)
+<span class="lineNum">     890 </span>            : {
+<span class="lineNum">     891 </span>            :     return time_point&lt;_Clock, _ToDuration&gt;(_VSTD::chrono::duration_cast&lt;_ToDuration&gt;(__t.time_since_epoch()));
+<span class="lineNum">     892 </span>            : }
+<span class="lineNum">     893 </span>            : 
+<span class="lineNum">     894 </span>            : #if _LIBCPP_STD_VER &gt; 14
+<span class="lineNum">     895 </span>            : template &lt;class _ToDuration, class _Clock, class _Duration&gt;
+<span class="lineNum">     896 </span>            : inline _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR
+<span class="lineNum">     897 </span>            : typename enable_if
+<span class="lineNum">     898 </span>            : &lt;
+<span class="lineNum">     899 </span>            :     __is_duration&lt;_ToDuration&gt;::value,
+<span class="lineNum">     900 </span>            :     time_point&lt;_Clock, _ToDuration&gt;
+<span class="lineNum">     901 </span>            : &gt;::type
+<span class="lineNum">     902 </span>            : floor(const time_point&lt;_Clock, _Duration&gt;&amp; __t)
+<span class="lineNum">     903 </span>            : {
+<span class="lineNum">     904 </span>            :     return time_point&lt;_Clock, _ToDuration&gt;{floor&lt;_ToDuration&gt;(__t.time_since_epoch())};
+<span class="lineNum">     905 </span>            : }
+<span class="lineNum">     906 </span>            : 
+<span class="lineNum">     907 </span>            : template &lt;class _ToDuration, class _Clock, class _Duration&gt;
+<span class="lineNum">     908 </span>            : inline _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR
+<span class="lineNum">     909 </span>            : typename enable_if
+<span class="lineNum">     910 </span>            : &lt;
+<span class="lineNum">     911 </span>            :     __is_duration&lt;_ToDuration&gt;::value,
+<span class="lineNum">     912 </span>            :     time_point&lt;_Clock, _ToDuration&gt;
+<span class="lineNum">     913 </span>            : &gt;::type
+<span class="lineNum">     914 </span>            : ceil(const time_point&lt;_Clock, _Duration&gt;&amp; __t)
+<span class="lineNum">     915 </span>            : {
+<span class="lineNum">     916 </span>            :     return time_point&lt;_Clock, _ToDuration&gt;{ceil&lt;_ToDuration&gt;(__t.time_since_epoch())};
+<span class="lineNum">     917 </span>            : }
+<span class="lineNum">     918 </span>            : 
+<span class="lineNum">     919 </span>            : template &lt;class _ToDuration, class _Clock, class _Duration&gt;
+<span class="lineNum">     920 </span>            : inline _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR
+<span class="lineNum">     921 </span>            : typename enable_if
+<span class="lineNum">     922 </span>            : &lt;
+<span class="lineNum">     923 </span>            :     __is_duration&lt;_ToDuration&gt;::value,
+<span class="lineNum">     924 </span>            :     time_point&lt;_Clock, _ToDuration&gt;
+<span class="lineNum">     925 </span>            : &gt;::type
+<span class="lineNum">     926 </span>            : round(const time_point&lt;_Clock, _Duration&gt;&amp; __t)
+<span class="lineNum">     927 </span>            : {
+<span class="lineNum">     928 </span>            :     return time_point&lt;_Clock, _ToDuration&gt;{round&lt;_ToDuration&gt;(__t.time_since_epoch())};
+<span class="lineNum">     929 </span>            : }
+<span class="lineNum">     930 </span>            : 
+<span class="lineNum">     931 </span>            : template &lt;class _Rep, class _Period&gt;
+<span class="lineNum">     932 </span>            : inline _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR
+<span class="lineNum">     933 </span>            : typename enable_if
+<span class="lineNum">     934 </span>            : &lt;
+<span class="lineNum">     935 </span>            :     numeric_limits&lt;_Rep&gt;::is_signed,
+<span class="lineNum">     936 </span>            :     duration&lt;_Rep, _Period&gt;
+<span class="lineNum">     937 </span>            : &gt;::type
+<span class="lineNum">     938 </span>            : abs(duration&lt;_Rep, _Period&gt; __d)
+<span class="lineNum">     939 </span>            : {
+<span class="lineNum">     940 </span>            :     return __d &gt;= __d.zero() ? __d : -__d;
+<span class="lineNum">     941 </span>            : }
+<span class="lineNum">     942 </span>            : #endif
+<span class="lineNum">     943 </span>            : 
+<span class="lineNum">     944 </span>            : // time_point ==
+<span class="lineNum">     945 </span>            : 
+<span class="lineNum">     946 </span>            : template &lt;class _Clock, class _Duration1, class _Duration2&gt;
+<span class="lineNum">     947 </span>            : inline _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR_AFTER_CXX11
+<span class="lineNum">     948 </span>            : bool
+<span class="lineNum">     949 </span>            : operator==(const time_point&lt;_Clock, _Duration1&gt;&amp; __lhs, const time_point&lt;_Clock, _Duration2&gt;&amp; __rhs)
+<span class="lineNum">     950 </span>            : {
+<span class="lineNum">     951 </span>            :     return __lhs.time_since_epoch() == __rhs.time_since_epoch();
+<span class="lineNum">     952 </span>            : }
+<span class="lineNum">     953 </span>            : 
+<span class="lineNum">     954 </span>            : // time_point !=
+<span class="lineNum">     955 </span>            : 
+<span class="lineNum">     956 </span>            : template &lt;class _Clock, class _Duration1, class _Duration2&gt;
+<span class="lineNum">     957 </span>            : inline _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR_AFTER_CXX11
+<span class="lineNum">     958 </span>            : bool
+<span class="lineNum">     959 </span>            : operator!=(const time_point&lt;_Clock, _Duration1&gt;&amp; __lhs, const time_point&lt;_Clock, _Duration2&gt;&amp; __rhs)
+<span class="lineNum">     960 </span>            : {
+<span class="lineNum">     961 </span>            :     return !(__lhs == __rhs);
+<span class="lineNum">     962 </span>            : }
+<span class="lineNum">     963 </span>            : 
+<span class="lineNum">     964 </span>            : // time_point &lt;
+<span class="lineNum">     965 </span>            : 
+<span class="lineNum">     966 </span>            : template &lt;class _Clock, class _Duration1, class _Duration2&gt;
+<span class="lineNum">     967 </span>            : inline _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR_AFTER_CXX11
+<span class="lineNum">     968 </span>            : bool
+<span class="lineNum">     969 </span>            : operator&lt;(const time_point&lt;_Clock, _Duration1&gt;&amp; __lhs, const time_point&lt;_Clock, _Duration2&gt;&amp; __rhs)
+<span class="lineNum">     970 </span>            : {
+<span class="lineNum">     971 </span>            :     return __lhs.time_since_epoch() &lt; __rhs.time_since_epoch();
+<span class="lineNum">     972 </span>            : }
+<span class="lineNum">     973 </span>            : 
+<span class="lineNum">     974 </span>            : // time_point &gt;
+<span class="lineNum">     975 </span>            : 
+<span class="lineNum">     976 </span>            : template &lt;class _Clock, class _Duration1, class _Duration2&gt;
+<span class="lineNum">     977 </span>            : inline _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR_AFTER_CXX11
+<span class="lineNum">     978 </span>            : bool
+<span class="lineNum">     979 </span>            : operator&gt;(const time_point&lt;_Clock, _Duration1&gt;&amp; __lhs, const time_point&lt;_Clock, _Duration2&gt;&amp; __rhs)
+<span class="lineNum">     980 </span>            : {
+<span class="lineNum">     981 </span>            :     return __rhs &lt; __lhs;
+<span class="lineNum">     982 </span>            : }
+<span class="lineNum">     983 </span>            : 
+<span class="lineNum">     984 </span>            : // time_point &lt;=
+<span class="lineNum">     985 </span>            : 
+<span class="lineNum">     986 </span>            : template &lt;class _Clock, class _Duration1, class _Duration2&gt;
+<span class="lineNum">     987 </span>            : inline _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR_AFTER_CXX11
+<span class="lineNum">     988 </span>            : bool
+<span class="lineNum">     989 </span>            : operator&lt;=(const time_point&lt;_Clock, _Duration1&gt;&amp; __lhs, const time_point&lt;_Clock, _Duration2&gt;&amp; __rhs)
+<span class="lineNum">     990 </span>            : {
+<span class="lineNum">     991 </span>            :     return !(__rhs &lt; __lhs);
+<span class="lineNum">     992 </span>            : }
+<span class="lineNum">     993 </span>            : 
+<span class="lineNum">     994 </span>            : // time_point &gt;=
+<span class="lineNum">     995 </span>            : 
+<span class="lineNum">     996 </span>            : template &lt;class _Clock, class _Duration1, class _Duration2&gt;
+<span class="lineNum">     997 </span>            : inline _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR_AFTER_CXX11
+<span class="lineNum">     998 </span>            : bool
+<span class="lineNum">     999 </span>            : operator&gt;=(const time_point&lt;_Clock, _Duration1&gt;&amp; __lhs, const time_point&lt;_Clock, _Duration2&gt;&amp; __rhs)
+<span class="lineNum">    1000 </span>            : {
+<span class="lineNum">    1001 </span>            :     return !(__lhs &lt; __rhs);
+<span class="lineNum">    1002 </span>            : }
+<span class="lineNum">    1003 </span>            : 
+<span class="lineNum">    1004 </span>            : // time_point operator+(time_point x, duration y);
+<span class="lineNum">    1005 </span>            : 
+<span class="lineNum">    1006 </span>            : template &lt;class _Clock, class _Duration1, class _Rep2, class _Period2&gt;
+<span class="lineNum">    1007 </span>            : inline _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR_AFTER_CXX11
+<span class="lineNum">    1008 </span>            : time_point&lt;_Clock, typename common_type&lt;_Duration1, duration&lt;_Rep2, _Period2&gt; &gt;::type&gt;
+<span class="lineNum">    1009 </span>            : operator+(const time_point&lt;_Clock, _Duration1&gt;&amp; __lhs, const duration&lt;_Rep2, _Period2&gt;&amp; __rhs)
+<span class="lineNum">    1010 </span>            : {
+<span class="lineNum">    1011 </span>            :     typedef time_point&lt;_Clock, typename common_type&lt;_Duration1, duration&lt;_Rep2, _Period2&gt; &gt;::type&gt; _Tr;
+<span class="lineNum">    1012 </span>            :     return _Tr (__lhs.time_since_epoch() + __rhs);
+<span class="lineNum">    1013 </span>            : }
+<span class="lineNum">    1014 </span>            : 
+<span class="lineNum">    1015 </span>            : // time_point operator+(duration x, time_point y);
+<span class="lineNum">    1016 </span>            : 
+<span class="lineNum">    1017 </span>            : template &lt;class _Rep1, class _Period1, class _Clock, class _Duration2&gt;
+<span class="lineNum">    1018 </span>            : inline _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR_AFTER_CXX11
+<span class="lineNum">    1019 </span>            : time_point&lt;_Clock, typename common_type&lt;duration&lt;_Rep1, _Period1&gt;, _Duration2&gt;::type&gt;
+<span class="lineNum">    1020 </span>            : operator+(const duration&lt;_Rep1, _Period1&gt;&amp; __lhs, const time_point&lt;_Clock, _Duration2&gt;&amp; __rhs)
+<span class="lineNum">    1021 </span>            : {
+<span class="lineNum">    1022 </span>            :     return __rhs + __lhs;
+<span class="lineNum">    1023 </span>            : }
+<span class="lineNum">    1024 </span>            : 
+<span class="lineNum">    1025 </span>            : // time_point operator-(time_point x, duration y);
+<span class="lineNum">    1026 </span>            : 
+<span class="lineNum">    1027 </span>            : template &lt;class _Clock, class _Duration1, class _Rep2, class _Period2&gt;
+<span class="lineNum">    1028 </span>            : inline _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR_AFTER_CXX11
+<span class="lineNum">    1029 </span>            : time_point&lt;_Clock, typename common_type&lt;_Duration1, duration&lt;_Rep2, _Period2&gt; &gt;::type&gt;
+<span class="lineNum">    1030 </span>            : operator-(const time_point&lt;_Clock, _Duration1&gt;&amp; __lhs, const duration&lt;_Rep2, _Period2&gt;&amp; __rhs)
+<span class="lineNum">    1031 </span>            : {
+<span class="lineNum">    1032 </span>            :     typedef time_point&lt;_Clock, typename common_type&lt;_Duration1, duration&lt;_Rep2, _Period2&gt; &gt;::type&gt; _Ret;
+<span class="lineNum">    1033 </span>            :     return _Ret(__lhs.time_since_epoch() -__rhs);
+<span class="lineNum">    1034 </span>            : }
+<span class="lineNum">    1035 </span>            : 
+<span class="lineNum">    1036 </span>            : // duration operator-(time_point x, time_point y);
+<span class="lineNum">    1037 </span>            : 
+<span class="lineNum">    1038 </span>            : template &lt;class _Clock, class _Duration1, class _Duration2&gt;
+<span class="lineNum">    1039 </span>            : inline _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR_AFTER_CXX11
+<span class="lineNum">    1040 </span>            : typename common_type&lt;_Duration1, _Duration2&gt;::type
+<span class="lineNum">    1041 </span>            : operator-(const time_point&lt;_Clock, _Duration1&gt;&amp; __lhs, const time_point&lt;_Clock, _Duration2&gt;&amp; __rhs)
+<span class="lineNum">    1042 </span>            : {
+<span class="lineNum">    1043 </span>            :     return __lhs.time_since_epoch() - __rhs.time_since_epoch();
+<span class="lineNum">    1044 </span>            : }
+<span class="lineNum">    1045 </span>            : 
+<span class="lineNum">    1046 </span>            : //////////////////////////////////////////////////////////
+<span class="lineNum">    1047 </span>            : /////////////////////// clocks ///////////////////////////
+<span class="lineNum">    1048 </span>            : //////////////////////////////////////////////////////////
+<span class="lineNum">    1049 </span>            : 
+<span class="lineNum">    1050 </span>            : class _LIBCPP_TYPE_VIS system_clock
+<span class="lineNum">    1051 </span>            : {
+<span class="lineNum">    1052 </span>            : public:
+<span class="lineNum">    1053 </span>            :     typedef microseconds                     duration;
+<span class="lineNum">    1054 </span>            :     typedef duration::rep                    rep;
+<span class="lineNum">    1055 </span>            :     typedef duration::period                 period;
+<span class="lineNum">    1056 </span>            :     typedef chrono::time_point&lt;system_clock&gt; time_point;
+<span class="lineNum">    1057 </span>            :     static _LIBCPP_CONSTEXPR_AFTER_CXX11 const bool is_steady = false;
+<span class="lineNum">    1058 </span>            : 
+<span class="lineNum">    1059 </span>            :     static time_point now() _NOEXCEPT;
+<span class="lineNum">    1060 </span>            :     static time_t     to_time_t  (const time_point&amp; __t) _NOEXCEPT;
+<span class="lineNum">    1061 </span>            :     static time_point from_time_t(time_t __t) _NOEXCEPT;
+<span class="lineNum">    1062 </span>            : };
+<span class="lineNum">    1063 </span>            : 
+<span class="lineNum">    1064 </span>            : #ifndef _LIBCPP_HAS_NO_MONOTONIC_CLOCK
+<span class="lineNum">    1065 </span>            : class _LIBCPP_TYPE_VIS steady_clock
+<span class="lineNum">    1066 </span>            : {
+<span class="lineNum">    1067 </span>            : public:
+<span class="lineNum">    1068 </span>            :     typedef nanoseconds                                   duration;
+<span class="lineNum">    1069 </span>            :     typedef duration::rep                                 rep;
+<span class="lineNum">    1070 </span>            :     typedef duration::period                              period;
+<span class="lineNum">    1071 </span>            :     typedef chrono::time_point&lt;steady_clock, duration&gt;    time_point;
+<span class="lineNum">    1072 </span>            :     static _LIBCPP_CONSTEXPR_AFTER_CXX11 const bool is_steady = true;
+<span class="lineNum">    1073 </span>            : 
+<span class="lineNum">    1074 </span>            :     static time_point now() _NOEXCEPT;
+<span class="lineNum">    1075 </span>            : };
+<span class="lineNum">    1076 </span>            : 
+<span class="lineNum">    1077 </span>            : typedef steady_clock high_resolution_clock;
+<span class="lineNum">    1078 </span>            : #else
+<span class="lineNum">    1079 </span>            : typedef system_clock high_resolution_clock;
+<span class="lineNum">    1080 </span>            : #endif
+<span class="lineNum">    1081 </span>            : 
+<span class="lineNum">    1082 </span>            : } // chrono
+<span class="lineNum">    1083 </span>            : 
+<span class="lineNum">    1084 </span>            : #if _LIBCPP_STD_VER &gt; 11
+<span class="lineNum">    1085 </span>            : // Suffixes for duration literals [time.duration.literals]
+<span class="lineNum">    1086 </span>            : inline namespace literals
+<span class="lineNum">    1087 </span>            : { 
+<span class="lineNum">    1088 </span>            :   inline namespace chrono_literals
+<span class="lineNum">    1089 </span>            :   {
+<span class="lineNum">    1090 </span>            : 
+<span class="lineNum">    1091 </span>            :     constexpr chrono::hours operator&quot;&quot;h(unsigned long long __h)
+<span class="lineNum">    1092 </span>            :     {
+<span class="lineNum">    1093 </span>            :         return chrono::hours(static_cast&lt;chrono::hours::rep&gt;(__h));
+<span class="lineNum">    1094 </span>            :     }
+<span class="lineNum">    1095 </span>            : 
+<span class="lineNum">    1096 </span>            :     constexpr chrono::duration&lt;long double, ratio&lt;3600,1&gt;&gt; operator&quot;&quot;h(long double __h)
+<span class="lineNum">    1097 </span>            :     {
+<span class="lineNum">    1098 </span>            :         return chrono::duration&lt;long double, ratio&lt;3600,1&gt;&gt;(__h);
+<span class="lineNum">    1099 </span>            :     }
+<span class="lineNum">    1100 </span>            : 
+<span class="lineNum">    1101 </span>            : 
+<span class="lineNum">    1102 </span>            :     constexpr chrono::minutes operator&quot;&quot;min(unsigned long long __m)
+<span class="lineNum">    1103 </span>            :     {
+<span class="lineNum">    1104 </span>            :         return chrono::minutes(static_cast&lt;chrono::minutes::rep&gt;(__m));
+<span class="lineNum">    1105 </span>            :     }
+<span class="lineNum">    1106 </span>            : 
+<span class="lineNum">    1107 </span>            :     constexpr chrono::duration&lt;long double, ratio&lt;60,1&gt;&gt; operator&quot;&quot;min(long double __m)
+<span class="lineNum">    1108 </span>            :     {
+<span class="lineNum">    1109 </span>            :         return chrono::duration&lt;long double, ratio&lt;60,1&gt;&gt; (__m);
+<span class="lineNum">    1110 </span>            :     }
+<span class="lineNum">    1111 </span>            : 
+<span class="lineNum">    1112 </span>            : 
+<span class="lineNum">    1113 </span>            :     constexpr chrono::seconds operator&quot;&quot;s(unsigned long long __s)
+<span class="lineNum">    1114 </span>            :     {
+<span class="lineNum">    1115 </span>            :         return chrono::seconds(static_cast&lt;chrono::seconds::rep&gt;(__s));
+<span class="lineNum">    1116 </span>            :     }
+<span class="lineNum">    1117 </span>            : 
+<span class="lineNum">    1118 </span>            :     constexpr chrono::duration&lt;long double&gt; operator&quot;&quot;s(long double __s)
+<span class="lineNum">    1119 </span>            :     {
+<span class="lineNum">    1120 </span>            :         return chrono::duration&lt;long double&gt; (__s);
+<span class="lineNum">    1121 </span>            :     }
+<span class="lineNum">    1122 </span>            : 
+<span class="lineNum">    1123 </span>            : 
+<span class="lineNum">    1124 </span>            :     constexpr chrono::milliseconds operator&quot;&quot;ms(unsigned long long __ms)
+<span class="lineNum">    1125 </span>            :     {
+<span class="lineNum">    1126 </span>            :         return chrono::milliseconds(static_cast&lt;chrono::milliseconds::rep&gt;(__ms));
+<span class="lineNum">    1127 </span>            :     }
+<span class="lineNum">    1128 </span>            : 
+<span class="lineNum">    1129 </span>            :     constexpr chrono::duration&lt;long double, milli&gt; operator&quot;&quot;ms(long double __ms)
+<span class="lineNum">    1130 </span>            :     {
+<span class="lineNum">    1131 </span>            :         return chrono::duration&lt;long double, milli&gt;(__ms);
+<span class="lineNum">    1132 </span>            :     }
+<span class="lineNum">    1133 </span>            : 
+<span class="lineNum">    1134 </span>            : 
+<span class="lineNum">    1135 </span>            :     constexpr chrono::microseconds operator&quot;&quot;us(unsigned long long __us)
+<span class="lineNum">    1136 </span>            :     {
+<span class="lineNum">    1137 </span>            :         return chrono::microseconds(static_cast&lt;chrono::microseconds::rep&gt;(__us));
+<span class="lineNum">    1138 </span>            :     }
+<span class="lineNum">    1139 </span>            : 
+<span class="lineNum">    1140 </span>            :     constexpr chrono::duration&lt;long double, micro&gt; operator&quot;&quot;us(long double __us)
+<span class="lineNum">    1141 </span>            :     {
+<span class="lineNum">    1142 </span>            :         return chrono::duration&lt;long double, micro&gt; (__us);
+<span class="lineNum">    1143 </span>            :     }
+<span class="lineNum">    1144 </span>            :     
+<span class="lineNum">    1145 </span>            : 
+<span class="lineNum">    1146 </span>            :     constexpr chrono::nanoseconds operator&quot;&quot;ns(unsigned long long __ns)
+<span class="lineNum">    1147 </span>            :     {
+<span class="lineNum">    1148 </span>            :         return chrono::nanoseconds(static_cast&lt;chrono::nanoseconds::rep&gt;(__ns));
+<span class="lineNum">    1149 </span>            :     }
+<span class="lineNum">    1150 </span>            : 
+<span class="lineNum">    1151 </span>            :     constexpr chrono::duration&lt;long double, nano&gt; operator&quot;&quot;ns(long double __ns)
+<span class="lineNum">    1152 </span>            :     {
+<span class="lineNum">    1153 </span>            :         return chrono::duration&lt;long double, nano&gt; (__ns);
+<span class="lineNum">    1154 </span>            :     }
+<span class="lineNum">    1155 </span>            : 
+<span class="lineNum">    1156 </span>            : }}
+<span class="lineNum">    1157 </span>            : 
+<span class="lineNum">    1158 </span>            : namespace chrono { // hoist the literals into namespace std::chrono
+<span class="lineNum">    1159 </span>            :    using namespace literals::chrono_literals;
+<span class="lineNum">    1160 </span>            : }
+<span class="lineNum">    1161 </span>            : 
+<span class="lineNum">    1162 </span>            : #endif
+<span class="lineNum">    1163 </span>            : 
+<span class="lineNum">    1164 </span>            : _LIBCPP_END_NAMESPACE_STD
+<span class="lineNum">    1165 </span>            : 
+<span class="lineNum">    1166 </span>            : _LIBCPP_POP_MACROS
+<span class="lineNum">    1167 </span>            : 
+<span class="lineNum">    1168 </span>            : #endif  // _LIBCPP_CHRONO
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.13</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

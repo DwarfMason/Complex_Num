@@ -1,0 +1,202 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - test.info - v1/stdlib.h</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../index.html">top level</a> - <a href="index.html">v1</a> - stdlib.h<span style="font-size: 80%;"> (source / <a href="stdlib.h.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">test.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2019-02-01 18:12:07</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : // -*- C++ -*-</a>
+<span class="lineNum">       2 </span>            : //===--------------------------- stdlib.h ---------------------------------===//
+<span class="lineNum">       3 </span>            : //
+<span class="lineNum">       4 </span>            : //                     The LLVM Compiler Infrastructure
+<span class="lineNum">       5 </span>            : //
+<span class="lineNum">       6 </span>            : // This file is dual licensed under the MIT and the University of Illinois Open
+<span class="lineNum">       7 </span>            : // Source Licenses. See LICENSE.TXT for details.
+<span class="lineNum">       8 </span>            : //
+<span class="lineNum">       9 </span>            : //===----------------------------------------------------------------------===//
+<span class="lineNum">      10 </span>            : 
+<span class="lineNum">      11 </span>            : #if defined(__need_malloc_and_calloc)
+<span class="lineNum">      12 </span>            : 
+<span class="lineNum">      13 </span>            : #if !defined(_LIBCPP_HAS_NO_PRAGMA_SYSTEM_HEADER)
+<span class="lineNum">      14 </span>            : #pragma GCC system_header
+<span class="lineNum">      15 </span>            : #endif
+<span class="lineNum">      16 </span>            : 
+<span class="lineNum">      17 </span>            : #include_next &lt;stdlib.h&gt;
+<span class="lineNum">      18 </span>            : 
+<span class="lineNum">      19 </span>            : #elif !defined(_LIBCPP_STDLIB_H)
+<span class="lineNum">      20 </span>            : #define _LIBCPP_STDLIB_H
+<span class="lineNum">      21 </span>            : 
+<span class="lineNum">      22 </span>            : /*
+<span class="lineNum">      23 </span>            :     stdlib.h synopsis
+<span class="lineNum">      24 </span>            : 
+<span class="lineNum">      25 </span>            : Macros:
+<span class="lineNum">      26 </span>            : 
+<span class="lineNum">      27 </span>            :     EXIT_FAILURE
+<span class="lineNum">      28 </span>            :     EXIT_SUCCESS
+<span class="lineNum">      29 </span>            :     MB_CUR_MAX
+<span class="lineNum">      30 </span>            :     NULL
+<span class="lineNum">      31 </span>            :     RAND_MAX
+<span class="lineNum">      32 </span>            : 
+<span class="lineNum">      33 </span>            : Types:
+<span class="lineNum">      34 </span>            : 
+<span class="lineNum">      35 </span>            :     size_t
+<span class="lineNum">      36 </span>            :     div_t
+<span class="lineNum">      37 </span>            :     ldiv_t
+<span class="lineNum">      38 </span>            :     lldiv_t                                                               // C99
+<span class="lineNum">      39 </span>            : 
+<span class="lineNum">      40 </span>            : double    atof (const char* nptr);
+<span class="lineNum">      41 </span>            : int       atoi (const char* nptr);
+<span class="lineNum">      42 </span>            : long      atol (const char* nptr);
+<span class="lineNum">      43 </span>            : long long atoll(const char* nptr);                                        // C99
+<span class="lineNum">      44 </span>            : double             strtod  (const char* restrict nptr, char** restrict endptr);
+<span class="lineNum">      45 </span>            : float              strtof  (const char* restrict nptr, char** restrict endptr); // C99
+<span class="lineNum">      46 </span>            : long double        strtold (const char* restrict nptr, char** restrict endptr); // C99
+<span class="lineNum">      47 </span>            : long               strtol  (const char* restrict nptr, char** restrict endptr, int base);
+<span class="lineNum">      48 </span>            : long long          strtoll (const char* restrict nptr, char** restrict endptr, int base); // C99
+<span class="lineNum">      49 </span>            : unsigned long      strtoul (const char* restrict nptr, char** restrict endptr, int base);
+<span class="lineNum">      50 </span>            : unsigned long long strtoull(const char* restrict nptr, char** restrict endptr, int base); // C99
+<span class="lineNum">      51 </span>            : int rand(void);
+<span class="lineNum">      52 </span>            : void srand(unsigned int seed);
+<span class="lineNum">      53 </span>            : void* calloc(size_t nmemb, size_t size);
+<span class="lineNum">      54 </span>            : void free(void* ptr);
+<span class="lineNum">      55 </span>            : void* malloc(size_t size);
+<span class="lineNum">      56 </span>            : void* realloc(void* ptr, size_t size);
+<span class="lineNum">      57 </span>            : void abort(void);
+<span class="lineNum">      58 </span>            : int atexit(void (*func)(void));
+<span class="lineNum">      59 </span>            : void exit(int status);
+<span class="lineNum">      60 </span>            : void _Exit(int status);
+<span class="lineNum">      61 </span>            : char* getenv(const char* name);
+<span class="lineNum">      62 </span>            : int system(const char* string);
+<span class="lineNum">      63 </span>            : void* bsearch(const void* key, const void* base, size_t nmemb, size_t size,
+<span class="lineNum">      64 </span>            :               int (*compar)(const void *, const void *));
+<span class="lineNum">      65 </span>            : void qsort(void* base, size_t nmemb, size_t size,
+<span class="lineNum">      66 </span>            :            int (*compar)(const void *, const void *));
+<span class="lineNum">      67 </span>            : int         abs(      int j);
+<span class="lineNum">      68 </span>            : long        abs(     long j);
+<span class="lineNum">      69 </span>            : long long   abs(long long j);                                             // C++0X
+<span class="lineNum">      70 </span>            : long       labs(     long j);
+<span class="lineNum">      71 </span>            : long long llabs(long long j);                                             // C99
+<span class="lineNum">      72 </span>            : div_t     div(      int numer,       int denom);
+<span class="lineNum">      73 </span>            : ldiv_t    div(     long numer,      long denom);
+<span class="lineNum">      74 </span>            : lldiv_t   div(long long numer, long long denom);                          // C++0X
+<span class="lineNum">      75 </span>            : ldiv_t   ldiv(     long numer,      long denom);
+<span class="lineNum">      76 </span>            : lldiv_t lldiv(long long numer, long long denom);                          // C99
+<span class="lineNum">      77 </span>            : int mblen(const char* s, size_t n);
+<span class="lineNum">      78 </span>            : int mbtowc(wchar_t* restrict pwc, const char* restrict s, size_t n);
+<span class="lineNum">      79 </span>            : int wctomb(char* s, wchar_t wchar);
+<span class="lineNum">      80 </span>            : size_t mbstowcs(wchar_t* restrict pwcs, const char* restrict s, size_t n);
+<span class="lineNum">      81 </span>            : size_t wcstombs(char* restrict s, const wchar_t* restrict pwcs, size_t n);
+<span class="lineNum">      82 </span>            : int at_quick_exit(void (*func)(void))                                     // C++11
+<span class="lineNum">      83 </span>            : void quick_exit(int status);                                              // C++11
+<span class="lineNum">      84 </span>            : void *aligned_alloc(size_t alignment, size_t size);                       // C11
+<span class="lineNum">      85 </span>            : 
+<span class="lineNum">      86 </span>            : */
+<span class="lineNum">      87 </span>            : 
+<span class="lineNum">      88 </span>            : #include &lt;__config&gt;
+<span class="lineNum">      89 </span>            : 
+<span class="lineNum">      90 </span>            : #if !defined(_LIBCPP_HAS_NO_PRAGMA_SYSTEM_HEADER)
+<span class="lineNum">      91 </span>            : #pragma GCC system_header
+<span class="lineNum">      92 </span>            : #endif
+<span class="lineNum">      93 </span>            : 
+<span class="lineNum">      94 </span>            : #include_next &lt;stdlib.h&gt;
+<span class="lineNum">      95 </span>            : 
+<span class="lineNum">      96 </span>            : #ifdef __cplusplus
+<span class="lineNum">      97 </span>            : 
+<span class="lineNum">      98 </span>            : extern &quot;C++&quot; {
+<span class="lineNum">      99 </span>            : 
+<span class="lineNum">     100 </span>            : #undef abs
+<span class="lineNum">     101 </span>            : #undef div
+<span class="lineNum">     102 </span>            : #undef labs
+<span class="lineNum">     103 </span>            : #undef ldiv
+<span class="lineNum">     104 </span>            : #ifndef _LIBCPP_HAS_NO_LONG_LONG
+<span class="lineNum">     105 </span>            : #undef llabs
+<span class="lineNum">     106 </span>            : #undef lldiv
+<span class="lineNum">     107 </span>            : #endif
+<span class="lineNum">     108 </span>            : 
+<span class="lineNum">     109 </span>            : // MSVCRT already has the correct prototype in &lt;stdlib.h&gt; if __cplusplus is defined
+<span class="lineNum">     110 </span>            : #if !defined(_LIBCPP_MSVCRT) &amp;&amp; !defined(__sun__) &amp;&amp; !defined(_AIX)
+<a name="111"><span class="lineNum">     111 </span>            : inline _LIBCPP_INLINE_VISIBILITY long      abs(     long __x) _NOEXCEPT {return  labs(__x);}</a>
+<span class="lineNum">     112 </span>            : #ifndef _LIBCPP_HAS_NO_LONG_LONG
+<span class="lineNum">     113 </span><span class="lineNoCov">          0 : inline _LIBCPP_INLINE_VISIBILITY long long abs(long long __x) _NOEXCEPT {return llabs(__x);}</span>
+<span class="lineNum">     114 </span>            : #endif // _LIBCPP_HAS_NO_LONG_LONG
+<span class="lineNum">     115 </span>            : 
+<span class="lineNum">     116 </span>            : inline _LIBCPP_INLINE_VISIBILITY  ldiv_t div(     long __x,      long __y) _NOEXCEPT {return  ldiv(__x, __y);}
+<span class="lineNum">     117 </span>            : #ifndef _LIBCPP_HAS_NO_LONG_LONG
+<span class="lineNum">     118 </span>            : inline _LIBCPP_INLINE_VISIBILITY lldiv_t div(long long __x, long long __y) _NOEXCEPT {return lldiv(__x, __y);}
+<span class="lineNum">     119 </span>            : #endif // _LIBCPP_HAS_NO_LONG_LONG
+<span class="lineNum">     120 </span>            : #endif // _LIBCPP_MSVCRT / __sun__ / _AIX
+<span class="lineNum">     121 </span>            : 
+<span class="lineNum">     122 </span>            : }  // extern &quot;C++&quot;
+<span class="lineNum">     123 </span>            : 
+<span class="lineNum">     124 </span>            : #endif  // __cplusplus
+<span class="lineNum">     125 </span>            : 
+<span class="lineNum">     126 </span>            : #endif  // _LIBCPP_STDLIB_H
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.13</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>
