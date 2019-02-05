@@ -146,8 +146,6 @@ CartCompNum complex::bpow(const CartCompNum &value, int n) {
   }
   if (buff_degree_ > 0) {
     return count;
-  } else {
-    return x / count;
   }
 }
 

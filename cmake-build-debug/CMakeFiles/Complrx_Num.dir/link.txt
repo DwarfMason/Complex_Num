@@ -1,1 +1,1 @@
-/Library/Developer/CommandLineTools/usr/bin/c++  -g -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/Complrx_Num.dir/main.cpp.o CMakeFiles/Complrx_Num.dir/complex_num.cpp.o  -o Complrx_Num 
+/usr/bin/c++  -g   CMakeFiles/Complrx_Num.dir/main.cpp.o CMakeFiles/Complrx_Num.dir/complex_num.cpp.o  -o Complrx_Num 
